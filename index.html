@@ -3,587 +3,459 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#130914">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#170b20">
 <title>Our Love Story ❤️</title>
 
 <style>
 :root {
-  --bg: #130914;
-  --pink: #ff91b5;
-  --rose: #e84d82;
-  --cream: #fff1f6;
-  --gold: #f5d49a;
+  --pink: #ff82b2;
+  --deep: #170b20;
+  --card: rgba(255,255,255,.09);
 }
 
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-  margin: 0;
   min-height: 100vh;
-  min-height: 100dvh;
-  overflow-x: hidden;
-  background:
-    radial-gradient(ellipse at 50% 0%, #52213f 0%, transparent 48%),
-    linear-gradient(145deg, #100811, #251024 55%, #100811);
-  color: var(--cream);
   font-family: Georgia, "Times New Roman", serif;
+  color: white;
+  background:
+    radial-gradient(circle at top, #57244d 0%, transparent 48%),
+    linear-gradient(145deg, #100914, #281027 55%, #100914);
+  overflow-x: hidden;
 }
 
-button, input { font: inherit; }
+button, input {
+  font: inherit;
+}
 
-button { -webkit-tap-highlight-color: transparent; }
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
 
 .scene {
   display: none;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: 35px 18px;
   width: 100%;
-  position: relative;
-  flex-direction: column;
+  padding: 75px 18px 35px;
+  text-align: center;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  isolation: isolate;
+  flex-direction: column;
+  gap: 20px;
+  animation: sceneIn .8s ease both;
 }
 
 .scene.active {
   display: flex;
-  animation: sceneEnter .75s ease both;
 }
 
-@keyframes sceneEnter {
-  from { opacity: 0; transform: translateY(14px); }
+@keyframes sceneIn {
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-h1, h2, p { margin-top: 0; }
-
 h1 {
-  font-size: clamp(36px, 9vw, 65px);
-  font-weight: normal;
-  line-height: 1.1;
-  margin-bottom: 17px;
+  font-size: clamp(2rem, 8vw, 3.3rem);
+  line-height: 1.15;
+  color: #ffd6e6;
+  text-shadow: 0 0 25px #ff4b9b66;
 }
 
 h2 {
-  font-size: clamp(29px, 7vw, 47px);
-  font-weight: normal;
-  line-height: 1.2;
-  margin-bottom: 15px;
+  font-size: clamp(1.5rem, 6vw, 2.3rem);
+  color: #ffc5df;
 }
 
 p {
-  line-height: 1.8;
+  max-width: 560px;
+  line-height: 1.75;
+  color: #f8e8f1;
 }
 
 .eyebrow {
-  color: var(--gold);
-  font: 11px/1.8 Arial, sans-serif;
-  text-transform: uppercase;
   letter-spacing: 4px;
-  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-size: .72rem;
+  color: #ffb5d3;
 }
 
-.accent {
-  color: var(--pink);
-  font-style: italic;
+.primary, .secondary {
+  border: 1px solid #ffbad8;
+  border-radius: 30px;
+  padding: 13px 25px;
+  font-weight: bold;
+  transition: transform .2s, box-shadow .2s;
 }
 
-.subtitle {
-  max-width: 500px;
-  color: #f3dbe8;
-  font-size: 15px;
-  margin: 0 auto 23px;
+.primary {
+  color: #351025;
+  background: linear-gradient(120deg, #ffd6e6, #ff7eae);
+  box-shadow: 0 8px 30px #ff6ba844;
 }
 
-.btn {
-  min-height: 49px;
-  padding: 13px 24px;
-  border: 1px solid rgba(255,255,255,.22);
-  border-radius: 999px;
-  background: linear-gradient(135deg, #f77da5, #bb2e68);
+.secondary {
+  background: #ffffff12;
   color: white;
-  font: bold 14px Arial, sans-serif;
-  cursor: pointer;
-  box-shadow: 0 8px 28px #c637702e;
-  transition: transform .2s, filter .2s;
 }
 
-.btn:active { transform: scale(.96); }
-
-.btn:hover { filter: brightness(1.12); }
-
-.btn.secondary {
-  background: rgba(255,255,255,.08);
-  box-shadow: none;
+.primary:active, .secondary:active {
+  transform: scale(.96);
 }
 
-.btn.gold {
-  background: linear-gradient(135deg, #f9e3ad, #c99448);
-  color: #24101d;
-}
-
-.button-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 13px;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.hidden { display: none !important; }
-
-.small-note {
-  color: #cdb3c7;
-  font: 12px/1.8 Arial, sans-serif;
-  margin-top: 18px;
-}
-
-/* Floating hearts */
-
-.heart {
+.music-button {
   position: fixed;
-  z-index: 0;
-  bottom: -40px;
-  color: #ff8eae91;
-  pointer-events: none;
-  animation: floatHeart linear forwards;
+  z-index: 100;
+  top: 12px;
+  right: 12px;
+  border: 1px solid #ffffff44;
+  border-radius: 30px;
+  padding: 10px 13px;
+  background: #251326eF;
+  color: white;
+  font-size: .8rem;
 }
 
-@keyframes floatHeart {
-  0% { transform: translateY(0) rotate(0); opacity: 0; }
-  15% { opacity: .8; }
-  100% { transform: translateY(-115vh) rotate(35deg); opacity: 0; }
-}
-
-/* ----------------------------------
-   TRANSPARENT VIDEO OVERLAY
-   No box, no border, no controls.
------------------------------------ */
-
-.character-stage {
-  width: min(100%, 600px);
-  height: clamp(250px, 45vh, 430px);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 8px auto 18px;
-  overflow: visible;
-  background: transparent;
-}
-
-.character-video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: transparent;
-  border: 0;
-  outline: 0;
-  filter: drop-shadow(0 12px 25px #ff80ae18);
-}
-
-.glow-orb {
-  position: absolute;
-  z-index: -1;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: #ef4e8821;
-  filter: blur(45px);
-  animation: glow 4s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  from { transform: scale(.85); opacity: .45; }
-  to { transform: scale(1.2); opacity: .9; }
-}
-
-/* ----------------------------------
-   FIVE MEMORIES: STAGGERED REVEAL
------------------------------------ */
-
-.memory-grid {
-  width: min(100%, 650px);
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin: 15px auto 25px;
-}
-
-.memory-card {
-  opacity: 0;
-  transform: translateY(35px) scale(.88);
-  overflow: hidden;
-  border: 1px solid #ffffff25;
-  border-radius: 15px;
-  background: linear-gradient(145deg, #44243d, #211020);
-  padding: 7px;
-  box-shadow: 0 12px 30px #00000030;
-}
-
-.memories-active .memory-card {
-  animation: memoryReveal .8s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-.memory-card:nth-child(1) { animation-delay: .25s; }
-.memory-card:nth-child(2) { animation-delay: .75s; }
-.memory-card:nth-child(3) { animation-delay: 1.25s; }
-.memory-card:nth-child(4) { animation-delay: 1.75s; }
-.memory-card:nth-child(5) { animation-delay: 2.25s; }
-
-@keyframes memoryReveal {
-  0% { opacity: 0; transform: translateY(35px) scale(.88); }
-  65% { opacity: 1; transform: translateY(-4px) scale(1.02); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.memory-card img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 4.5;
-  object-fit: cover;
-  border-radius: 10px;
-  background: #392238;
-}
-
-.memory-card figcaption {
-  padding: 11px 3px 6px;
-  color: #ffdae8;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.memory-card:last-child {
-  grid-column: 1 / -1;
-  width: 68%;
-  justify-self: center;
-}
-
-@media (min-width: 650px) {
-  .memory-grid { grid-template-columns: repeat(3, 1fr); }
-  .memory-card:last-child { grid-column: auto; width: 100%; }
-}
-
-/* ----------------------------------
-   PASSWORD
------------------------------------ */
-
-.panel {
-  width: min(100%, 510px);
-  padding: 30px 24px;
+.glass {
+  width: min(100%, 540px);
+  padding: 23px;
   border: 1px solid #ffffff20;
-  border-radius: 23px;
-  background: #ffffff0b;
-  box-shadow: 0 20px 60px #00000028;
+  border-radius: 25px;
+  background: var(--card);
+  box-shadow: 0 15px 50px #00000030;
   backdrop-filter: blur(12px);
 }
 
-.lock-icon { font-size: 44px; margin-bottom: 15px; }
+.rose {
+  font-size: clamp(6rem, 24vw, 10rem);
+  filter: drop-shadow(0 0 24px #ff4b9b66);
+  animation: roseFloat 3s ease-in-out infinite;
+}
 
-.password-input {
-  width: 100%;
-  padding: 15px;
-  margin: 12px 0;
-  border-radius: 12px;
+@keyframes roseFloat {
+  0%,100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+.floating-heart {
+  position: fixed;
+  z-index: -1;
+  bottom: -30px;
+  left: var(--left);
+  color: #ff82b2;
+  opacity: .55;
+  pointer-events: none;
+  animation: floatUp var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0) rotate(0); opacity: 0; }
+  15% { opacity: .6; }
+  to { transform: translateY(-115vh) rotate(35deg); opacity: 0; }
+}
+
+/* Five tappable memory cards */
+.memory-grid {
+  width: min(100%, 680px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.memory-card {
+  min-width: 0;
   border: 1px solid #ffffff35;
-  background: #00000025;
+  border-radius: 17px;
+  background: #ffffff0b;
   color: white;
+  padding: 0;
+  overflow: hidden;
   text-align: center;
-  letter-spacing: 4px;
-  outline: none;
-}
-
-.password-input:focus { border-color: var(--pink); }
-
-.error-text {
-  min-height: 21px;
-  color: #ffb6ca;
-  font: 13px Arial, sans-serif;
-}
-
-/* ----------------------------------
-   PROPOSAL TEXT
------------------------------------ */
-
-.video-hint {
-  color: #d9bfd1;
-  font: 12px/1.8 Arial, sans-serif;
-  margin-top: 6px;
-}
-
-/* ----------------------------------
-   NO MESSAGE
------------------------------------ */
-
-.birthday-message {
-  font-size: clamp(24px, 6vw, 39px);
-  line-height: 1.6;
-  color: #ffe0eb;
-}
-
-.sad-heart {
-  font-size: 48px;
-  animation: heartBeat 1.5s ease-in-out infinite;
-}
-
-@keyframes heartBeat {
-  50% { transform: scale(1.13); }
-}
-
-/* ----------------------------------
-   3D GIFT BOX
------------------------------------ */
-
-.gift-scene {
-  width: 250px;
-  height: 245px;
   position: relative;
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 7px 25px #00000025;
+}
+
+.memory-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  width: 58%;
+  justify-self: center;
+}
+
+.memory-card .card-front {
+  height: 100%;
+  width: 100%;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 18px auto 20px;
-  perspective: 850px;
+  flex-direction: column;
+  gap: 12px;
+  background:
+    radial-gradient(circle at 50% 30%, #ad477c66, transparent 55%),
+    linear-gradient(145deg, #39203e, #1b1026);
+  transition: opacity .35s;
 }
 
-.gift-shadow {
-  position: absolute;
-  width: 185px;
-  height: 40px;
-  left: 50%;
-  bottom: 20px;
-  transform: translateX(-50%);
-  background: #00000055;
-  filter: blur(16px);
-  border-radius: 50%;
+.card-heart {
+  font-size: 2.8rem;
+  animation: heartBeat 1.6s infinite;
 }
 
-.gift-3d {
-  position: relative;
-  width: 150px;
-  height: 135px;
-  transform-style: preserve-3d;
-  transform: rotateX(-8deg) rotateY(-28deg);
-  transition: transform 1s ease;
-  cursor: pointer;
-  animation: giftFloat 3s ease-in-out infinite;
+@keyframes heartBeat {
+  0%,100% { transform: scale(1); }
+  15% { transform: scale(1.13); }
+  30% { transform: scale(1); }
 }
 
-@keyframes giftFloat {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -9px; }
+.card-front strong {
+  color: #ffd5e6;
+  font-size: 1rem;
 }
 
-.gift-body {
+.card-front small {
+  color: #f5bfd7;
+  font-size: .78rem;
+}
+
+.memory-card .card-back {
+  display: none;
   position: absolute;
   inset: 0;
+  background: #241327;
+  animation: sceneIn .45s ease both;
+}
+
+.memory-card.revealed .card-front {
+  display: none;
+}
+
+.memory-card.revealed .card-back {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-back img {
+  width: 100%;
+  height: 68%;
+  object-fit: cover;
+  display: block;
+}
+
+.memory-message {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  font-size: .78rem;
+  line-height: 1.4;
+  color: #ffe2ee;
+}
+
+.progress {
+  color: #ffd0e4;
+  font-size: .9rem;
+}
+
+input[type="password"] {
+  width: 100%;
+  padding: 14px;
+  color: white;
+  background: #ffffff12;
+  border: 1px solid #ffb8d555;
+  border-radius: 12px;
+  outline: none;
+  text-align: center;
+  letter-spacing: 4px;
+}
+
+input[type="password"]:focus {
+  border-color: var(--pink);
+}
+
+.error {
+  color: #ff9dbb;
+  min-height: 20px;
+  font-size: .9rem;
+}
+
+.video-frame {
+  width: min(100%, 480px);
+  min-height: 180px;
+  border-radius: 24px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle, #663052, #1c1026);
+  border: 1px solid #ffffff22;
+}
+
+.video-frame video {
+  display: block;
+  width: 100%;
+  max-height: 55vh;
+  object-fit: contain;
+}
+
+.video-fallback {
+  padding: 20px;
+}
+
+.teddy {
+  font-size: clamp(5rem, 20vw, 8rem);
+  animation: teddyBounce 2s ease-in-out infinite;
+}
+
+@keyframes teddyBounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.choices {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gift-stage {
+  perspective: 900px;
+  padding: 35px 0;
+}
+
+.gift {
+  position: relative;
+  width: 180px;
+  height: 160px;
+  margin: auto;
+  cursor: pointer;
   transform-style: preserve-3d;
+  animation: giftGlow 2s ease-in-out infinite alternate;
 }
 
-.gift-face {
+@keyframes giftGlow {
+  from { filter: drop-shadow(0 0 4px #ff6cab44); }
+  to { filter: drop-shadow(0 0 24px #ff6cabaa); }
+}
+
+.gift-box {
   position: absolute;
-  background: linear-gradient(135deg, #f65d91, #ad2057);
-  border: 1px solid #ffb2cc80;
-}
-
-.gift-front {
-  width: 150px;
-  height: 105px;
-  left: 0;
+  left: 10px;
   bottom: 0;
-  transform: translateZ(38px);
+  width: 160px;
+  height: 110px;
+  border-radius: 4px 4px 10px 10px;
+  background: linear-gradient(90deg, #b51e5c, #f15b91, #c32666);
+  box-shadow: inset 0 0 15px #680b34;
 }
 
-.gift-right {
-  width: 76px;
-  height: 105px;
-  right: -38px;
-  bottom: 0;
-  transform: rotateY(90deg);
-  transform-origin: left center;
-  background: linear-gradient(90deg, #a81c50, #7f163e);
-}
-
-.gift-left {
-  width: 76px;
-  height: 105px;
-  left: -38px;
-  bottom: 0;
-  transform: rotateY(-90deg);
-  transform-origin: right center;
-  background: linear-gradient(90deg, #f777a4, #d73870);
-}
-
-.gift-top {
-  width: 150px;
-  height: 76px;
-  left: 0;
-  top: -38px;
-  transform: rotateX(90deg);
-  transform-origin: bottom center;
-  background: linear-gradient(135deg, #ff9ebd, #e33e78);
-}
-
-.gift-ribbon {
+.gift-box::before {
+  content: "";
   position: absolute;
-  background: linear-gradient(90deg, #f9dfa0, #fff0c8, #c99548);
-  box-shadow: 0 0 7px #f8d99c60;
-}
-
-.ribbon-front {
-  width: 24px;
-  height: 105px;
-  left: 63px;
-  bottom: 0;
-  transform: translateZ(39px);
-}
-
-.ribbon-right {
-  width: 24px;
-  height: 105px;
-  right: -12px;
-  bottom: 0;
-  transform: rotateY(90deg);
-  transform-origin: left center;
-}
-
-.ribbon-top {
-  width: 150px;
-  height: 13px;
-  left: 0;
-  top: -6px;
-  transform: translateZ(40px);
+  width: 25px;
+  height: 100%;
+  left: 67px;
+  background: linear-gradient(90deg, #ffe0a0, #fff1c8, #d6a44c);
 }
 
 .gift-lid {
   position: absolute;
-  width: 166px;
-  height: 34px;
-  left: -8px;
-  top: -28px;
-  transform-style: preserve-3d;
-  transform-origin: 50% 100% -37px;
-  transition: transform 1.3s cubic-bezier(.2,.8,.2,1);
-  z-index: 5;
-}
-
-.lid-top {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #ffb3ca, #df3e78);
-  border: 1px solid #ffd6e480;
-  transform: translateZ(38px);
-}
-
-.lid-front {
-  position: absolute;
-  width: 166px;
-  height: 25px;
+  z-index: 2;
   left: 0;
-  bottom: -25px;
-  transform: rotateX(-90deg);
-  transform-origin: top;
-  background: linear-gradient(90deg, #e64a80, #b51e55);
+  top: 25px;
+  width: 180px;
+  height: 36px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #d52c70, #ff80ad, #d52c70);
+  transform-origin: 10% 100%;
+  transition: transform 1s ease, top 1s ease;
 }
 
-.lid-side {
-  position: absolute;
-  width: 76px;
-  height: 25px;
-  right: -38px;
-  bottom: -25px;
-  transform: rotateY(90deg) rotateX(-90deg);
-  transform-origin: top;
-  background: #9d1a49;
-}
-
-.lid-ribbon {
-  position: absolute;
-  width: 25px;
-  height: 34px;
-  left: 70px;
-  top: 0;
-  transform: translateZ(39px);
-  background: linear-gradient(90deg, #d0a04e, #fff0c2, #d0a04e);
-}
-
-.bow {
-  position: absolute;
-  width: 40px;
-  height: 26px;
-  top: -26px;
-  left: 45px;
-  border: 7px solid #f8d99c;
-  border-radius: 50% 50% 15% 50%;
-  transform: rotate(22deg);
-}
-
-.bow::after {
+.gift-lid::before {
   content: "";
   position: absolute;
-  width: 40px;
-  height: 26px;
-  left: 25px;
-  top: -7px;
-  border: 7px solid #e4bc72;
-  border-radius: 50% 50% 50% 15%;
-  transform: rotate(-45deg);
+  left: 77px;
+  width: 25px;
+  height: 100%;
+  background: linear-gradient(90deg, #ffe0a0, #fff1c8, #d6a44c);
 }
 
-.gift-button {
-  border: 0;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  color: white;
-  -webkit-tap-highlight-color: transparent;
+.gift-bow {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 58px;
+  width: 65px;
+  height: 40px;
 }
 
-.gift-button:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 12px;
-  border-radius: 12px;
+.gift-bow::before, .gift-bow::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 25px;
+  border: 7px solid #ffe4a4;
+  border-radius: 50% 50% 5px 50%;
 }
 
-.gift-3d.opened {
-  animation: none;
-  transform: rotateX(-8deg) rotateY(-28deg) translateY(18px);
+.gift-bow::before { left: 0; transform: rotate(25deg); }
+.gift-bow::after { right: 0; transform: rotate(65deg) scaleX(-1); }
+
+.gift.open .gift-lid {
+  transform: translateY(-65px) rotate(-25deg);
 }
 
-.gift-3d.opened .gift-lid {
-  transform: rotateX(-125deg) translateY(-6px);
+.gift.open .gift-bow {
+  transform: translateY(-65px) rotate(-25deg);
+  transition: transform 1s ease;
 }
 
-.gift-3d.opened .gift-shadow {
-  opacity: .4;
+.gift-reveal {
+  display: none;
+  width: min(100%, 420px);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #ffbad866;
+  box-shadow: 0 0 40px #ff69a544;
+  animation: sceneIn 1s ease both;
 }
 
-/* Gift reveal */
-
-.reveal-wrap {
-  width: min(100%, 620px);
-  animation: revealPhoto .9s ease both;
-}
-
-.reveal-wrap img {
+.gift-reveal img {
   display: block;
   width: 100%;
-  max-height: 60vh;
+  max-height: 55vh;
   object-fit: contain;
-  margin: 20px auto;
-  border-radius: 15px;
-  box-shadow: 0 0 35px #ff83ad26;
-  background: #ffffff08;
+  background: #160d1b;
 }
 
-@keyframes revealPhoto {
-  from { opacity: 0; transform: scale(.8) translateY(18px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
+.final-message {
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  color: #ffd3e5;
+  line-height: 1.7;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (min-width: 600px) {
+  .memory-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .memory-card:last-child:nth-child(odd) {
+    grid-column: auto;
+    width: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -591,7 +463,6 @@ p {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
   }
 }
 </style>
@@ -599,297 +470,384 @@ p {
 
 <body>
 
-<!-- SCENE 1: ROSE VIDEO -->
-<section id="roseScene" class="scene active">
-  <p class="eyebrow">A little world made for you</p>
-  <h1>Our <span class="accent">Love Story</span></h1>
-  <p class="subtitle">
-    Some feelings are too beautiful for words.
-    This little surprise is just for you. ❤️
+<button id="musicToggle" class="music-button" type="button">
+  🎵 Tap for music
+</button>
+
+<audio id="backgroundMusic" loop preload="auto">
+  <source src="audio/romantic-music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SCENE 1: INTRO -->
+<section id="intro" class="scene active">
+  <div class="eyebrow">A little surprise made with love</div>
+
+  <div class="rose" aria-hidden="true">🌹</div>
+
+  <h1>Our Love Story</h1>
+
+  <p>
+    Some moments become memories.<br>
+    Some people become our whole world.<br>
+    This little surprise is for you, uyire. ❤️
   </p>
 
-  <div class="character-stage">
-    <div class="glow-orb"></div>
-    <video id="roseVideo"
-      class="character-video"
-      autoplay muted loop playsinline preload="auto">
-      <source src="videos/rose-transparent.webm" type="video/webm">
-    </video>
-  </div>
-
-  <button id="beginButton" class="btn">Begin Our Story ❤️</button>
-  <p class="small-note">Made with love, just for you.</p>
+  <button class="primary" id="beginButton" type="button">
+    Begin Our Story ✨
+  </button>
 </section>
 
+<!-- SCENE 2: FIVE TAP-TO-REVEAL PHOTOS -->
+<section id="memories" class="scene">
+  <div class="eyebrow">Little pieces of us</div>
+  <h2>Tap to Reveal Our Memories 💗</h2>
 
-<!-- SCENE 2: FIVE PHOTO REVEALS -->
-<section id="memoriesScene" class="scene">
-  <p class="eyebrow">Every moment matters</p>
-  <h2>Our Little <span class="accent">Memories</span></h2>
-  <p class="subtitle">
-    Five little moments. A thousand feelings.
-    Every memory has a place in my heart. 💗
+  <p>
+    Every picture holds a little feeling.
+    Tap each card to reveal the photo and its message.
   </p>
 
-  <div id="memoryGrid" class="memory-grid">
-    <figure class="memory-card">
-      <img src="images/memory1.jpg" alt="Memory one">
-      <figcaption>Our beautiful beginning</figcaption>
-    </figure>
+  <div class="memory-grid" id="memoryGrid">
 
-    <figure class="memory-card">
-      <img src="images/memory2.jpg" alt="Memory two">
-      <figcaption>Your smile, my happiness</figcaption>
-    </figure>
+    <button class="memory-card" type="button" data-memory="0"
+      aria-label="Reveal memory one">
+      <span class="card-front">
+        <span class="card-heart">💌</span>
+        <strong>Memory One</strong>
+        <small>Tap to reveal</small>
+      </span>
+      <span class="card-back">
+        <img src="images/memory1.jpg" alt="Our first memory">
+        <span class="memory-message">
+          Every beautiful story has a beginning. I'm grateful for ours. ❤️
+        </span>
+      </span>
+    </button>
 
-    <figure class="memory-card">
-      <img src="images/memory3.jpg" alt="Memory three">
-      <figcaption>A moment to remember</figcaption>
-    </figure>
+    <button class="memory-card" type="button" data-memory="1"
+      aria-label="Reveal memory two">
+      <span class="card-front">
+        <span class="card-heart">🌷</span>
+        <strong>Memory Two</strong>
+        <small>Tap to reveal</small>
+      </span>
+      <span class="card-back">
+        <img src="images/memory2.jpg" alt="Our second memory">
+        <span class="memory-message">
+          Your smile has a way of making ordinary moments special. 🫶
+        </span>
+      </span>
+    </button>
 
-    <figure class="memory-card">
-      <img src="images/memory4.jpg" alt="Memory four">
-      <figcaption>Little things, big feelings</figcaption>
-    </figure>
+    <button class="memory-card" type="button" data-memory="2"
+      aria-label="Reveal memory three">
+      <span class="card-front">
+        <span class="card-heart">🧸</span>
+        <strong>Memory Three</strong>
+        <small>Tap to reveal</small>
+      </span>
+      <span class="card-back">
+        <img src="images/memory3.jpg" alt="Our third memory">
+        <span class="memory-message">
+          With you, even the smallest moments mean so much. 💕
+        </span>
+      </span>
+    </button>
 
-    <figure class="memory-card">
-      <img src="images/memory5.jpg" alt="Memory five">
-      <figcaption>More memories to come</figcaption>
-    </figure>
+    <button class="memory-card" type="button" data-memory="3"
+      aria-label="Reveal memory four">
+      <span class="card-front">
+        <span class="card-heart">✨</span>
+        <strong>Memory Four</strong>
+        <small>Tap to reveal</small>
+      </span>
+      <span class="card-back">
+        <img src="images/memory4.jpg" alt="Our fourth memory">
+        <span class="memory-message">
+          Thank you for the laughter, the warmth, and the memories. 🖤
+        </span>
+      </span>
+    </button>
+
+    <button class="memory-card" type="button" data-memory="4"
+      aria-label="Reveal memory five">
+      <span class="card-front">
+        <span class="card-heart">💖</span>
+        <strong>Memory Five</strong>
+        <small>Tap to reveal</small>
+      </span>
+      <span class="card-back">
+        <img src="images/memory5.jpg" alt="Our fifth memory">
+        <span class="memory-message">
+          My favourite part of this story is all the moments still to come. 👑
+        </span>
+      </span>
+    </button>
+
   </div>
 
-  <button id="memoriesNext" class="btn">Continue 💌</button>
-</section>
+  <p class="progress" id="memoryProgress" aria-live="polite">
+    Memories revealed: 0 / 5
+  </p>
 
+  <button id="continueMemories" class="primary hidden" type="button">
+    Continue Our Story 💞
+  </button>
+</section>
 
 <!-- SCENE 3: PASSWORD -->
 <section id="passwordScene" class="scene">
-  <div class="panel">
-    <div class="lock-icon">🔐</div>
-    <p class="eyebrow">A little secret</p>
-    <h2>Only for <span class="accent">you</span></h2>
-    <p class="subtitle">Enter the secret word to unlock the next surprise.</p>
+  <div class="eyebrow">A little secret</div>
+  <h2>One Last Little Secret 🔐</h2>
+
+  <div class="glass">
+    <p>Enter our special password to unlock the next surprise.</p>
 
     <form id="passwordForm">
-      <label for="passwordInput">Secret password</label>
-      <input id="passwordInput" class="password-input"
-        type="password" placeholder="Enter password"
-        autocomplete="off" autocapitalize="none" required>
+      <input
+        id="passwordInput"
+        type="password"
+        placeholder="Enter password"
+        autocomplete="off"
+        aria-label="Special password"
+        required
+      >
 
-      <p id="passwordError" class="error-text" aria-live="polite"></p>
-      <button class="btn" type="submit">Unlock My Heart 💗</button>
+      <div style="height:16px"></div>
+
+      <button class="primary" type="submit">Unlock My Heart ❤️</button>
+
+      <p id="passwordError" class="error" aria-live="polite"></p>
     </form>
   </div>
 </section>
 
+<!-- SCENE 4: PROPOSAL -->
+<section id="proposal" class="scene">
+  <div class="eyebrow">From my heart to yours</div>
+  <h2>A Question Just for You 💍</h2>
 
-<!-- SCENE 4: TEDDY PROPOSAL -->
-<section id="proposalScene" class="scene">
-  <p class="eyebrow">One question from my heart</p>
-  <h2>Will You Be <span class="accent">Mine?</span></h2>
-  <p class="subtitle">
-    A little teddy has something very special to ask you. 🧸
-  </p>
-
-  <div class="character-stage">
-    <div class="glow-orb"></div>
-    <video id="proposalVideo" class="character-video"
-      muted playsinline autoplay loop preload="auto">
+  <div class="video-frame">
+    <video
+      id="proposalVideo"
+      class="hidden"
+      playsinline
+      preload="metadata"
+    >
       <source src="videos/teddy-proposal-transparent.webm" type="video/webm">
     </video>
+
+    <div id="proposalFallback" class="video-fallback">
+      <div class="teddy">🧸💗</div>
+      <p>Someone special has a question for you...</p>
+    </div>
   </div>
 
-  <p class="video-hint">Choose your answer when you're ready. ❤️</p>
+  <p>
+    Uyire, you make my world brighter in ways words cannot explain.
+    Will you keep making beautiful memories with me? 🫶
+  </p>
 
-  <div class="button-row">
-    <button id="yesButton" class="btn">YES! 💖</button>
-    <button id="noButton" class="btn secondary">NO 🖤</button>
+  <div class="choices">
+    <button id="yesButton" class="primary" type="button">
+      YES! ❤️
+    </button>
+
+    <button id="noButton" class="secondary" type="button">
+      NO
+    </button>
   </div>
 </section>
 
-
 <!-- SCENE 5: ACCEPTANCE -->
-<section id="acceptedScene" class="scene">
-  <p class="eyebrow">A moment to treasure</p>
-  <h2>You Made Me <span class="accent">Smile!</span></h2>
-  <p class="subtitle">A little celebration from my heart to yours. 💗</p>
+<section id="accepted" class="scene">
+  <div class="eyebrow">A moment to remember</div>
+  <h1>Yay! You Said YES! 💖</h1>
 
-  <div class="character-stage">
-    <div class="glow-orb"></div>
-    <video id="acceptedVideo" class="character-video"
-      muted playsinline preload="auto">
-      <source src="videos/proposal-accepted-transparent.webm" type="video/webm">
+  <div class="video-frame">
+    <video
+      id="acceptedVideo"
+      class="hidden"
+      playsinline
+      preload="metadata"
+    >
+      <source src="videos/proposal-accepted-transparent.webm"
+        type="video/webm">
     </video>
+
+    <div id="acceptedFallback" class="video-fallback">
+      <div class="teddy">🧸💕</div>
+      <p>A little happy dance, just for you!</p>
+    </div>
   </div>
 
-  <p id="acceptedStatus" class="video-hint">Your surprise is waiting...</p>
+  <p>
+    This moment deserves to be remembered.
+    One more surprise is waiting for you. 🎁
+  </p>
 
-  <button id="continueGiftButton" class="btn gold hidden">
-    Open Your Birthday Gift 🎁
+  <button id="goToGift" class="primary" type="button">
+    Open Your Gift 🎁
   </button>
 </section>
 
-
-<!-- SCENE 6: NO MESSAGE -->
-<section id="noScene" class="scene">
-  <div class="panel">
-    <div class="sad-heart">🖤</div>
-    <p class="eyebrow">A wish from my heart</p>
-    <p class="birthday-message">
-      Happy birthday to you 🖤<br>
-      life long stay happy like this moment 🫂👑
-    </p>
-  </div>
-</section>
-
-
-<!-- SCENE 7: 3D GIFT -->
+<!-- SCENE 6: GIFT -->
 <section id="giftScene" class="scene">
-  <p class="eyebrow">One last surprise</p>
-  <h2>A Gift From <span class="accent">My Heart</span></h2>
+  <div class="eyebrow">Made especially for you</div>
+  <h2>Your Little Birthday Gift 🎁</h2>
 
-  <p id="giftInstruction" class="subtitle">
-    Tap the three-dimensional gift to open it. 🎀
+  <p>Tap the gift box to open it and discover your surprise.</p>
+
+  <div class="gift-stage" id="giftStage">
+    <div id="giftBox" class="gift" role="button" tabindex="0"
+      aria-label="Open the birthday gift">
+      <div class="gift-bow"></div>
+      <div class="gift-lid"></div>
+      <div class="gift-box"></div>
+    </div>
+  </div>
+
+  <p id="giftHint">Tap the gift box ✨</p>
+
+  <div id="giftReveal" class="gift-reveal">
+    <img src="images/gift-reveal.jpg" alt="Your special birthday surprise">
+  </div>
+
+  <p id="giftMessage" class="hidden">
+    Happy birthday, uyire. You deserve all the beautiful things in this world. ❤️
   </p>
 
-  <div id="giftArea" class="gift-scene">
-    <div class="gift-shadow"></div>
-
-    <button id="giftButton" class="gift-button" aria-label="Open 3D gift">
-      <div id="gift3d" class="gift-3d">
-        <div class="gift-body">
-          <div class="gift-face gift-front"></div>
-          <div class="gift-face gift-right"></div>
-          <div class="gift-face gift-left"></div>
-          <div class="gift-face gift-top"></div>
-
-          <div class="gift-ribbon ribbon-front"></div>
-          <div class="gift-ribbon ribbon-right"></div>
-          <div class="gift-ribbon ribbon-top"></div>
-        </div>
-
-        <div class="gift-lid">
-          <div class="lid-top"></div>
-          <div class="lid-front"></div>
-          <div class="lid-side"></div>
-          <div class="lid-ribbon"></div>
-          <div class="bow"></div>
-        </div>
-      </div>
-    </button>
-  </div>
-
-  <div id="giftReveal" class="reveal-wrap hidden">
-    <h2 class="accent">For You, With Love ❤️</h2>
-    <img src="images/gift-reveal.jpg" alt="Your special birthday surprise">
-    <p class="subtitle">
-      You are a beautiful part of my world.
-      I hope this little surprise makes you smile. 💗
-    </p>
-  </div>
-
-  <p class="small-note">Forever a special memory. ✨</p>
+  <button id="finishButton" class="primary hidden" type="button">
+    One Last Message 🖤
+  </button>
 </section>
 
+<!-- SCENE 7: FINAL MESSAGE -->
+<section id="finalScene" class="scene">
+  <div class="rose" aria-hidden="true">🖤</div>
+
+  <div class="eyebrow">Always wishing you happiness</div>
+
+  <h1>Happy Birthday, Uyire 🎂</h1>
+
+  <p class="final-message">
+    Happy birthday to you 🖤<br>
+    Life long stay happy like this moment 🫂👑
+  </p>
+
+  <p>
+    May your life be filled with love, peace, laughter,
+    and beautiful moments. Keep smiling, today and always. 💖
+  </p>
+
+  <button id="restartButton" class="secondary" type="button">
+    Relive Our Story ↻
+  </button>
+</section>
 
 <script>
 "use strict";
 
-/* ===================================
-   SCENE NAVIGATION
-=================================== */
+/* ---------- Scene navigation ---------- */
 
-const sceneIds = [
-  "roseScene",
-  "memoriesScene",
-  "passwordScene",
-  "proposalScene",
-  "acceptedScene",
-  "noScene",
-  "giftScene"
-];
-
-const roseVideo = document.getElementById("roseVideo");
-const proposalVideo = document.getElementById("proposalVideo");
-const acceptedVideo = document.getElementById("acceptedVideo");
-
-const allVideos = [roseVideo, proposalVideo, acceptedVideo];
-
-function stopAllVideos() {
-  allVideos.forEach(video => {
-    video.pause();
-    video.muted = true;
-  });
-}
-
-function playMuted(video, restart = false) {
-  video.muted = true;
-
-  if (restart) {
-    try { video.currentTime = 0; } catch (_) {}
-  }
-
-  video.play().catch(() => {
-    console.info("Video playback may require a user tap.");
-  });
-}
+const scenes = document.querySelectorAll(".scene");
 
 function showScene(sceneId) {
-  stopAllVideos();
+  scenes.forEach(scene => scene.classList.remove("active"));
 
-  sceneIds.forEach(id => {
-    document.getElementById(id).classList.toggle("active", id === sceneId);
-  });
+  const target = document.getElementById(sceneId);
 
-  if (sceneId === "roseScene") {
-    playMuted(roseVideo);
+  if (target) {
+    target.classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
-
-  if (sceneId === "proposalScene") {
-    playMuted(proposalVideo, true);
-  }
-
-  if (sceneId === "acceptedScene") {
-    playMuted(acceptedVideo, true);
-  }
-
-  if (sceneId === "memoriesScene") {
-    const grid = document.getElementById("memoryGrid");
-
-    // Restart all five staggered reveal animations every time.
-    grid.classList.remove("memories-active");
-
-    grid.querySelectorAll(".memory-card").forEach(card => {
-      card.style.animation = "none";
-      void card.offsetWidth;
-      card.style.animation = "";
-    });
-
-    requestAnimationFrame(() => {
-      grid.classList.add("memories-active");
-    });
-  }
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+/* ---------- Background music ---------- */
 
-/* ===================================
-   OPENING AND MEMORIES
-=================================== */
+const backgroundMusic = document.getElementById("backgroundMusic");
+const musicToggle = document.getElementById("musicToggle");
 
-document.getElementById("beginButton").addEventListener("click", () => {
-  showScene("memoriesScene");
+let musicStarted = false;
+
+backgroundMusic.volume = 0.35;
+
+async function startBackgroundMusic() {
+  try {
+    await backgroundMusic.play();
+    musicStarted = true;
+    musicToggle.textContent = "🔊 Music On";
+  } catch (error) {
+    musicToggle.textContent = "🎵 Tap for music";
+  }
+}
+
+musicToggle.addEventListener("click", async () => {
+  if (backgroundMusic.paused) {
+    await startBackgroundMusic();
+  } else {
+    backgroundMusic.pause();
+    musicToggle.textContent = "🔇 Music Off";
+  }
 });
 
-document.getElementById("memoriesNext").addEventListener("click", () => {
+/* ---------- Floating hearts ---------- */
+
+for (let i = 0; i < 14; i++) {
+  const heart = document.createElement("div");
+  heart.className = "floating-heart";
+  heart.textContent = ["♥", "♡", "✦"][i % 3];
+  heart.style.setProperty("--left", (Math.random() * 100) + "%");
+  heart.style.setProperty("--duration", (9 + Math.random() * 10) + "s");
+  heart.style.setProperty("--delay", (-Math.random() * 15) + "s");
+  heart.style.fontSize = (14 + Math.random() * 18) + "px";
+  document.body.appendChild(heart);
+}
+
+/* ---------- Begin story ---------- */
+
+document.getElementById("beginButton").addEventListener("click", async () => {
+  // Starting audio here works with mobile browser user-gesture rules.
+  if (!musicStarted && backgroundMusic.paused) {
+    await startBackgroundMusic();
+  }
+
+  showScene("memories");
+});
+
+/* ---------- Tap-to-reveal memories ---------- */
+
+const memoryCards = document.querySelectorAll(".memory-card");
+const memoryProgress = document.getElementById("memoryProgress");
+const continueMemories = document.getElementById("continueMemories");
+
+const revealedMemories = new Set();
+
+memoryCards.forEach(card => {
+  card.addEventListener("click", () => {
+    if (card.classList.contains("revealed")) return;
+
+    card.classList.add("revealed");
+
+    const index = Number(card.dataset.memory);
+    revealedMemories.add(index);
+
+    memoryProgress.textContent =
+      "Memories revealed: " + revealedMemories.size + " / 5";
+
+    if (revealedMemories.size === memoryCards.length) {
+      continueMemories.classList.remove("hidden");
+      memoryProgress.textContent =
+        "All five memories revealed! ❤️";
+    }
+  });
+});
+
+continueMemories.addEventListener("click", () => {
   showScene("passwordScene");
 });
 
-
-/* ===================================
-   PASSWORD: rise
-=================================== */
+/* ---------- Password ---------- */
 
 const passwordForm = document.getElementById("passwordForm");
 const passwordInput = document.getElementById("passwordInput");
@@ -901,139 +859,138 @@ passwordForm.addEventListener("submit", event => {
   if (passwordInput.value.trim().toLowerCase() === "rise") {
     passwordError.textContent = "";
     passwordInput.value = "";
-    showScene("proposalScene");
+    showScene("proposal");
+    playOptionalVideo("proposalVideo", "proposalFallback");
   } else {
-    passwordError.textContent = "Incorrect password. Try again. 💌";
+    passwordError.textContent =
+      "That isn't the secret. Try again, uyire. 💗";
+
     passwordInput.value = "";
     passwordInput.focus();
   }
 });
 
+/* ---------- Optional videos and fallbacks ---------- */
 
-/* ===================================
-   YES: PLAY ACCEPTANCE ANIMATION
-=================================== */
+function playOptionalVideo(videoId, fallbackId) {
+  const video = document.getElementById(videoId);
+  const fallback = document.getElementById(fallbackId);
 
-const continueGiftButton = document.getElementById("continueGiftButton");
-const acceptedStatus = document.getElementById("acceptedStatus");
+  video.classList.add("hidden");
+  fallback.classList.remove("hidden");
 
-function acceptanceComplete() {
-  acceptedStatus.textContent = "Your birthday gift is ready. 💗";
-  continueGiftButton.classList.remove("hidden");
+  video.pause();
+
+  // If no video file exists or playback fails, keep the fallback visible.
+  video.oncanplay = () => {
+    fallback.classList.add("hidden");
+    video.classList.remove("hidden");
+
+    const playback = video.play();
+
+    if (playback && typeof playback.catch === "function") {
+      playback.catch(() => {
+        video.classList.add("hidden");
+        fallback.classList.remove("hidden");
+      });
+    }
+  };
+
+  video.onerror = () => {
+    video.classList.add("hidden");
+    fallback.classList.remove("hidden");
+  };
+
+  video.load();
 }
 
-acceptedVideo.addEventListener("ended", acceptanceComplete);
+/* ---------- YES / NO ---------- */
 
 document.getElementById("yesButton").addEventListener("click", () => {
-  continueGiftButton.classList.add("hidden");
-  acceptedStatus.textContent = "A special moment, just for you... 💗";
-  showScene("acceptedScene");
-
-  // Transparent animation video is muted.
-  acceptedVideo.loop = false;
+  showScene("accepted");
+  playOptionalVideo("acceptedVideo", "acceptedFallback");
 });
 
-continueGiftButton.addEventListener("click", () => {
+document.getElementById("noButton").addEventListener("click", () => {
+  showScene("finalScene");
+});
+
+/* ---------- Gift ---------- */
+
+const giftBox = document.getElementById("giftBox");
+const giftReveal = document.getElementById("giftReveal");
+const giftHint = document.getElementById("giftHint");
+const giftMessage = document.getElementById("giftMessage");
+const finishButton = document.getElementById("finishButton");
+
+document.getElementById("goToGift").addEventListener("click", () => {
   showScene("giftScene");
 });
 
-// If the acceptance video cannot load, don't trap the visitor.
-acceptedVideo.addEventListener("error", () => {
-  acceptedStatus.textContent =
-    "The animation could not load. You can still continue to your gift.";
-  continueGiftButton.classList.remove("hidden");
-});
+let giftOpened = false;
 
+function openGift() {
+  if (giftOpened) return;
 
-/* ===================================
-   NO: END THE SEQUENCE
-=================================== */
+  giftOpened = true;
+  giftBox.classList.add("open");
+  giftHint.textContent = "Your surprise is here! 💖";
 
-document.getElementById("noButton").addEventListener("click", () => {
-  showScene("noScene");
-});
-
-
-/* ===================================
-   3D GIFT OPENING
-=================================== */
-
-const giftButton = document.getElementById("giftButton");
-const gift3d = document.getElementById("gift3d");
-const giftArea = document.getElementById("giftArea");
-const giftReveal = document.getElementById("giftReveal");
-const giftInstruction = document.getElementById("giftInstruction");
-
-let giftHasOpened = false;
-
-giftButton.addEventListener("click", () => {
-  if (giftHasOpened) return;
-
-  giftHasOpened = true;
-
-  // Open the 3D lid first.
-  gift3d.classList.add("opened");
-  giftInstruction.textContent = "A little surprise, made just for you... ❤️";
-
-  // Then remove the box and show the surprise image.
   window.setTimeout(() => {
-    giftArea.classList.add("hidden");
-    giftInstruction.classList.add("hidden");
-    giftReveal.classList.remove("hidden");
+    giftReveal.style.display = "block";
+    giftMessage.classList.remove("hidden");
+    finishButton.classList.remove("hidden");
+    giftHint.textContent = "A little gift, with lots of love. ❤️";
+  }, 1000);
+}
 
-    giftReveal.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-  }, 1250);
+giftBox.addEventListener("click", openGift);
+
+giftBox.addEventListener("keydown", event => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openGift();
+  }
 });
 
+finishButton.addEventListener("click", () => {
+  showScene("finalScene");
+});
 
-/* ===================================
-   FLOATING HEARTS
-=================================== */
+/* ---------- Restart ---------- */
 
-const reduceMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
-).matches;
+document.getElementById("restartButton").addEventListener("click", () => {
+  // Reset memory cards and progress.
+  memoryCards.forEach(card => card.classList.remove("revealed"));
+  revealedMemories.clear();
 
-function createHeart() {
-  if (reduceMotion || document.hidden) return;
+  memoryProgress.textContent = "Memories revealed: 0 / 5";
+  continueMemories.classList.add("hidden");
 
-  const heart = document.createElement("span");
-  heart.className = "heart";
-  heart.textContent = Math.random() > .5 ? "♥" : "♡";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (12 + Math.random() * 18) + "px";
-  heart.style.animationDuration = (7 + Math.random() * 5) + "s";
+  // Reset gift.
+  giftOpened = false;
+  giftBox.classList.remove("open");
+  giftReveal.style.display = "none";
+  giftMessage.classList.add("hidden");
+  finishButton.classList.add("hidden");
+  giftHint.textContent = "Tap the gift box ✨";
 
-  document.body.appendChild(heart);
-
-  heart.addEventListener("animationend", () => heart.remove(), { once: true });
-}
-
-if (!reduceMotion) {
-  window.setInterval(createHeart, 950);
-}
-
-
-/* ===================================
-   MUTE ALL VIDEO AUDIO
-=================================== */
-
-allVideos.forEach(video => {
-  video.muted = true;
-  video.defaultMuted = true;
-  video.volume = 0;
-
-  video.addEventListener("volumechange", () => {
-    video.muted = true;
-    video.volume = 0;
+  // Reset videos.
+  ["proposalVideo", "acceptedVideo"].forEach(id => {
+    const video = document.getElementById(id);
+    video.pause();
+    video.currentTime = 0;
+    video.classList.add("hidden");
   });
-});
 
-// Start the opening animation muted.
-playMuted(roseVideo);
+  document.getElementById("proposalFallback").classList.remove("hidden");
+  document.getElementById("acceptedFallback").classList.remove("hidden");
+
+  passwordError.textContent = "";
+  passwordInput.value = "";
+
+  showScene("intro");
+});
 </script>
 
 </body>
