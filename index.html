@@ -1,1 +1,1173 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#140b2b">
+<meta name="description" content="A magical romantic birthday surprise made with love.">
+<title>Our Love Story ❤️</title>
 
+<style>
+:root {
+  --night: #100923;
+  --purple: #251044;
+  --pink: #ff78b7;
+  --rose: #ffb1d2;
+  --gold: #ffe2a9;
+  --white: #fff7fc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--white);
+  background:
+    radial-gradient(ellipse at top, #43215e 0%, transparent 55%),
+    linear-gradient(145deg, #100923, #211039 55%, #090616);
+  font-family: Georgia, "Times New Roman", serif;
+  text-align: center;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+
+#stars, #effects {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#stars { z-index: 0; }
+#effects { z-index: 20; }
+
+.star {
+  position: absolute;
+  color: white;
+  opacity: .6;
+  animation: twinkle 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .15; transform: scale(.7); }
+  to { opacity: .9; transform: scale(1.25); }
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 28px 16px 50px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: pageIn .9s ease both;
+}
+
+.page.active {
+  display: flex;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font: 11px Arial, sans-serif;
+  margin-bottom: 12px;
+}
+
+h1, h2, p {
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 9vw, 4.8rem);
+  line-height: 1.1;
+  margin: 12px 0 20px;
+  font-weight: normal;
+  background: linear-gradient(110deg, #fff8fd, #ff9fc9, #ffe9b9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 20px #ff80c440);
+}
+
+h2 {
+  font-weight: normal;
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  margin: 10px 0 18px;
+  color: #ffd8eb;
+}
+
+p {
+  line-height: 1.8;
+}
+
+.description {
+  max-width: 580px;
+  color: #e8d7ee;
+  font-size: 1rem;
+  margin: 0 auto 24px;
+}
+
+.glass {
+  width: min(100%, 650px);
+  padding: 26px 20px;
+  border: 1px solid #ffffff24;
+  border-radius: 26px;
+  background: linear-gradient(145deg, #ffffff12, #ffffff05);
+  box-shadow: 0 18px 60px #00000025, inset 0 1px #ffffff10;
+  backdrop-filter: blur(12px);
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 23px;
+  margin: 7px 4px;
+  border: 1px solid #ffc0df70;
+  border-radius: 999px;
+  color: #30122c;
+  background: linear-gradient(135deg, #ffe6f3, #ff91c5);
+  box-shadow: 0 7px 25px #ff7db52b;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px #ff7db550;
+}
+
+.btn.secondary {
+  color: white;
+  background: #ffffff10;
+  border-color: #ffffff35;
+}
+
+.btn.gold {
+  background: linear-gradient(135deg, #fff0c9, #edb76e);
+}
+
+.btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* JOINING HEARTS */
+
+.heart-stage {
+  height: 180px;
+  width: min(100%, 390px);
+  position: relative;
+  margin: 5px auto 18px;
+}
+
+.half-heart {
+  position: absolute;
+  top: 25px;
+  font-size: clamp(4.8rem, 20vw, 7.5rem);
+  filter: drop-shadow(0 0 15px #ff6ba980);
+  animation: heartBeat 1.4s infinite;
+}
+
+.heart-left {
+  left: 12%;
+  transform: rotate(-13deg);
+}
+
+.heart-right {
+  right: 12%;
+  transform: rotate(13deg);
+}
+
+.heart-stage.joined .heart-left {
+  animation: joinLeft .9s forwards;
+}
+
+.heart-stage.joined .heart-right {
+  animation: joinRight .9s forwards;
+}
+
+@keyframes joinLeft {
+  to { left: 34%; transform: rotate(0) scale(.88); }
+}
+
+@keyframes joinRight {
+  to { right: 34%; transform: rotate(0) scale(.88); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { scale: 1; }
+  50% { scale: 1.09; }
+}
+
+.join-message {
+  min-height: 28px;
+  color: var(--rose);
+}
+
+/* MEMORIES */
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: min(100%, 620px);
+  margin: 18px auto;
+}
+
+.memory-card {
+  min-width: 0;
+  padding: 9px 9px 14px;
+  background: #fff7fc;
+  color: #4b2343;
+  border-radius: 8px;
+  transform: rotate(-1deg);
+  box-shadow: 0 10px 28px #0004;
+  transition: transform .3s;
+}
+
+.memory-card:nth-child(even) {
+  transform: rotate(1.5deg);
+}
+
+.memory-card:hover {
+  transform: rotate(0) translateY(-4px);
+}
+
+.memory-card img {
+  display: block;
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+  background: #e7d6e4;
+  border-radius: 4px;
+}
+
+.memory-card p {
+  font-size: .92rem;
+  margin: 10px 2px 0;
+  line-height: 1.4;
+}
+
+.memory-card .missing-photo {
+  height: 155px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  background: linear-gradient(145deg, #efd5e6, #d9c8ef);
+  color: #6c3d70;
+  font: 12px Arial, sans-serif;
+}
+
+/* ROSE AND PASSWORD */
+
+.rose {
+  font-size: clamp(5rem, 22vw, 9rem);
+  display: inline-block;
+  filter: drop-shadow(0 0 20px #ff4b9d66);
+  animation: roseFloat 3s ease-in-out infinite;
+}
+
+@keyframes roseFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+input {
+  width: min(100%, 320px);
+  display: block;
+  margin: 12px auto;
+  padding: 14px 16px;
+  border: 1px solid #ffb9d680;
+  border-radius: 12px;
+  color: white;
+  background: #ffffff0d;
+  text-align: center;
+}
+
+input::placeholder {
+  color: #d8c3df;
+}
+
+.message {
+  min-height: 26px;
+  color: #ffd6e8;
+  font-size: .95rem;
+}
+
+/* TEDDY PROPOSAL */
+
+.teddy-image {
+  display: block;
+  width: min(100%, 340px);
+  max-height: 310px;
+  object-fit: contain;
+  margin: 10px auto 18px;
+  border-radius: 18px;
+  filter: drop-shadow(0 12px 25px #0003);
+}
+
+.teddy-fallback {
+  font-size: clamp(4rem, 20vw, 7rem);
+  margin: 15px 0;
+}
+
+.proposal {
+  font-size: clamp(1.25rem, 5vw, 2rem);
+  line-height: 1.5;
+  color: #ffe3f1;
+}
+
+.proposal-actions {
+  margin: 16px 0;
+}
+
+.proposal-feedback {
+  min-height: 30px;
+  color: var(--gold);
+}
+
+/* CURTAIN */
+
+.curtain-stage {
+  width: min(100%, 580px);
+  height: 240px;
+  position: relative;
+  overflow: hidden;
+  margin: 25px auto;
+  border: 2px solid #ffcfdf65;
+  border-radius: 12px;
+  background: radial-gradient(circle, #5c2362, #1a0b2d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.curtain-message {
+  padding: 18px;
+  color: #ffe6b3;
+  font-size: clamp(1.3rem, 5vw, 2.3rem);
+}
+
+.curtain-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 51%;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    90deg,
+    #781d50 0,
+    #a62f69 18px,
+    #711b4c 36px
+  );
+  transition: transform 1.8s cubic-bezier(.65, 0, .35, 1);
+}
+
+.curtain-left { left: 0; }
+.curtain-right { right: 0; }
+
+.curtain-stage.open .curtain-left {
+  transform: translateX(-102%);
+}
+
+.curtain-stage.open .curtain-right {
+  transform: translateX(102%);
+}
+
+/* GIFT */
+
+.gift-area {
+  perspective: 800px;
+  padding: 35px 0 15px;
+}
+
+.gift {
+  position: relative;
+  width: 190px;
+  height: 155px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 20px 18px #0004);
+}
+
+.gift-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120px;
+  background: linear-gradient(90deg, #bd215e, #f65e9c, #c52c6c);
+  border: 2px solid #ffb8d6;
+  border-radius: 5px;
+}
+
+.gift-ribbon {
+  position: absolute;
+  left: 42%;
+  width: 16%;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #ffedb2, #fff8da, #e9b35f);
+}
+
+.gift-lid {
+  position: absolute;
+  z-index: 2;
+  top: 15px;
+  left: -8px;
+  width: calc(100% + 16px);
+  height: 43px;
+  border: 2px solid #ffd0e4;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #e84285, #ff82b7, #df3b80);
+  transform-origin: 8% 100%;
+  transition: transform 1.2s ease;
+}
+
+.gift-bow {
+  position: absolute;
+  z-index: 3;
+  top: -20px;
+  left: 65px;
+  width: 60px;
+  height: 40px;
+}
+
+.gift-bow::before,
+.gift-bow::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 25px;
+  border: 7px solid #ffe9a8;
+  border-radius: 50% 50% 10% 50%;
+}
+
+.gift-bow::before {
+  left: 0;
+  transform: rotate(25deg);
+}
+
+.gift-bow::after {
+  right: 0;
+  transform: rotate(65deg) scaleX(-1);
+}
+
+.gift.open .gift-lid {
+  transform: translate(-12px, -52px) rotate(-32deg);
+}
+
+.gift.open {
+  animation: giftGlow 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes giftGlow {
+  from { filter: drop-shadow(0 15px 15px #0004); }
+  to { filter: drop-shadow(0 0 30px #ff8cce); }
+}
+
+/* LETTER */
+
+.letter {
+  display: none;
+  width: min(100%, 580px);
+  margin: 25px auto;
+  padding: 30px 22px;
+  border-radius: 8px;
+  text-align: left;
+  color: #59304c;
+  background: linear-gradient(145deg, #fff8ee, #ffe5f0);
+  box-shadow: 0 15px 50px #0004;
+  animation: pageIn 1s ease both;
+}
+
+.letter.show {
+  display: block;
+}
+
+.letter h2 {
+  text-align: center;
+  color: #a42b67;
+}
+
+.letter p {
+  white-space: pre-line;
+  line-height: 1.9;
+}
+
+.signature {
+  text-align: right;
+  color: #a42b67;
+  font-style: italic;
+}
+
+/* FINAL REVEAL */
+
+.final-heart {
+  font-size: clamp(4rem, 18vw, 8rem);
+  filter: drop-shadow(0 0 25px #ff5fa8);
+  animation: heartBeat 1.2s infinite;
+}
+
+.final-message {
+  max-width: 580px;
+  color: #ffe0ef;
+  line-height: 1.9;
+}
+
+footer {
+  color: #c9b5d6;
+  font: 11px Arial, sans-serif;
+  margin-top: 30px;
+  letter-spacing: 1px;
+}
+
+.float {
+  position: absolute;
+  bottom: -30px;
+  animation: floatUp 4s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateY(-90vh) rotate(40deg); opacity: 0; }
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (min-width: 600px) {
+  .page { padding: 40px 24px 60px; }
+  .glass { padding: 35px; }
+  .memory-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .memory-card img, .memory-card .missing-photo { height: 175px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div id="stars" aria-hidden="true"></div>
+<div id="effects" aria-hidden="true"></div>
+
+<!-- OPTIONAL MUSIC:
+     Put your own MP3 file in audio/romantic.mp3
+     The website still works if you do not add music. -->
+<audio id="music" loop preload="none">
+  <source src="audio/romantic.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SCENE 1: BEGIN OUR STORY -->
+<section class="page active" id="s1">
+  <div class="eyebrow">A little world made for you</div>
+  <h1>Our Love Story</h1>
+
+  <div class="glass">
+    <div class="heart-stage" id="heartStage">
+      <span class="half-heart heart-left" aria-hidden="true">💔</span>
+      <span class="half-heart heart-right" aria-hidden="true">💔</span>
+    </div>
+
+    <p class="join-message" id="joinMessage">
+      Two hearts, two stories, one beautiful journey.
+    </p>
+
+    <p class="description">
+      Some people become a beautiful part of our lives.
+      And some people become our whole world. ❤️
+    </p>
+
+    <button class="btn" id="beginButton">Begin Our Story ✨</button>
+  </div>
+
+  <footer>MADE WITH LOVE ❤️</footer>
+</section>
+
+<!-- SCENE 2: MEMORIES -->
+<section class="page" id="s2">
+  <div class="eyebrow">Every moment matters</div>
+  <h1>Our Little Memories 📸</h1>
+
+  <p class="description">
+    Every memory has a feeling. Every moment has a story.
+    And every story becomes more beautiful with you.
+  </p>
+
+  <div class="memory-grid" id="heartGrid">
+    <div class="memory-card">
+      <img src="images/memory1.jpg" alt="Our first memory"
+           onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+      <div class="missing-photo" hidden>📷 Add memory1.jpg</div>
+      <p>Our beautiful beginning ❤️</p>
+    </div>
+
+    <div class="memory-card">
+      <img src="images/memory2.jpg" alt="A special memory"
+           onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+      <div class="missing-photo" hidden>📷 Add memory2.jpg</div>
+      <p>A moment to remember 🌸</p>
+    </div>
+
+    <div class="memory-card">
+      <img src="images/memory3.jpg" alt="A happy memory"
+           onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+      <div class="missing-photo" hidden>📷 Add memory3.jpg</div>
+      <p>Your smile, my happiness 😊</p>
+    </div>
+
+    <div class="memory-card">
+      <img src="images/memory4.jpg" alt="A cherished memory"
+           onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+      <div class="missing-photo" hidden>📷 Add memory4.jpg</div>
+      <p>Little things, endless love 💕</p>
+    </div>
+
+    <div class="memory-card">
+      <img src="images/memory5.jpg" alt="A memory for the future"
+           onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+      <div class="missing-photo" hidden>📷 Add memory5.jpg</div>
+      <p>Many more memories to come ✨</p>
+    </div>
+  </div>
+
+  <button class="btn" id="roseButton">A Rose for You 🌹</button>
+</section>
+
+<!-- SCENE 3: ROSE PASSWORD -->
+<section class="page" id="s3">
+  <div class="eyebrow">A secret between us</div>
+  <h1>A Rose for You</h1>
+
+  <div class="glass">
+    <div class="rose" aria-label="Rose">🌹</div>
+    <h2>One Little Secret</h2>
+
+    <p class="description">
+      Every love story has a secret word.
+      Enter ours to discover what comes next. 💌
+    </p>
+
+    <form id="passwordForm">
+      <input id="rosePassword" type="password"
+             placeholder="Enter our secret word"
+             autocomplete="off" aria-label="Secret word" required>
+      <button class="btn" type="submit">Unlock My Heart 🔐</button>
+    </form>
+
+    <p class="message" id="passwordMessage" aria-live="polite"></p>
+    <button class="btn gold hidden" id="proceedButton">
+      Meet Our Little Bears 🧸
+    </button>
+  </div>
+</section>
+
+<!-- SCENE 4: TEDDY PROPOSAL -->
+<section class="page" id="s4">
+  <div class="eyebrow">A question from the heart</div>
+  <h1>Just You & Me 🧸</h1>
+
+  <div class="glass">
+    <img class="teddy-image" id="teddyCoupleImage"
+         src="images/teddy-couple.png"
+         alt="Brown teddy Vishan and white teddy Dharshini"
+         onerror="this.hidden=true;document.getElementById('teddyFallback').hidden=false">
+
+    <div class="teddy-fallback" id="teddyFallback" hidden>
+      🧸🤎 💗🧸
+      <p style="font-size:14px">Vishan & Dharshini</p>
+    </div>
+
+    <h2>Vishan 🖤 & Dharshini 🩷</h2>
+
+    <p class="proposal" id="proposalText">
+      Will you be my favourite person, today, tomorrow, and in all the little moments still to come? 💍
+    </p>
+
+    <div class="proposal-actions" id="proposalActions">
+      <button class="btn" id="yesButton">Yes, Always! ❤️</button>
+      <button class="btn secondary" id="noButton">No 🙈</button>
+    </div>
+
+    <p class="proposal-feedback" id="proposalFeedback" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- SCENE 5: CURTAIN REVEAL -->
+<section class="page" id="s5">
+  <div class="eyebrow">Something special awaits</div>
+  <h1>Our Magical Moment ✨</h1>
+
+  <p class="description">
+    Behind these curtains is a little surprise,
+    created especially for you.
+  </p>
+
+  <div class="curtain-stage" id="curtain">
+    <div class="curtain-message">
+      <span style="font-size:2rem">❤️</span><br>
+      You are my favourite story.
+    </div>
+    <div class="curtain-panel curtain-left"></div>
+    <div class="curtain-panel curtain-right"></div>
+  </div>
+
+  <button class="btn" id="revealButton">Open the Curtains 🎭</button>
+  <p class="description" id="curtainMessage"></p>
+</section>
+
+<!-- SCENE 6: GIFT -->
+<section class="page" id="s6">
+  <div class="eyebrow">A birthday gift from my heart</div>
+  <h1>For You, My Love 🎁</h1>
+
+  <p class="description">
+    This little gift holds something more precious than anything money can buy.
+  </p>
+
+  <div class="gift-area">
+    <div class="gift" id="gift" aria-label="Gift box">
+      <div class="gift-lid"></div>
+      <div class="gift-bow"></div>
+      <div class="gift-box">
+        <div class="gift-ribbon"></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn" id="openGiftButton">Open Your Gift 🎀</button>
+
+  <article class="letter" id="letter">
+    <h2>Happy Birthday, Uyire! ❤️</h2>
+
+    <p id="letterContent">Happy Birthday, my love! 🎂❤️
+
+Today is not just your birthday. It is a celebration of the beautiful person you are and the happiness you bring into my world.
+
+Your smile makes ordinary days feel special. Your presence makes little moments unforgettable. Even the simplest things become precious when I share them with you.
+
+I may not always find the perfect words to explain what you mean to me, but I hope you always feel how special you are in my heart.
+
+On your birthday, I wish you endless happiness, peaceful days, beautiful dreams, good health, and every wonderful thing life can offer.
+
+May this new chapter bring you reasons to smile, courage to follow your dreams, and countless memories worth keeping.
+
+And if I could give you one gift beyond this little surprise, it would be the ability to see yourself through my eyes, even for a moment. Then you would understand just how precious you are to me.
+
+Happy Birthday, my favourite person. May your beautiful smile never fade. ❤️
+
+With all my love, always. 💌</p>
+
+    <p class="signature">Forever with love, ❤️<br>Yours always</p>
+
+    <div style="text-align:center">
+      <button class="btn gold" id="finalButton">One Last Surprise ✨</button>
+    </div>
+  </article>
+</section>
+
+<!-- FINAL SCENE -->
+<section class="page" id="s7">
+  <div class="eyebrow">My final little surprise</div>
+  <div class="final-heart">❤️</div>
+
+  <h1 id="finalHeading">Happy Birthday, Uyire!</h1>
+
+  <div class="glass">
+    <h2>Vishan 🖤 & Dharshini 🩷</h2>
+
+    <p class="final-message" id="finalMessage">
+      Out of all the beautiful things in this world, one of my favourites is the thought of sharing more beautiful moments with you.
+
+      You are a special chapter in my story, a reason behind many smiles, and someone I hope life treats with endless kindness.
+
+      Happy Birthday, my love. Today, tomorrow, and in every beautiful memory yet to come. ❤️
+    </p>
+
+    <div style="font-size:2.5rem;margin:20px 0">💐 💖 🎂 💖 💐</div>
+
+    <button class="btn" id="magicButton">Send More Love 💕</button>
+    <button class="btn secondary" id="replayButton">Replay Our Story ↻</button>
+  </div>
+
+  <footer>OUR LOVE STORY • MADE WITH ❤️</footer>
+</section>
+
+<!-- MUSIC CONTROLS -->
+<div style="
+  position:fixed;right:12px;bottom:12px;z-index:30;
+  display:flex;flex-direction:column;gap:6px;">
+  <button class="btn secondary" id="musicButton"
+          style="font:12px Arial,sans-serif;padding:10px 13px">
+    🎵 Play Music
+  </button>
+  <button class="btn secondary" id="stopMusicButton"
+          style="font:12px Arial,sans-serif;padding:10px 13px">
+    ⏸ Pause Music
+  </button>
+</div>
+
+<script>
+"use strict";
+
+/* -------------------------------------------------
+   OUR LOVE STORY — COMPLETE JAVASCRIPT
+   All button events are registered after the page
+   elements exist. No external JavaScript is needed.
+-------------------------------------------------- */
+
+const $ = (id) => document.getElementById(id);
+
+const pages = Array.from(document.querySelectorAll(".page"));
+
+let currentPage = "s1";
+let heartJoined = false;
+let proposalAttempts = 0;
+let curtainsOpened = false;
+let giftOpened = false;
+let musicStarted = false;
+
+const music = $("music");
+
+/* SHOW A SCENE */
+
+function showScene(sceneId) {
+  const target = $(sceneId);
+
+  if (!target) {
+    console.error("Scene not found:", sceneId);
+    return;
+  }
+
+  pages.forEach((page) => page.classList.remove("active"));
+  target.classList.add("active");
+  currentPage = sceneId;
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  if (sceneId === "s2") {
+    particleBurst("💕", 10);
+  }
+
+  if (sceneId === "s7") {
+    particleBurst("❤️", 22);
+  }
+}
+
+/* BACKGROUND STARS */
+
+function createStars() {
+  const container = $("stars");
+  if (!container) return;
+
+  container.textContent = "";
+
+  for (let i = 0; i < 65; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
+    star.textContent = Math.random() > 0.5 ? "✦" : "·";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.fontSize = (8 + Math.random() * 12) + "px";
+    star.style.animationDelay = (Math.random() * 3) + "s";
+    star.style.animationDuration = (1.5 + Math.random() * 3) + "s";
+    container.appendChild(star);
+  }
+}
+
+/* FLOATING HEARTS AND PARTICLES */
+
+function particleBurst(symbol = "❤️", count = 15) {
+  const container = $("effects");
+  if (!container) return;
+
+  for (let i = 0; i < count; i++) {
+    const particle = document.createElement("span");
+    particle.className = "float";
+    particle.textContent = symbol;
+    particle.style.left = (Math.random() * 95) + "%";
+    particle.style.bottom = (Math.random() * 15) + "px";
+    particle.style.fontSize = (16 + Math.random() * 22) + "px";
+    particle.style.animationDuration = (2.5 + Math.random() * 2.5) + "s";
+
+    container.appendChild(particle);
+
+    window.setTimeout(() => {
+      particle.remove();
+    }, 5500);
+  }
+}
+
+/* SCENE 1: JOIN HEARTS */
+
+$("beginButton").addEventListener("click", () => {
+  if (!heartJoined) {
+    heartJoined = true;
+    $("heartStage").classList.add("joined");
+    $("joinMessage").textContent =
+      "Two hearts finding their way to each other. ❤️";
+
+    $("beginButton").textContent = "Continue Our Story 💕";
+
+    particleBurst("💗", 18);
+    return;
+  }
+
+  showScene("s2");
+  particleBurst("❤️", 12);
+});
+
+/* SCENE 2: MEMORIES TO ROSE */
+
+$("roseButton").addEventListener("click", () => {
+  showScene("s3");
+});
+
+/* SCENE 3: PASSWORD */
+
+$("passwordForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const password = $("rosePassword").value.trim().toLowerCase();
+
+  if (password === "rise") {
+    $("passwordMessage").textContent =
+      "The secret is unlocked! A little surprise is waiting for you. ❤️";
+
+    $("proceedButton").classList.remove("hidden");
+    $("rosePassword").disabled = true;
+    $("passwordForm").querySelector("button[type='submit']").disabled = true;
+
+    particleBurst("🌹", 15);
+  } else {
+    $("passwordMessage").textContent =
+      "Not quite, my love. Try again. Hint: rise 🌹";
+
+    $("rosePassword").value = "";
+    $("rosePassword").focus();
+  }
+});
+
+$("proceedButton").addEventListener("click", () => {
+  showScene("s4");
+  particleBurst("🧸", 12);
+});
+
+/* SCENE 4: PROPOSAL */
+
+$("yesButton").addEventListener("click", () => {
+  $("proposalText").textContent =
+    "Yesss! ❤️ You just made this little love story even more beautiful. Here's to more smiles, more memories, and more moments together!";
+
+  $("proposalFeedback").textContent =
+    "A little YES, a very big happiness! 💖";
+
+  $("proposalActions").classList.add("hidden");
+
+  particleBurst("❤️", 30);
+
+  window.setTimeout(() => {
+    showScene("s5");
+  }, 2200);
+});
+
+$("noButton").addEventListener("click", () => {
+  proposalAttempts++;
+
+  const messages = [
+    "Aiyo! 🥹 Give this little love story another chance?",
+    "Even our teddy bears are hoping for a YES! 🧸❤️",
+    "One more smile? This surprise was made just for you! 💕"
+  ];
+
+  $("proposalFeedback").textContent =
+    messages[Math.min(proposalAttempts - 1, messages.length - 1)];
+
+  particleBurst("🥹", 5);
+});
+
+/* SCENE 5: CURTAIN REVEAL */
+
+$("revealButton").addEventListener("click", () => {
+  if (!curtainsOpened) {
+    curtainsOpened = true;
+    $("curtain").classList.add("open");
+    $("revealButton").textContent = "Continue to Your Gift 🎁";
+    $("curtainMessage").textContent =
+      "A little birthday gift, chosen with love. ❤️";
+
+    particleBurst("✨", 18);
+    return;
+  }
+
+  showScene("s6");
+});
+
+/* SCENE 6: OPEN GIFT */
+
+$("openGiftButton").addEventListener("click", () => {
+  if (!giftOpened) {
+    giftOpened = true;
+    $("gift").classList.add("open");
+    $("openGiftButton").textContent = "Read Your Letter 💌";
+
+    particleBurst("🎀", 20);
+
+    window.setTimeout(() => {
+      $("letter").classList.add("show");
+      $("letter").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+      $("openGiftButton").textContent = "Your Letter Is Open ❤️";
+    }, 1000);
+
+    return;
+  }
+
+  $("letter").classList.add("show");
+  $("letter").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
+
+/* LETTER TO FINAL REVEAL */
+
+$("finalButton").addEventListener("click", () => {
+  showScene("s7");
+  particleBurst("💖", 30);
+});
+
+/* FINAL SCENE: MORE LOVE */
+
+$("magicButton").addEventListener("click", () => {
+  particleBurst("❤️", 35);
+
+  $("finalHeading").textContent = "You Are So Loved! 💖";
+  $("finalMessage").textContent =
+    "If I could wrap every beautiful feeling into a gift, I would give it all to you. May your birthday be full of love, laughter, sweet surprises, and dreams coming true. Happy Birthday, Uyire! ❤️";
+});
+
+/* REPLAY THE FULL STORY */
+
+$("replayButton").addEventListener("click", () => {
+  heartJoined = false;
+  proposalAttempts = 0;
+  curtainsOpened = false;
+  giftOpened = false;
+
+  $("heartStage").classList.remove("joined");
+  $("joinMessage").textContent =
+    "Two hearts, two stories, one beautiful journey.";
+
+  $("beginButton").textContent = "Begin Our Story ✨";
+
+  $("rosePassword").value = "";
+  $("rosePassword").disabled = false;
+  $("passwordMessage").textContent = "";
+  $("proceedButton").classList.add("hidden");
+  $("passwordForm").querySelector("button[type='submit']").disabled = false;
+
+  $("proposalText").textContent =
+    "Will you be my favourite person, today, tomorrow, and in all the little moments still to come? 💍";
+
+  $("proposalFeedback").textContent = "";
+  $("proposalActions").classList.remove("hidden");
+
+  $("curtain").classList.remove("open");
+  $("revealButton").textContent = "Open the Curtains 🎭";
+  $("curtainMessage").textContent = "";
+
+  $("gift").classList.remove("open");
+  $("openGiftButton").textContent = "Open Your Gift 🎀";
+  $("letter").classList.remove("show");
+
+  $("finalHeading").textContent = "Happy Birthday, Uyire!";
+  $("finalMessage").textContent =
+    "Out of all the beautiful things in this world, one of my favourites is the thought of sharing more beautiful moments with you. You are a special chapter in my story, a reason behind many smiles, and someone I hope life treats with endless kindness. Happy Birthday, my love. Today, tomorrow, and in every beautiful memory yet to come. ❤️";
+
+  showScene("s1");
+});
+
+/* MUSIC CONTROLS
+   Browsers usually require a tap before music can play.
+   The music file must exist at audio/romantic.mp3.
+*/
+
+$("musicButton").addEventListener("click", async () => {
+  if (!music) return;
+
+  try {
+    await music.play();
+    musicStarted = true;
+    $("musicButton").textContent = "🎵 Music Playing";
+  } catch (error) {
+    $("musicButton").textContent = "⚠️ Check Music File";
+    console.error("Music could not play:", error);
+    alert(
+      "Music could not start. Check that audio/romantic.mp3 exists in your website folder and try again."
+    );
+  }
+});
+
+$("stopMusicButton").addEventListener("click", () => {
+  if (!music) return;
+
+  music.pause();
+  $("musicButton").textContent = "🎵 Play Music";
+});
+
+/* INITIALIZE */
+
+createStars();
+
+/* Keep missing images from breaking the rest of the website.
+   The HTML also includes onerror fallbacks for the images. */
+
+console.log("Our Love Story initialized successfully.");
+</script>
+</body>
+</html>
+```
