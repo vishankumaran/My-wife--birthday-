@@ -3,1090 +3,767 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#170b24">
-<title>Our Love Story 🖤🩷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#130821">
+<title>Our Love Story ❤️</title>
 
 <style>
 :root {
-  --pink: #ff76b7;
-  --deep-pink: #ff3d91;
-  --purple: #9c63ff;
-  --dark: #170b24;
-  --glass: rgba(255,255,255,.09);
+  --pink:#ff8ecb;
+  --gold:#ffdf9c;
+  --night:#130821;
 }
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html { scroll-behavior: smooth; }
-
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  color: white;
-  font-family: Georgia, "Times New Roman", serif;
+  margin:0;
+  min-height:100vh;
+  overflow-x:hidden;
+  color:#fff5fc;
+  font-family:Georgia,serif;
   background:
-    radial-gradient(ellipse at top, #482052 0%, transparent 48%),
-    linear-gradient(150deg, #100817, #27102e 55%, #100817);
-  text-align: center;
+    radial-gradient(ellipse at 50% 15%,#50245f,transparent 55%),
+    linear-gradient(145deg,#10071e,#29103c,#10071e);
+}
+button { font:inherit; cursor:pointer; touch-action:manipulation; }
+button:focus-visible { outline:3px solid white; outline-offset:4px; }
+button:active { transform:scale(.96); }
+.btn {
+  border:1px solid #ffe1a4;
+  border-radius:30px;
+  padding:14px 20px;
+  min-height:48px;
+  color:#36152f;
+  background:linear-gradient(135deg,#ffe7b6,#ff91c9);
+  font-weight:bold;
+  box-shadow:0 5px 25px #ff82bc38;
+}
+.secondary {
+  color:white;
+  background:#ffffff12;
+  border-color:#ffffff60;
+}
+header { position:relative; z-index:1; text-align:center; padding:22px 12px 0; }
+.eyebrow { color:var(--gold); letter-spacing:3px; font-size:.72rem; text-transform:uppercase; }
+h1 { font-weight:normal; font-size:clamp(2rem,9vw,3.8rem); color:#ffe5f4; text-shadow:0 0 25px #ff72bb80; }
+h2 { font-weight:normal; color:#ffe3f3; font-size:clamp(1.5rem,6vw,2.2rem); }
+p { line-height:1.8; color:#f3e3f4; }
+main { position:relative; z-index:1; width:min(680px,calc(100% - 24px)); margin:auto; padding-bottom:100px; }
+.scene { display:none; text-align:center; padding:22px 6px 35px; }
+.scene.active { display:block; animation:sceneIn .65s ease both; }
+@keyframes sceneIn { from {opacity:0;transform:translateY(15px)} to {opacity:1;transform:translateY(0)} }
+[hidden] { display:none !important; }
+.actions { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin:20px 0; }
+#stars,#effects { position:fixed; inset:0; pointer-events:none; overflow:hidden; }
+#stars { z-index:0; }
+#effects { z-index:10; }
+.star { position:absolute; color:#ffe5a8; animation:twinkle 2s infinite alternate; }
+@keyframes twinkle { to {opacity:.15;transform:scale(.5)} }
+
+/* Rose video: transparent video works best with WebM alpha */
+.rose-video-stage {
+  width:min(100%,400px);
+  margin:18px auto;
+  min-height:230px;
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+.rose-video {
+  display:block;
+  width:100%;
+  max-height:48vh;
+  object-fit:contain;
+  background:transparent;
+  filter:drop-shadow(0 0 25px #ff6cab80);
+}
+.rose-emoji {
+  font-size:clamp(6rem,30vw,10rem);
+  filter:drop-shadow(0 0 25px #ff70b5);
+  animation:roseSway 3s ease-in-out infinite;
+}
+@keyframes roseSway { 50% {transform:rotate(7deg) scale(1.06)} }
+
+/* Five individually tappable hearts */
+.heart-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  max-width:450px;
+  margin:25px auto;
+}
+.memory-heart {
+  min-width:0;
+  min-height:105px;
+  padding:10px 2px;
+  border:1px solid #ffb4d533;
+  border-radius:16px;
+  color:white;
+  background:linear-gradient(145deg,#ffffff10,#ff82bc12);
+  box-shadow:0 8px 25px #0002;
+  font-size:2.8rem;
+  animation:heartFloat 3s ease-in-out infinite;
+}
+.memory-heart span { display:block; font-size:.72rem; color:#ffe0ef; margin-top:5px; }
+.memory-heart.revealed { animation:heartPop .55s ease; background:#ff8ecb20; }
+@keyframes heartFloat { 50% {transform:translateY(-5px)} }
+@keyframes heartPop { 50% {transform:scale(1.13)} }
+
+/* Photo unfolding */
+#photoReveal { perspective:1000px; }
+.photo-card {
+  max-width:450px;
+  margin:22px auto;
+  padding:10px;
+  border:2px solid #f6d18b;
+  border-radius:13px;
+  background:linear-gradient(140deg,#fff0d6,#ffb5d4);
+  box-shadow:0 15px 45px #0006;
+  transform-origin:left center;
+  animation:photoUnfold .9s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes photoUnfold {
+  0% {opacity:0;transform:rotateY(-85deg) scale(.8)}
+  100% {opacity:1;transform:rotateY(0) scale(1)}
+}
+.photo-card img {
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:52vh;
+  object-fit:contain;
+  border-radius:6px;
+  background:#29103c;
+}
+.photo-placeholder {
+  min-height:180px;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  color:#fff;
+  background:linear-gradient(145deg,#512558,#a3437c);
+  overflow-wrap:anywhere;
+}
+.photo-caption { color:#63374e; }
+.count { color:#ead1ed; font-size:.9rem; }
+
+/* Password */
+input {
+  display:block;
+  width:min(100%,330px);
+  margin:15px auto;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #ffb4d8;
+  color:white;
+  background:#ffffff12;
+  text-align:center;
+  font:inherit;
 }
 
-button, input { font: inherit; }
-
-button {
-  border: none;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+/* Proposal */
+.proposal-video {
+  display:block;
+  width:min(100%,460px);
+  max-height:55vh;
+  object-fit:contain;
+  margin:18px auto;
+  background:transparent;
+  filter:drop-shadow(0 10px 20px #0004);
 }
+.teddy-emoji { font-size:7rem; animation:teddyHop 1.2s ease-in-out infinite; }
+@keyframes teddyHop { 50% {transform:translateY(-10px) rotate(-3deg)} }
 
-button:focus-visible, input:focus-visible {
-  outline: 2px solid white;
-  outline-offset: 4px;
-}
-
-.hidden { display: none !important; }
-
-section {
-  width: 100%;
-  min-height: 100vh;
-  padding: 85px 18px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 22px;
-  position: relative;
-  isolation: isolate;
-}
-
-h1 {
-  font-size: clamp(2rem, 8vw, 3.5rem);
-  color: #ffc1df;
-  text-shadow: 0 0 22px #ff3d91a6;
-}
-
-h2 {
-  font-size: clamp(1.5rem, 6vw, 2.5rem);
-  color: #ffb6da;
-}
-
-p {
-  font-size: 1.05rem;
-  line-height: 1.8;
-}
-
-.subtitle {
-  color: #f7d9ef;
-  max-width: 600px;
-}
-
-.glass {
-  width: min(100%, 520px);
-  padding: 25px 20px;
-  border: 1px solid #ffffff25;
-  border-radius: 24px;
-  background: var(--glass);
-  box-shadow: 0 15px 50px #00000035;
-  backdrop-filter: blur(12px);
-}
-
-.main-button {
-  padding: 14px 25px;
-  border-radius: 50px;
-  color: white;
-  font-weight: bold;
-  background: linear-gradient(120deg, #ff3d91, #9c63ff);
-  box-shadow: 0 0 25px #ff3d9155;
-  transition: transform .25s, box-shadow .25s;
-}
-
-.main-button:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 35px #ff3d9180;
-}
-
-.secondary-button {
-  padding: 12px 22px;
-  border-radius: 30px;
-  color: white;
-  background: #ffffff18;
-  border: 1px solid #ffffff35;
-}
-
-.music-button {
-  position: fixed;
-  z-index: 100;
-  top: 14px;
-  right: 12px;
-  padding: 11px 15px;
-  border-radius: 30px;
-  color: white;
-  background: #482052eF;
-  border: 1px solid #ff9bce80;
-  box-shadow: 0 4px 20px #0005;
-}
-
-#musicStatus {
-  position: fixed;
-  z-index: 100;
-  top: 60px;
-  right: 15px;
-  font-size: .75rem;
-  color: #ffd8eb;
-}
-
-/* Floating hearts */
-.heart {
-  position: fixed;
-  bottom: -35px;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0;
-  animation: floatHeart 9s linear forwards;
-}
-
-@keyframes floatHeart {
-  0% { transform: translateY(0) rotate(0); opacity: 0; }
-  15% { opacity: .7; }
-  85% { opacity: .55; }
-  100% { transform: translateY(-115vh) rotate(35deg); opacity: 0; }
-}
-
-/* ROSE INTRO */
-#intro { overflow: hidden; }
-
-.rose-stage {
-  width: min(90vw, 360px);
-  height: min(45vh, 360px);
-  min-height: 230px;
-  display: grid;
-  place-items: center;
-  position: relative;
-  overflow: visible;
-  background: transparent;
-}
-
-/*
-  Transparent WebM works best when it contains an alpha channel.
-  screen blending can help hide black areas, but cannot perfectly
-  remove black pixels from every video.
-*/
-#roseVideo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: transparent;
-  mix-blend-mode: screen;
-  filter: drop-shadow(0 0 20px #ff4a9d65);
-  animation: roseAppear 2s ease both;
-}
-
-.rose-fallback {
-  position: absolute;
-  font-size: clamp(100px, 35vw, 180px);
-  filter: drop-shadow(0 0 25px #ff4a9d90);
-  animation: rosePulse 2.5s ease-in-out infinite;
-}
-
-@keyframes roseAppear {
-  from { opacity: 0; transform: scale(.7); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes rosePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-}
-
-/* MEMORY CARDS */
-.memory-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 13px;
-  width: min(100%, 650px);
-}
-
-.memory-card {
-  min-width: 0;
-  padding: 10px;
-  border-radius: 17px;
-  border: 1px solid #ffffff2a;
-  background: #ffffff0d;
-  transition: transform .3s, border-color .3s;
-}
-
-.memory-card:active { transform: scale(.97); }
-
-.memory-card img {
-  width: 100%;
-  height: 145px;
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
-  background: #35183c;
-}
-
-.memory-card p {
-  padding: 9px 2px 2px;
-  font-size: .9rem;
-  color: #ffd8eb;
-}
-
-.memory-card.revealed {
-  border-color: #ff76b7;
-  box-shadow: 0 0 18px #ff76b733;
-}
-
-.memory-card.revealed img {
-  animation: photoReveal .7s ease both;
-}
-
-@keyframes photoReveal {
-  from { opacity: .2; transform: scale(.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* PASSWORD */
-.password-input {
-  width: 100%;
-  margin: 18px 0 12px;
-  padding: 14px 16px;
-  border-radius: 13px;
-  border: 1px solid #ffffff40;
-  background: #140a20;
-  color: white;
-  text-align: center;
-  font-size: 1.1rem;
-}
-
-.feedback {
-  min-height: 26px;
-  color: #ffc0df;
-  margin-top: 10px;
-}
-
-/* VIDEOS */
-.video-frame {
-  width: min(100%, 430px);
-  min-height: 220px;
-  aspect-ratio: 4 / 3;
-  position: relative;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  border-radius: 22px;
-  border: 1px solid #ffffff22;
-  background: transparent;
-}
-
-.video-frame video {
-  width: 100%;
-  height: 100%;
-  max-height: 65vh;
-  object-fit: contain;
-  background: transparent;
-  mix-blend-mode: screen;
-}
-
-.video-fallback {
-  padding: 24px;
-  color: #ffd5e8;
-  line-height: 1.8;
-}
-
-/* YES / NO */
-.choice-row {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.yes-button {
-  background: linear-gradient(120deg, #ff3d91, #ff82bd);
-}
-
-.no-button {
-  background: #ffffff18;
-  border: 1px solid #ffffff40;
-}
-
-/* 3D GIFT */
-.gift-area {
-  width: 250px;
-  height: 230px;
-  display: grid;
-  place-items: center;
-  perspective: 800px;
-  margin: 10px auto;
-}
-
+/* Gift in 3D */
+.gift-scene { perspective:900px; padding:25px 0; }
 .gift {
-  width: 170px;
-  height: 135px;
-  position: relative;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  animation: giftFloat 3s ease-in-out infinite;
+  position:relative;
+  width:190px;
+  height:175px;
+  margin:20px auto;
+  transform-style:preserve-3d;
+  animation:giftFloat 3s ease-in-out infinite;
 }
-
+@keyframes giftFloat { 50% {transform:translateY(-8px) rotateY(4deg)} }
 .gift-box {
-  position: absolute;
-  width: 170px;
-  height: 110px;
-  bottom: 0;
-  border-radius: 5px 5px 12px 12px;
-  background: linear-gradient(120deg, #f34a99, #9e286d);
-  box-shadow: 0 18px 30px #0006;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:120px;
+  border:2px solid #ffdfa0;
+  background:linear-gradient(90deg,#c9367b,#ffb4d2 48%,#ce347a);
+  box-shadow:0 18px 35px #0006;
 }
-
 .gift-box::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 69px;
-  width: 32px;
-  height: 100%;
-  background: linear-gradient(90deg, #ffe3a0, #fff0bd, #d8a64b);
+  content:"";
+  position:absolute;
+  left:42%;
+  width:16%;
+  height:100%;
+  background:linear-gradient(90deg,#bd8730,#fff0b3,#bd8730);
 }
-
 .gift-lid {
-  position: absolute;
-  z-index: 2;
-  top: 7px;
-  left: -10px;
-  width: 190px;
-  height: 36px;
-  border-radius: 7px;
-  background: linear-gradient(120deg, #ff8bc3, #c12b7d);
-  transform-origin: 15px 30px;
-  transition: transform 1s cubic-bezier(.2,.8,.2,1);
+  position:absolute;
+  z-index:2;
+  left:-8px;
+  top:35px;
+  width:206px;
+  height:36px;
+  border:2px solid #ffe3a2;
+  background:linear-gradient(#ffd5e6,#e45c9b);
+  transform-origin:left bottom;
+  transition:transform 1s ease;
 }
+.gift-lid::after { content:"🎀"; position:absolute; left:40%; top:-38px; font-size:3.4rem; }
+.gift.open .gift-lid { transform:translateY(-75px) rotate(-32deg) translateX(24px); }
+.gift.open { animation:none; }
+.gift-aura { width:180px; height:25px; margin:auto; border-radius:50%; background:#ff80bb; filter:blur(25px); }
 
-.gift-lid::before {
-  content: "";
-  position: absolute;
-  left: 79px;
-  width: 32px;
-  height: 36px;
-  background: #ffe7a8;
+.letter {
+  display:none;
+  margin:25px auto;
+  padding:22px;
+  text-align:left;
+  color:#63374e;
+  background:linear-gradient(140deg,#fff8e9,#ffdfed);
+  border:5px double #d5a05c;
+  box-shadow:0 15px 45px #0005;
 }
+.letter.show { display:block; animation:letterIn 1s ease both; }
+.letter h2 { color:#a34475; text-align:center; }
+.letter p { color:#63374e; white-space:pre-line; }
+@keyframes letterIn { from {opacity:0;transform:translateY(55px) scale(.85)} to {opacity:1;transform:translateY(0) scale(1)} }
 
-.gift-bow {
-  position: absolute;
-  z-index: 3;
-  top: -17px;
-  left: 65px;
-  width: 40px;
-  height: 30px;
-  border: 8px solid #ffe8a5;
-  border-radius: 50% 50% 10% 50%;
-  transform: rotate(-18deg);
+/* Celebration */
+.final-heart { font-size:clamp(6rem,30vw,10rem); animation:heartBeat 1.3s infinite; filter:drop-shadow(0 0 28px #ff71bd); }
+@keyframes heartBeat { 15% {transform:scale(1.13)} 30% {transform:scale(1)} 45% {transform:scale(1.08)} }
+.wish {
+  white-space:pre-line;
+  font-size:clamp(1.05rem,4vw,1.35rem);
+  line-height:2;
+  color:#fff0f7;
+  text-shadow:0 0 18px #ff73bd70;
 }
-
-.gift.opened .gift-lid {
-  transform: translate(-20px, -80px) rotate(-28deg);
+.wish.show { animation:wishIn 1.5s ease both; }
+@keyframes wishIn { from {opacity:0;transform:translateY(25px);filter:blur(8px)} to {opacity:1;transform:translateY(0);filter:blur(0)} }
+.particle {
+  position:absolute;
+  top:-35px;
+  animation:fall 3.5s ease-in forwards;
+  will-change:transform,opacity;
 }
+@keyframes fall { to {transform:translate(var(--drift),110vh) rotate(650deg);opacity:0} }
 
-@keyframes giftFloat {
-  0%, 100% { transform: translateY(0) rotateY(-5deg); }
-  50% { transform: translateY(-10px) rotateY(5deg); }
+.music-controls {
+  position:fixed;
+  right:8px;
+  bottom:8px;
+  z-index:12;
+  display:flex;
+  gap:6px;
 }
+.music-controls .btn { min-height:40px; padding:9px 12px; font-size:.78rem; }
+footer { text-align:center; color:#c7b0d3; font-size:.8rem; padding:15px 10px 75px; }
 
-/* FINAL BIRTHDAY MESSAGE */
-#finalScene {
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at center, #57234d90, transparent 70%);
-}
-
-.final-card {
-  width: min(100%, 650px);
-  padding: clamp(24px, 6vw, 42px) 20px;
-  border-radius: 26px;
-  background: #ffffff0b;
-  border: 1px solid #ffaddb45;
-  box-shadow: 0 0 50px #ff3d9120;
-}
-
-.final-heading {
-  font-size: clamp(1.8rem, 7vw, 3.1rem);
-  line-height: 1.3;
-  margin-bottom: 22px;
-}
-
-.final-lines {
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-}
-
-.final-line {
-  opacity: 0;
-  transform: translateY(20px);
-  color: #fff0f7;
-  font-size: clamp(1rem, 4vw, 1.25rem);
-  line-height: 1.8;
-}
-
-.final-line.show {
-  animation: messageEnter .9s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-@keyframes messageEnter {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.love-signature {
-  margin-top: 25px;
-  color: #ff8dc4;
-  font-size: clamp(1.3rem, 5vw, 1.8rem);
-  font-weight: bold;
-  opacity: 0;
-}
-
-.love-signature.show {
-  animation: messageEnter 1.2s ease forwards;
-}
-
-@media (min-width: 600px) {
-  .memory-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .memory-card img { height: 180px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
   }
 }
 </style>
 </head>
 
 <body>
+<div id="stars" aria-hidden="true"></div>
+<div id="effects" aria-hidden="true"></div>
 
-<!-- MUSIC: starts only when the user taps the button -->
-<audio id="backgroundMusic" loop preload="auto">
-  <source src="audio/romantic-music.mp3" type="audio/mpeg">
-</audio>
+<header>
+  <div class="eyebrow">A little universe made for you</div>
+  <h1 id="pageTitle">Our Love Story ❤️</h1>
+  <p>Every heartbeat holds a memory. ❤️</p>
+</header>
 
-<button id="musicToggle" class="music-button" type="button">
-  🎵 Turn Music ON
-</button>
-<div id="musicStatus">Music is OFF</div>
+<main>
+  <section id="s1" class="scene active">
+    <h2>A rose blooms for you 🌹</h2>
+    <p>Every petal carries a little piece of my heart.</p>
+    <div class="rose-video-stage">
+      <video id="roseVideo" class="rose-video" muted playsinline loop autoplay hidden>
+        <source src="videos/rose-transparent.webm" type="video/webm">
+        <source src="videos/rose-animation.mp4" type="video/mp4">
+      </video>
+      <div id="roseFallback" class="rose-emoji">🌹</div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="beginButton" type="button">Begin Our Story ✨</button>
+    </div>
+    <p class="count">Tap to discover five memories made with love.</p>
+  </section>
 
-<!-- 1. ROSE INTRO -->
-<section id="intro">
-  <div class="rose-stage">
-    <div id="roseFallback" class="rose-fallback" aria-hidden="true">🌹</div>
-    <video id="roseVideo" autoplay muted loop playsinline preload="auto">
-      <source src="videos/rose-transparent.webm" type="video/webm">
-    </video>
-  </div>
+  <section id="s2" class="scene">
+    <h2>Five little pieces of us 💕</h2>
+    <p>Tap each heart to unfold a photograph.</p>
+    <div id="heartGrid" class="heart-grid"></div>
+    <div id="photoReveal" aria-live="polite"></div>
+    <p id="memoryCount" class="count">Memories discovered: 0 / 5</p>
+    <div class="actions">
+      <button class="btn" id="roseButton" type="button" hidden>Unlock Our Rose 🌹</button>
+    </div>
+  </section>
 
-  <h1>Our Love Story 🖤</h1>
-  <p class="subtitle">
-    For the girl who became my favourite person,
-    my peace, and my forever. 🩷
-  </p>
-
-  <button class="main-button" id="beginButton" type="button">
-    Begin Our Story 💌
-  </button>
-</section>
-
-<!-- 2. FIVE MEMORIES -->
-<section id="memories" class="hidden">
-  <h1>Our Little Memories 🩷</h1>
-  <p class="subtitle">Tap each picture to reveal a little piece of my heart.</p>
-
-  <div class="memory-grid">
-
-    <button class="memory-card" type="button" data-memory="0">
-      <img src="images/memory1.jpg" alt="Our memory one">
-      <p>Memory 1 💗<br>Tap to reveal</p>
-    </button>
-
-    <button class="memory-card" type="button" data-memory="1">
-      <img src="images/memory2.jpg" alt="Our memory two">
-      <p>Memory 2 💗<br>Tap to reveal</p>
-    </button>
-
-    <button class="memory-card" type="button" data-memory="2">
-      <img src="images/memory3.jpg" alt="Our memory three">
-      <p>Memory 3 💗<br>Tap to reveal</p>
-    </button>
-
-    <button class="memory-card" type="button" data-memory="3">
-      <img src="images/memory4.jpg" alt="Our memory four">
-      <p>Memory 4 💗<br>Tap to reveal</p>
-    </button>
-
-    <button class="memory-card" type="button" data-memory="4">
-      <img src="images/memory5.jpg" alt="Our memory five">
-      <p>Memory 5 💗<br>Tap to reveal</p>
-    </button>
-
-  </div>
-
-  <div id="memoryMessage" class="glass hidden">
-    <h2 id="memoryTitle">A little memory 🩷</h2>
-    <p id="memoryText"></p>
-  </div>
-
-  <button id="continueButton" class="main-button hidden" type="button">
-    Continue, My Love 💌
-  </button>
-</section>
-
-<!-- 3. PASSWORD -->
-<section id="passwordScene" class="hidden">
-  <div class="glass">
-    <h1>One Little Secret 🔐</h1>
-    <p>Enter our secret word to unlock the next surprise.</p>
-
+  <section id="s3" class="scene">
+    <h2>One little secret 🌹</h2>
+    <div class="rose-emoji">🌹</div>
+    <p>Put the password to peel the petal.</p>
     <form id="passwordForm">
-      <input
-        id="passwordInput"
-        class="password-input"
-        type="password"
-        placeholder="Enter the secret word"
-        autocomplete="off"
-        aria-label="Secret word"
-      >
-      <button class="main-button" type="submit">Unlock My Heart 🖤</button>
+      <input id="rosePassword" type="password" placeholder="Enter the secret word" autocomplete="off" required>
+      <button class="btn" type="submit">Unlock the Rose 🔐</button>
     </form>
-
-    <p id="passwordFeedback" class="feedback"></p>
-  </div>
-</section>
-
-<!-- 4. TEDDY PROPOSAL -->
-<section id="proposalScene" class="hidden">
-  <h1>Just One Question… 🧸</h1>
-  <p class="subtitle">There is something special I want to ask you.</p>
-
-  <div class="video-frame">
-    <video id="teddyVideo" class="hidden" muted playsinline preload="metadata">
-      <source src="videos/teddy-proposal-transparent.webm" type="video/webm">
-    </video>
-    <div id="teddyFallback" class="video-fallback">
-      🧸🩷<br>
-      My heart has something to ask you.
+    <p id="passwordMessage" aria-live="polite"></p>
+    <div id="proceedWrap" hidden>
+      <p>One more chapter is waiting for you. 💖</p>
+      <button class="btn" id="proceedButton" type="button">Proceed 💫</button>
     </div>
-  </div>
+  </section>
 
-  <h2>Will you stay with me forever? 🖤🩷</h2>
-
-  <div class="choice-row">
-    <button id="yesButton" class="main-button yes-button" type="button">
-      YES! 🩷
-    </button>
-    <button id="noButton" class="main-button no-button" type="button">
-      NO
-    </button>
-  </div>
-</section>
-
-<!-- 5. YES VIDEO -->
-<section id="acceptedScene" class="hidden">
-  <h1>You Said YES! 🩷</h1>
-  <p class="subtitle">You just made my heart the happiest place in the world.</p>
-
-  <div class="video-frame">
-    <video id="acceptedVideo" class="hidden" muted playsinline preload="metadata">
-      <source src="videos/proposal-accepted-transparent.webm" type="video/webm">
-    </video>
-    <div id="acceptedFallback" class="video-fallback">
-      💖🫂💖<br>
-      A thousand hugs, a million kisses,
-      and a lifetime of love for you.
+  <section id="s4" class="scene">
+    <h2>A tiny question from my heart 💍</h2>
+    <div id="proposalVisual">
+      <video id="proposalVideo" class="proposal-video" muted playsinline loop hidden>
+        <source src="videos/teddy-proposal.mp4" type="video/mp4">
+      </video>
+      <div id="teddyFallback" class="teddy-emoji">🧸💗🧸</div>
     </div>
-  </div>
-
-  <button id="toGiftButton" class="main-button" type="button">
-    Open Your Birthday Gift 🎁
-  </button>
-</section>
-
-<!-- 6. GIFT BOX -->
-<section id="giftScene" class="hidden">
-  <h1>A Little Gift for You 🎁</h1>
-  <p class="subtitle">Made with all my love, just for you.</p>
-
-  <button id="giftButton" class="gift-area" type="button"
-          aria-label="Open your birthday gift">
-    <span id="gift" class="gift">
-      <span class="gift-lid"></span>
-      <span class="gift-bow"></span>
-      <span class="gift-box"></span>
-    </span>
-  </button>
-
-  <p id="giftHint">Tap the gift box to open it 🩷</p>
-
-  <div id="giftReveal" class="glass hidden">
-    <img
-      src="images/gift-reveal.jpg"
-      alt="Your special birthday surprise"
-      style="width:100%;max-height:420px;object-fit:contain;border-radius:16px;"
-    >
-    <p style="margin-top:16px;">This little surprise is only for you. 🖤🩷</p>
-  </div>
-
-  <button id="birthdayButton" class="main-button hidden" type="button">
-    One Last Surprise, My Wife 💌
-  </button>
-</section>
-
-<!-- 7. FINAL BIRTHDAY WISH -->
-<section id="finalScene" class="hidden">
-  <div class="final-card">
-    <div class="final-heading">
-      HAPPY BIRTHDAY TO YOU<br>
-      MY DEAR WIFE 🎂🩷
+    <p id="proposalText">Dharshini, will you accept my little proposal? 💖</p>
+    <div class="actions" id="proposalActions">
+      <button class="btn" id="yesButton" type="button">Yes, with all my heart! 💖</button>
+      <button class="btn secondary" id="noButton" type="button">Not yet 🙈</button>
     </div>
+    <p id="proposalFeedback" aria-live="polite"></p>
+  </section>
 
-    <div class="final-lines" id="finalLines">
-      <p class="final-line">Na evlo sanda pottalu onnatha thedi varuve,</p>
-
-      <p class="final-line">onna vitta enaku yar iruka,</p>
-
-      <p class="final-line">
-        Nama rendu peru strangers ahh irunthu friends ara mari
-        ipo ivlo close ahh iruko,
-      </p>
-
-      <p class="final-line">
-        Na en life fulla onaku tharanu nu nenaikikire
-      </p>
+  <section id="s5" class="scene">
+    <h2>A little gift, with a universe of love 🎁</h2>
+    <p>Vishan has one more surprise for Dharshini...</p>
+    <div class="gift-scene">
+      <div class="gift-aura"></div>
+      <div class="gift" id="gift">
+        <div class="gift-box"></div>
+        <div class="gift-lid"></div>
+      </div>
     </div>
-
-    <div class="love-signature">
-      LOVE YOU PONDATI 🖤🩷
+    <div class="actions">
+      <button class="btn" id="openGiftButton" type="button">Open Your Gift 🎁</button>
     </div>
+    <article class="letter" id="letter">
+      <h2>To My Favorite Person ❤️</h2>
+      <p id="letterContent"></p>
+      <div class="actions">
+        <button class="btn" id="finalButton" type="button">One Last Surprise ✨</button>
+      </div>
+    </article>
+  </section>
 
-    <p style="margin-top:24px;color:#ffc8e1;">
-      Forever yours. 🫂👑
-    </p>
-  </div>
+  <section id="s6" class="scene">
+    <h2 id="finalHeading">Happy Birthday, My Love ❤️</h2>
+    <div class="final-heart">💖</div>
+    <p id="finalMessage" class="wish"></p>
+    <div class="actions">
+      <button class="btn" id="magicButton" type="button">Celebrate Again 🎉</button>
+      <button class="btn secondary" id="replayButton" type="button">Relive Our Story ↻</button>
+    </div>
+  </section>
 
-  <button id="restartButton" class="secondary-button" type="button">
-    Replay Our Love Story ↻
-  </button>
-</section>
+  <section id="s7" class="scene">
+    <h2>Happy Birthday to You 🖤</h2>
+    <div class="final-heart">🖤🩷</div>
+    <p class="wish show">HAPPY BIRTHDAY TO YOU MY DEAR WIFE
+
+na evlo sanda pottalu onnatha thedi varuve,
+onna vitta enaku yar iruka,
+Nama rendu peru strangers ahh irunthu friends ara mari ipo ivlo close ahh iruko,
+Na en life fulla onaku tharanu nu nenaikikire
+
+LOVE YOU PONDATI 🖤🩷</p>
+    <div class="actions">
+      <button class="btn" id="closeWishButton" type="button">Celebrate Our Love 🎉</button>
+    </div>
+  </section>
+</main>
+
+<div class="music-controls">
+  <button class="btn secondary" id="musicButton" type="button">♫ Play Music</button>
+  <button class="btn secondary" id="stopMusicButton" type="button">■ Stop</button>
+  <audio id="music" loop preload="auto">
+    <source src="audio/romantic-music.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<footer>Made with love, just for you. ✨</footer>
 
 <script>
 "use strict";
 
-/* ============================
-   MUSIC CONTROL
-   ============================ */
+/* ========== PERSONALIZE HERE ========== */
+const RECIPIENT_NAME = "Dharshini";
+const ROMANTIC_NICKNAME = "Uyire";
+const MUSIC_FILE = "audio/romantic-music.mp3";
 
-const music = document.getElementById("backgroundMusic");
-const musicToggle = document.getElementById("musicToggle");
-const musicStatus = document.getElementById("musicStatus");
+const BIRTHDAY_LETTER = `My favorite person,
 
-let musicOn = false;
+Happy Birthday to the person who makes my world brighter just by being in it.
 
-music.loop = true;
-music.volume = 0.45;
+Your smile makes ordinary moments special, and your presence brings happiness into my life. I hope this new year brings you endless laughter, beautiful memories, success, peace, and all the happiness your heart deserves.
 
-function updateMusicButton() {
-  musicToggle.textContent = musicOn
-    ? "🎵 Turn Music OFF"
-    : "🎵 Turn Music ON";
+You are precious, you are special, and you deserve to feel loved every single day.
 
-  musicStatus.textContent = musicOn
-    ? "Romantic music is ON 🩷"
-    : "Music is OFF";
-}
+Today is your day, but having you in my life feels like a gift every day.
 
-async function turnMusicOn() {
-  try {
-    await music.play();
-    musicOn = true;
-    updateMusicButton();
-  } catch (error) {
-    musicOn = false;
-    updateMusicButton();
-    musicStatus.textContent =
-      "Tap Music ON again or check the MP3 file.";
-  }
-}
+Happy Birthday, My Love. ❤️
 
-function turnMusicOff() {
-  music.pause();
-  musicOn = false;
-  updateMusicButton();
-}
+With all my love,
+UNNAVAN`;
 
-musicToggle.addEventListener("click", async () => {
-  if (musicOn) {
-    turnMusicOff();
-  } else {
-    await turnMusicOn();
-  }
-});
+const FINAL_SURPRISE_MESSAGE = `HAPPY BIRTHDAY TO YOU MY DEAR WIFE
 
-/* Music does NOT autoplay. The visitor controls it. */
+na evlo sanda pottalu onnatha thedi varuve,
+onna vitta enaku yar iruka,
+Nama rendu peru strangers ahh irunthu friends ara mari ipo ivlo close ahh iruko,
+Na en life fulla onaku tharanu nu nenaikikire
 
+LOVE YOU PONDATI 🖤🩷`;
 
-/* ============================
-   ROSE VIDEO
-   ============================ */
-
-const roseVideo = document.getElementById("roseVideo");
-const roseFallback = document.getElementById("roseFallback");
-
-function showRoseFallback() {
-  roseVideo.classList.add("hidden");
-  roseFallback.classList.remove("hidden");
-}
-
-function showRoseVideo() {
-  roseVideo.classList.remove("hidden");
-  roseFallback.classList.add("hidden");
-}
-
-roseVideo.muted = true;
-roseVideo.defaultMuted = true;
-roseVideo.volume = 0;
-
-roseVideo.addEventListener("playing", showRoseVideo);
-roseVideo.addEventListener("error", showRoseFallback);
-
-roseVideo.addEventListener("loadeddata", async () => {
-  try {
-    await roseVideo.play();
-  } catch (error) {
-    showRoseFallback();
-  }
-});
-
-roseVideo.addEventListener("pause", () => {
-  // The rose is decorative; its emoji fallback remains available
-  // if the browser cannot play the video.
-});
-
-roseVideo.addEventListener("ended", () => {
-  if (roseVideo.loop) {
-    roseVideo.currentTime = 0;
-    roseVideo.play().catch(showRoseFallback);
-  }
-});
-
-roseVideo.play().catch(showRoseFallback);
-
-
-/* ============================
-   SECTION NAVIGATION
-   ============================ */
-
-const sectionIds = [
-  "intro",
-  "memories",
-  "passwordScene",
-  "proposalScene",
-  "acceptedScene",
-  "giftScene",
-  "finalScene"
+const MEMORY_PHOTOS = [
+  "images/memory1.jpg",
+  "images/memory2.jpg",
+  "images/memory3.jpg",
+  "images/memory4.jpg",
+  "images/memory5.jpg"
 ];
 
-function showSection(id) {
-  sectionIds.forEach(sectionId => {
-    document.getElementById(sectionId).classList.add("hidden");
-  });
+/* ========== APP LOGIC ========== */
+const $ = id => document.getElementById(id);
+let openedMemories = new Set();
+let roseUnlocked = false;
+let accepted = false;
+let giftOpened = false;
+let rejectedCount = 0;
+let musicStarted = false;
 
-  const target = document.getElementById(id);
-  target.classList.remove("hidden");
+$("pageTitle").textContent = "For " + RECIPIENT_NAME + " ❤️";
+$("letterContent").textContent = BIRTHDAY_LETTER.replace(
+  "My favorite person,",
+  "My favorite person, " + RECIPIENT_NAME + ","
+);
+$("finalHeading").textContent = "Happy Birthday, " + ROMANTIC_NICKNAME + " ❤️";
+$("finalMessage").textContent = FINAL_SURPRISE_MESSAGE;
+$("proposalText").textContent = RECIPIENT_NAME + ", will you accept my little proposal? 💖";
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
+/* Background stars */
+for (let i = 0; i < 45; i++) {
+  const star = document.createElement("span");
+  star.className = "star";
+  star.textContent = Math.random() > .5 ? "✦" : "·";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.fontSize = (8 + Math.random() * 12) + "px";
+  star.style.animationDelay = Math.random() * 3 + "s";
+  $("stars").appendChild(star);
 }
 
-document.getElementById("beginButton").addEventListener("click", () => {
-  showSection("memories");
-});
-
-
-/* ============================
-   FLOATING HEARTS
-   ============================ */
-
-function createHeart() {
-  const heart = document.createElement("span");
-  heart.className = "heart";
-  heart.textContent = ["🩷", "💗", "💕", "💖"][Math.floor(Math.random() * 4)];
-
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (14 + Math.random() * 22) + "px";
-  heart.style.animationDuration = (6 + Math.random() * 6) + "s";
-
-  document.body.appendChild(heart);
-
-  setTimeout(() => heart.remove(), 13000);
+function showScene(id) {
+  document.querySelectorAll(".scene").forEach(scene => {
+    scene.classList.toggle("active", scene.id === id);
+  });
+  window.scrollTo({ top:0, behavior:"smooth" });
 }
 
-setInterval(createHeart, 850);
-
-
-/* ============================
-   FIVE MEMORY CARDS
-   ============================ */
-
-const memoryMessages = [
-  {
-    title: "Our First Little Memory 🩷",
-    text: "Every beautiful story starts somewhere. I'm glad our story began."
-  },
-  {
-    title: "My Favourite Person 💗",
-    text: "You make ordinary moments feel special just by being there."
-  },
-  {
-    title: "My Safe Place 🫂",
-    text: "No matter how difficult the day is, you are always close to my heart."
-  },
-  {
-    title: "My Happiness 👑",
-    text: "Your smile is one of my favourite things in this whole world."
-  },
-  {
-    title: "My Forever 🖤🩷",
-    text: "I want more memories, more laughter, and more life with you."
+function particleBurst(amount = 45) {
+  const symbols = ["💖","💕","✨","🌸","🎉","💗","🌹","🎈","💛"];
+  for (let i = 0; i < amount; i++) {
+    const el = document.createElement("span");
+    el.className = "particle";
+    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    el.style.left = Math.random() * 100 + "%";
+    el.style.fontSize = (15 + Math.random() * 23) + "px";
+    el.style.animationDelay = Math.random() * .9 + "s";
+    el.style.setProperty("--drift", (Math.random() * 220 - 110) + "px");
+    $("effects").appendChild(el);
+    el.addEventListener("animationend", () => el.remove(), { once:true });
   }
-];
+}
 
-const memoryCards = [...document.querySelectorAll(".memory-card")];
-const revealedMemories = new Set();
+/* Fix video fallbacks: videos stay transparent only if their source supports alpha. */
+function setupVideo(videoId, fallbackId) {
+  const video = $(videoId);
+  const fallback = $(fallbackId);
+  if (!video || !fallback) return;
 
-const memoryMessage = document.getElementById("memoryMessage");
-const memoryTitle = document.getElementById("memoryTitle");
-const memoryText = document.getElementById("memoryText");
-const continueButton = document.getElementById("continueButton");
-
-memoryCards.forEach(card => {
-  card.addEventListener("click", () => {
-    const index = Number(card.dataset.memory);
-    const memory = memoryMessages[index];
-
-    if (!memory) return;
-
-    revealedMemories.add(index);
-    card.classList.add("revealed");
-
-    card.querySelector("p").textContent = memory.title;
-
-    memoryMessage.classList.remove("hidden");
-    memoryTitle.textContent = memory.title;
-    memoryText.textContent = memory.text;
-
-    if (revealedMemories.size === memoryCards.length) {
-      continueButton.classList.remove("hidden");
-    }
-  });
-});
-
-continueButton.addEventListener("click", () => {
-  showSection("passwordScene");
-});
-
-
-/* ============================
-   PASSWORD
-   Password: rise
-   ============================ */
-
-document.getElementById("passwordForm").addEventListener("submit", event => {
-  event.preventDefault();
-
-  const input = document.getElementById("passwordInput");
-  const feedback = document.getElementById("passwordFeedback");
-
-  if (input.value.trim().toLowerCase() === "rise") {
-    feedback.textContent = "Unlocked! Welcome, my love. 🩷";
-
-    setTimeout(() => {
-      input.value = "";
-      feedback.textContent = "";
-      showSection("proposalScene");
-      playOptionalVideo("teddyVideo", "teddyFallback");
-    }, 650);
-  } else {
-    feedback.textContent = "Not quite, my love. Try again. 💗";
-    input.value = "";
-    input.focus();
-  }
-});
-
-
-/* ============================
-   OPTIONAL MUTED VIDEOS
-   ============================ */
-
-function playOptionalVideo(videoId, fallbackId) {
-  const video = document.getElementById(videoId);
-  const fallback = document.getElementById(fallbackId);
-
-  video.pause();
-  video.currentTime = 0;
   video.muted = true;
   video.defaultMuted = true;
-  video.volume = 0;
-  video.classList.add("hidden");
-  fallback.classList.remove("hidden");
+  video.playsInline = true;
 
-  video.oncanplay = async () => {
-    video.muted = true;
-    video.volume = 0;
-    video.classList.remove("hidden");
-
-    try {
-      await video.play();
-      fallback.classList.add("hidden");
-    } catch (error) {
-      video.classList.add("hidden");
-      fallback.classList.remove("hidden");
-    }
-  };
-
-  video.onerror = () => {
-    video.classList.add("hidden");
-    fallback.classList.remove("hidden");
-  };
+  video.addEventListener("playing", () => {
+    video.hidden = false;
+    fallback.hidden = true;
+  });
+  video.addEventListener("error", () => {
+    video.hidden = true;
+    fallback.hidden = false;
+  });
 
   video.load();
+  video.play().catch(() => {
+    video.hidden = true;
+    fallback.hidden = false;
+  });
+}
+setupVideo("roseVideo", "roseFallback");
+
+/* IMPORTANT: begin is connected explicitly, not with inline onclick. */
+$("beginButton").addEventListener("click", () => {
+  showScene("s2");
+  buildMemories();
+  startMusicFromTap();
+});
+
+function buildMemories() {
+  const grid = $("heartGrid");
+  grid.replaceChildren();
+
+  for (let i = 0; i < 5; i++) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "memory-heart";
+    button.innerHTML = `💗<span>Memory ${i + 1}</span>`;
+    button.setAttribute("aria-label", "Reveal memory " + (i + 1));
+    button.addEventListener("click", () => openMemory(i, button));
+    grid.appendChild(button);
+  }
 }
 
+/* Each heart opens its own photo and remains usable on repeated taps. */
+function openMemory(index, button) {
+  openedMemories.add(index);
+  button.classList.add("revealed");
+  button.innerHTML = `💖<span>Memory ${index + 1} ✓</span>`;
 
-/* ============================
-   YES / NO
-   ============================ */
+  $("memoryCount").textContent =
+    "Memories discovered: " + openedMemories.size + " / 5";
 
-document.getElementById("yesButton").addEventListener("click", () => {
-  showSection("acceptedScene");
-  playOptionalVideo("acceptedVideo", "acceptedFallback");
+  showPhoto(index);
+
+  if (openedMemories.size === 5) {
+    $("roseButton").hidden = false;
+  }
+}
+
+function showPhoto(index) {
+  const frame = document.createElement("div");
+  frame.className = "photo-card";
+
+  const img = document.createElement("img");
+  img.src = MEMORY_PHOTOS[index];
+  img.alt = "Our memory " + (index + 1);
+  img.loading = "eager";
+
+  img.addEventListener("error", () => {
+    if (frame.querySelector(".photo-placeholder")) return;
+    img.hidden = true;
+    const placeholder = document.createElement("div");
+    placeholder.className = "photo-placeholder";
+    placeholder.textContent =
+      "Add your photo to this path: " + MEMORY_PHOTOS[index];
+    frame.prepend(placeholder);
+  }, { once:true });
+
+  const captions = [
+    "Every beginning becomes a beautiful memory. ❤️",
+    "Your smile is my favorite view. 🩷",
+    "Little moments, endless meaning. ✨",
+    "My heart keeps choosing you. 💕",
+    "Our story is my favorite adventure. 🌹"
+  ];
+  const caption = document.createElement("p");
+  caption.className = "photo-caption";
+  caption.textContent = captions[index];
+
+  const close = document.createElement("button");
+  close.className = "btn";
+  close.type = "button";
+  close.textContent = "Send This Memory Into Magic ✨";
+  close.addEventListener("click", () => {
+    particleBurst(20);
+    frame.animate(
+      [{opacity:1,transform:"scale(1)"},{opacity:0,transform:"scale(.65) rotate(6deg)"}],
+      {duration:500,fill:"forwards"}
+    ).onfinish = () => frame.remove();
+  });
+
+  frame.append(img, caption, close);
+  $("photoReveal").replaceChildren(frame);
+}
+
+$("roseButton").addEventListener("click", () => showScene("s3"));
+
+$("passwordForm").addEventListener("submit", event => {
+  event.preventDefault();
+  if ($("rosePassword").value.trim().toLowerCase() === "rise") {
+    roseUnlocked = true;
+    $("passwordMessage").textContent = "The rose has opened for you. 🌹";
+    $("proceedWrap").hidden = false;
+    $("rosePassword").disabled = true;
+  } else {
+    $("passwordMessage").textContent = "Try again, my love. 💗";
+    $("rosePassword").value = "";
+    $("rosePassword").focus();
+  }
 });
 
-document.getElementById("noButton").addEventListener("click", () => {
-  // NO immediately skips the remaining scenes and shows the wish.
-  showSection("finalScene");
-  animateFinalMessage();
+$("proceedButton").addEventListener("click", () => {
+  if (!roseUnlocked) return;
+  setupVideo("proposalVideo", "teddyFallback");
+  showScene("s4");
+  particleBurst(20);
 });
 
+$("yesButton").addEventListener("click", () => {
+  if (accepted) return;
+  accepted = true;
+  $("proposalFeedback").textContent = "She said YES! Two hearts, one forever! 💖";
+  $("proposalActions").hidden = true;
+  $("proposalVideo").pause();
+  particleBurst(70);
 
-/* ============================
-   GIFT BOX
-   ============================ */
-
-const gift = document.getElementById("gift");
-const giftButton = document.getElementById("giftButton");
-const giftReveal = document.getElementById("giftReveal");
-const giftHint = document.getElementById("giftHint");
-const birthdayButton = document.getElementById("birthdayButton");
-
-let giftOpened = false;
-
-document.getElementById("toGiftButton").addEventListener("click", () => {
-  showSection("giftScene");
+  showScene("s5");
 });
 
-giftButton.addEventListener("click", () => {
+$("noButton").addEventListener("click", () => {
+  rejectedCount++;
+  const messages = [
+    "Yoschi sollu 🥺 Give this teddy a chance!",
+    "Na vena la? 🧸 Think once more, my love!",
+    "Accept panla na next varathu 😭"
+  ];
+  if (rejectedCount >= 3) {
+    showScene("s7");
+    particleBurst(60);
+    return;
+  }
+  $("proposalFeedback").textContent = messages[rejectedCount - 1];
+});
+
+$("openGiftButton").addEventListener("click", () => {
   if (giftOpened) return;
-
   giftOpened = true;
-  gift.classList.add("opened");
-  giftHint.textContent = "Your surprise is opening… 🩷";
+  $("gift").classList.add("open");
+  $("openGiftButton").disabled = true;
+  particleBurst(65);
 
+  /* Let the lid move before the letter rises. */
   setTimeout(() => {
-    giftReveal.classList.remove("hidden");
-    giftHint.textContent = "A little piece of my heart, just for you. 💌";
-    birthdayButton.classList.remove("hidden");
-  }, 1100);
+    $("letter").classList.add("show");
+    $("letter").scrollIntoView({behavior:"smooth",block:"center"});
+  }, 850);
 });
 
-birthdayButton.addEventListener("click", () => {
-  showSection("finalScene");
-  animateFinalMessage();
+$("finalButton").addEventListener("click", () => {
+  showScene("s6");
+  $("finalMessage").classList.remove("show");
+  void $("finalMessage").offsetWidth;
+  $("finalMessage").classList.add("show");
+  celebration();
 });
 
+function celebration() {
+  particleBurst(120);
+  // Second burst gives the celebration a fuller finish.
+  setTimeout(() => particleBurst(80), 500);
+}
+$("magicButton").addEventListener("click", celebration);
 
-/* ============================
-   SMOOTH FINAL MESSAGE
-   ============================ */
+$("replayButton").addEventListener("click", () => {
+  openedMemories = new Set();
+  roseUnlocked = false;
+  accepted = false;
+  giftOpened = false;
+  rejectedCount = 0;
+  $("rosePassword").disabled = false;
+  $("rosePassword").value = "";
+  $("passwordMessage").textContent = "";
+  $("proceedWrap").hidden = true;
+  $("proposalActions").hidden = false;
+  $("proposalFeedback").textContent = "";
+  $("gift").classList.remove("open");
+  $("letter").classList.remove("show");
+  $("openGiftButton").disabled = false;
+  $("roseButton").hidden = true;
+  $("memoryCount").textContent = "Memories discovered: 0 / 5";
+  $("photoReveal").replaceChildren();
+  buildMemories();
+  showScene("s1");
+});
 
-let finalAnimationStarted = false;
+$("closeWishButton").addEventListener("click", () => {
+  celebration();
+});
 
-function animateFinalMessage() {
-  if (finalAnimationStarted) return;
+/* Audio: browser-safe start on the first deliberate tap. */
+const music = $("music");
+music.src = MUSIC_FILE;
+music.loop = true;
+music.preload = "auto";
+music.volume = 0.65;
 
-  finalAnimationStarted = true;
-
-  const lines = [...document.querySelectorAll(".final-line")];
-  const signature = document.querySelector(".love-signature");
-
-  lines.forEach((line, index) => {
-    setTimeout(() => {
-      line.classList.add("show");
-    }, 450 + index * 950);
-  });
-
-  setTimeout(() => {
-    signature.classList.add("show");
-  }, 450 + lines.length * 950);
+async function startMusicFromTap() {
+  if (musicStarted || !MUSIC_FILE) return;
+  try {
+    await music.play();
+    musicStarted = true;
+    $("musicButton").textContent = "♫ Pause Music";
+  } catch (error) {
+    $("musicButton").textContent = "♫ Tap to Play";
+    $("musicButton").title =
+      "Check that audio/romantic-music.mp3 exists and is a valid MP3.";
+  }
 }
 
+$("musicButton").addEventListener("click", async () => {
+  if (music.paused) {
+    try {
+      await music.play();
+      musicStarted = true;
+      $("musicButton").textContent = "♫ Pause Music";
+    } catch (error) {
+      $("musicButton").textContent = "Audio not found";
+      $("musicButton").title = "Check audio/romantic-music.mp3";
+    }
+  } else {
+    music.pause();
+    $("musicButton").textContent = "♫ Play Music";
+  }
+});
 
-/* ============================
-   RESTART
-   ============================ */
+$("stopMusicButton").addEventListener("click", () => {
+  music.pause();
+  music.currentTime = 0;
+  musicStarted = false;
+  $("musicButton").textContent = "♫ Play Music";
+});
 
-document.getElementById("restartButton").addEventListener("click", () => {
-  // Stop the videos, but leave music under the user's control.
-  ["teddyVideo", "acceptedVideo"].forEach(id => {
-    const video = document.getElementById(id);
-    video.pause();
-    video.currentTime = 0;
-  });
-
-  revealedMemories.clear();
-
-  memoryCards.forEach((card, index) => {
-    card.classList.remove("revealed");
-    card.querySelector("p").innerHTML =
-      "Memory " + (index + 1) + " 💗<br>Tap to reveal";
-  });
-
-  memoryMessage.classList.add("hidden");
-  continueButton.classList.add("hidden");
-
-  document.getElementById("passwordInput").value = "";
-  document.getElementById("passwordFeedback").textContent = "";
-
-  gift.classList.remove("opened");
-  giftOpened = false;
-  giftReveal.classList.add("hidden");
-  birthdayButton.classList.add("hidden");
-  giftHint.textContent = "Tap the gift box to open it 🩷";
-
-  finalAnimationStarted = false;
-  document.querySelectorAll(".final-line").forEach(line => {
-    line.classList.remove("show");
-  });
-  document.querySelector(".love-signature").classList.remove("show");
-
-  showSection("intro");
-
-  roseVideo.currentTime = 0;
-  roseVideo.play().then(showRoseVideo).catch(showRoseFallback);
+/* If a video is playing, its own sound remains muted. */
+["roseVideo","proposalVideo"].forEach(id => {
+  const video = $(id);
+  if (video) {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute("muted", "");
+    video.playsInline = true;
+  }
 });
 </script>
-
 </body>
 </html>
