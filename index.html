@@ -2,947 +2,1039 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#160b19">
-  <title>Our Love Story ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#130914">
+<title>Our Love Story ❤️</title>
 
-  <style>
-    /* =========================
-       1. GLOBAL DESIGN
-    ========================== */
-    :root {
-      --bg: #160b19;
-      --pink: #ff8eae;
-      --rose: #d83d72;
-      --cream: #fff4ed;
-      --gold: #f7d38a;
-      --panel: rgba(255, 255, 255, 0.08);
-    }
+<style>
+:root {
+  --bg: #130914;
+  --pink: #ff91b5;
+  --rose: #e84d82;
+  --cream: #fff1f6;
+  --gold: #f5d49a;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+* { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+html { scroll-behavior: smooth; }
 
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(ellipse at top, #462039 0%, transparent 55%),
-        linear-gradient(145deg, #100912, #24101f 55%, #100912);
-      color: var(--cream);
-      font-family: Georgia, "Times New Roman", serif;
-      overflow-x: hidden;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 50% 0%, #52213f 0%, transparent 48%),
+    linear-gradient(145deg, #100811, #251024 55%, #100811);
+  color: var(--cream);
+  font-family: Georgia, "Times New Roman", serif;
+}
 
-    button, input {
-      font: inherit;
-    }
+button, input { font: inherit; }
 
-    button {
-      -webkit-tap-highlight-color: transparent;
-    }
+button { -webkit-tap-highlight-color: transparent; }
 
-    .scene {
-      display: none;
-      min-height: 100vh;
-      min-height: 100dvh;
-      width: 100%;
-      padding: 28px 18px;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      animation: sceneIn 0.7s ease both;
-    }
+.scene {
+  display: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 35px 18px;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  isolation: isolate;
+}
 
-    .scene.active {
-      display: flex;
-    }
+.scene.active {
+  display: flex;
+  animation: sceneEnter .75s ease both;
+}
 
-    @keyframes sceneIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+@keyframes sceneEnter {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    .eyebrow {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font: 11px/1.7 Arial, sans-serif;
-      margin-bottom: 15px;
-    }
+h1, h2, p { margin-top: 0; }
 
-    h1 {
-      font-size: clamp(32px, 8vw, 58px);
-      line-height: 1.12;
-      font-weight: normal;
-      margin-bottom: 18px;
-      text-shadow: 0 0 25px rgba(255, 142, 174, 0.2);
-    }
+h1 {
+  font-size: clamp(36px, 9vw, 65px);
+  font-weight: normal;
+  line-height: 1.1;
+  margin-bottom: 17px;
+}
 
-    h2 {
-      font-size: clamp(27px, 6vw, 42px);
-      line-height: 1.2;
-      font-weight: normal;
-      margin-bottom: 14px;
-    }
+h2 {
+  font-size: clamp(29px, 7vw, 47px);
+  font-weight: normal;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
 
-    p {
-      line-height: 1.8;
-    }
+p {
+  line-height: 1.8;
+}
 
-    .subtitle {
-      max-width: 520px;
-      color: #f3dce8;
-      font-size: 16px;
-      margin-bottom: 26px;
-    }
+.eyebrow {
+  color: var(--gold);
+  font: 11px/1.8 Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+}
 
-    .accent {
-      color: var(--pink);
-      font-style: italic;
-    }
+.accent {
+  color: var(--pink);
+  font-style: italic;
+}
 
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      min-height: 48px;
-      padding: 13px 25px;
-      border: 1px solid rgba(255,255,255,.25);
-      border-radius: 999px;
-      background: linear-gradient(135deg, #f57da2, #bd3268);
-      color: white;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 8px 28px rgba(216,61,114,.24);
-      transition: transform .2s, filter .2s;
-    }
+.subtitle {
+  max-width: 500px;
+  color: #f3dbe8;
+  font-size: 15px;
+  margin: 0 auto 23px;
+}
 
-    .btn:active {
-      transform: scale(.96);
-    }
+.btn {
+  min-height: 49px;
+  padding: 13px 24px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f77da5, #bb2e68);
+  color: white;
+  font: bold 14px Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 8px 28px #c637702e;
+  transition: transform .2s, filter .2s;
+}
 
-    .btn:hover {
-      filter: brightness(1.1);
-    }
+.btn:active { transform: scale(.96); }
 
-    .btn.secondary {
-      background: rgba(255,255,255,.08);
-      box-shadow: none;
-    }
+.btn:hover { filter: brightness(1.12); }
 
-    .btn.gold {
-      background: linear-gradient(135deg, #f8dfa5, #c9954c);
-      color: #281421;
-      box-shadow: 0 8px 25px rgba(247,211,138,.2);
-    }
+.btn.secondary {
+  background: rgba(255,255,255,.08);
+  box-shadow: none;
+}
 
-    .button-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
-    }
+.btn.gold {
+  background: linear-gradient(135deg, #f9e3ad, #c99448);
+  color: #24101d;
+}
 
-    .panel {
-      width: min(100%, 620px);
-      padding: clamp(22px, 5vw, 38px);
-      border: 1px solid rgba(255, 255, 255, .13);
-      border-radius: 24px;
-      background: var(--panel);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 18px 60px rgba(0,0,0,.2);
-    }
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-    /* Floating hearts */
-    .floating-heart {
-      position: fixed;
-      z-index: 0;
-      bottom: -40px;
-      pointer-events: none;
-      color: rgba(255, 142, 174, .55);
-      animation: floatUp linear forwards;
-    }
+.hidden { display: none !important; }
 
-    @keyframes floatUp {
-      from {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-      }
-      15% { opacity: .8; }
-      to {
-        transform: translateY(-115vh) rotate(35deg);
-        opacity: 0;
-      }
-    }
+.small-note {
+  color: #cdb3c7;
+  font: 12px/1.8 Arial, sans-serif;
+  margin-top: 18px;
+}
 
-    .scene > * {
-      position: relative;
-      z-index: 1;
-    }
+/* Floating hearts */
 
-    /* =========================
-       2. ROSE OPENING
-    ========================== */
-    .rose-frame {
-      width: min(100%, 560px);
-      margin: 5px auto 22px;
-      overflow: hidden;
-      border-radius: 22px;
-      background: #100912;
-      border: 1px solid rgba(255,255,255,.13);
-      box-shadow: 0 18px 50px rgba(0,0,0,.3);
-    }
+.heart {
+  position: fixed;
+  z-index: 0;
+  bottom: -40px;
+  color: #ff8eae91;
+  pointer-events: none;
+  animation: floatHeart linear forwards;
+}
 
-    .rose-frame video {
-      width: 100%;
-      max-height: 45vh;
-      display: block;
-      object-fit: contain;
-      background: #100912;
-    }
+@keyframes floatHeart {
+  0% { transform: translateY(0) rotate(0); opacity: 0; }
+  15% { opacity: .8; }
+  100% { transform: translateY(-115vh) rotate(35deg); opacity: 0; }
+}
 
-    .tiny-note {
-      color: #d9bdce;
-      font: 12px/1.7 Arial, sans-serif;
-      margin-top: 15px;
-    }
+/* ----------------------------------
+   TRANSPARENT VIDEO OVERLAY
+   No box, no border, no controls.
+----------------------------------- */
 
-    /* =========================
-       3. MEMORIES
-    ========================== */
-    .memory-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 13px;
-      width: min(100%, 620px);
-      margin: 18px auto 10px;
-    }
+.character-stage {
+  width: min(100%, 600px);
+  height: clamp(250px, 45vh, 430px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px auto 18px;
+  overflow: visible;
+  background: transparent;
+}
 
-    .memory-card {
-      position: relative;
-      overflow: hidden;
-      background: #2a1728;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 14px;
-      padding: 7px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.2);
-    }
+.character-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  filter: drop-shadow(0 12px 25px #ff80ae18);
+}
 
-    .memory-card:last-child {
-      grid-column: 1 / -1;
-      width: 70%;
-      justify-self: center;
-    }
+.glow-orb {
+  position: absolute;
+  z-index: -1;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #ef4e8821;
+  filter: blur(45px);
+  animation: glow 4s ease-in-out infinite alternate;
+}
 
-    .memory-card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 4 / 4.5;
-      object-fit: cover;
-      border-radius: 9px;
-      background: #382337;
-    }
+@keyframes glow {
+  from { transform: scale(.85); opacity: .45; }
+  to { transform: scale(1.2); opacity: .9; }
+}
 
-    .memory-card figcaption {
-      padding: 10px 3px 5px;
-      color: #f9d6e4;
-      font-size: 13px;
-    }
+/* ----------------------------------
+   FIVE MEMORIES: STAGGERED REVEAL
+----------------------------------- */
 
-    /* =========================
-       4. PASSWORD
-    ========================== */
-    .lock-icon {
-      font-size: 45px;
-      margin-bottom: 15px;
-    }
+.memory-grid {
+  width: min(100%, 650px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 15px auto 25px;
+}
 
-    .password-input {
-      width: 100%;
-      min-height: 50px;
-      margin: 15px 0 5px;
-      padding: 14px 17px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.2);
-      background: rgba(0,0,0,.2);
-      color: white;
-      text-align: center;
-      letter-spacing: 4px;
-      outline: none;
-    }
+.memory-card {
+  opacity: 0;
+  transform: translateY(35px) scale(.88);
+  overflow: hidden;
+  border: 1px solid #ffffff25;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #44243d, #211020);
+  padding: 7px;
+  box-shadow: 0 12px 30px #00000030;
+}
 
-    .password-input:focus {
-      border-color: var(--pink);
-      box-shadow: 0 0 0 3px rgba(255,142,174,.1);
-    }
+.memories-active .memory-card {
+  animation: memoryReveal .8s cubic-bezier(.2,.8,.2,1) forwards;
+}
 
-    .error-text {
-      color: #ffb0bd;
-      font: 13px Arial, sans-serif;
-      min-height: 20px;
-      margin-top: 10px;
-    }
+.memory-card:nth-child(1) { animation-delay: .25s; }
+.memory-card:nth-child(2) { animation-delay: .75s; }
+.memory-card:nth-child(3) { animation-delay: 1.25s; }
+.memory-card:nth-child(4) { animation-delay: 1.75s; }
+.memory-card:nth-child(5) { animation-delay: 2.25s; }
 
-    /* =========================
-       5. PROPOSAL VIDEO
-    ========================== */
-    .video-frame {
-      width: min(100%, 520px);
-      margin: 15px auto 18px;
-      overflow: hidden;
-      border-radius: 20px;
-      background: #0d080e;
-      border: 1px solid rgba(255,255,255,.15);
-      box-shadow: 0 18px 50px rgba(0,0,0,.35);
-    }
+@keyframes memoryReveal {
+  0% { opacity: 0; transform: translateY(35px) scale(.88); }
+  65% { opacity: 1; transform: translateY(-4px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
 
-    .video-frame video {
-      display: block;
-      width: 100%;
-      max-height: 53vh;
-      object-fit: contain;
-      background: #0d080e;
-    }
+.memory-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #392238;
+}
 
-    .video-hint {
-      font: 12px/1.7 Arial, sans-serif;
-      color: #e1c8d8;
-      margin-top: 12px;
-    }
+.memory-card figcaption {
+  padding: 11px 3px 6px;
+  color: #ffdae8;
+  font-size: 13px;
+  line-height: 1.5;
+}
 
-    /* =========================
-       6. NO RESPONSE
-    ========================== */
-    .sad-heart {
-      font-size: 52px;
-      margin-bottom: 18px;
-      animation: heartbeat 1.4s infinite;
-    }
+.memory-card:last-child {
+  grid-column: 1 / -1;
+  width: 68%;
+  justify-self: center;
+}
 
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
+@media (min-width: 650px) {
+  .memory-grid { grid-template-columns: repeat(3, 1fr); }
+  .memory-card:last-child { grid-column: auto; width: 100%; }
+}
 
-    .birthday-message {
-      font-size: clamp(23px, 6vw, 37px);
-      line-height: 1.55;
-      color: #ffe0eb;
-    }
+/* ----------------------------------
+   PASSWORD
+----------------------------------- */
 
-    /* =========================
-       7. GIFT
-    ========================== */
-    .gift-area {
-      margin: 28px auto 20px;
-      min-height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.panel {
+  width: min(100%, 510px);
+  padding: 30px 24px;
+  border: 1px solid #ffffff20;
+  border-radius: 23px;
+  background: #ffffff0b;
+  box-shadow: 0 20px 60px #00000028;
+  backdrop-filter: blur(12px);
+}
 
-    .gift-button {
-      background: transparent;
-      border: none;
-      color: white;
-      cursor: pointer;
-      padding: 10px;
-      animation: giftBounce 2s ease-in-out infinite;
-    }
+.lock-icon { font-size: 44px; margin-bottom: 15px; }
 
-    .gift-emoji {
-      font-size: clamp(100px, 28vw, 155px);
-      display: block;
-      filter: drop-shadow(0 12px 22px rgba(255,93,145,.35));
-    }
+.password-input {
+  width: 100%;
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 12px;
+  border: 1px solid #ffffff35;
+  background: #00000025;
+  color: white;
+  text-align: center;
+  letter-spacing: 4px;
+  outline: none;
+}
 
-    @keyframes giftBounce {
-      0%, 100% { transform: translateY(0) rotate(-2deg); }
-      50% { transform: translateY(-10px) rotate(2deg); }
-    }
+.password-input:focus { border-color: var(--pink); }
 
-    .gift-button:active {
-      transform: scale(.9);
-    }
+.error-text {
+  min-height: 21px;
+  color: #ffb6ca;
+  font: 13px Arial, sans-serif;
+}
 
-    .reveal-wrap {
-      width: min(100%, 650px);
-      animation: revealIn .9s ease both;
-    }
+/* ----------------------------------
+   PROPOSAL TEXT
+----------------------------------- */
 
-    .reveal-wrap img {
-      display: block;
-      width: 100%;
-      max-height: 65vh;
-      object-fit: contain;
-      margin: 20px auto;
-      border-radius: 16px;
-      box-shadow: 0 0 45px rgba(255,142,174,.18);
-      background: rgba(0,0,0,.2);
-    }
+.video-hint {
+  color: #d9bfd1;
+  font: 12px/1.8 Arial, sans-serif;
+  margin-top: 6px;
+}
 
-    @keyframes revealIn {
-      from { opacity: 0; transform: scale(.85) translateY(18px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
+/* ----------------------------------
+   NO MESSAGE
+----------------------------------- */
 
-    .hidden {
-      display: none !important;
-    }
+.birthday-message {
+  font-size: clamp(24px, 6vw, 39px);
+  line-height: 1.6;
+  color: #ffe0eb;
+}
 
-    .footer-note {
-      font: 11px/1.7 Arial, sans-serif;
-      color: #bda6b9;
-      margin-top: 25px;
-    }
+.sad-heart {
+  font-size: 48px;
+  animation: heartBeat 1.5s ease-in-out infinite;
+}
 
-    @media (min-width: 700px) {
-      .memory-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
+@keyframes heartBeat {
+  50% { transform: scale(1.13); }
+}
 
-      .memory-card:last-child {
-        grid-column: auto;
-        width: 100%;
-      }
-    }
+/* ----------------------------------
+   3D GIFT BOX
+----------------------------------- */
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+.gift-scene {
+  width: 250px;
+  height: 245px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px auto 20px;
+  perspective: 850px;
+}
+
+.gift-shadow {
+  position: absolute;
+  width: 185px;
+  height: 40px;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  background: #00000055;
+  filter: blur(16px);
+  border-radius: 50%;
+}
+
+.gift-3d {
+  position: relative;
+  width: 150px;
+  height: 135px;
+  transform-style: preserve-3d;
+  transform: rotateX(-8deg) rotateY(-28deg);
+  transition: transform 1s ease;
+  cursor: pointer;
+  animation: giftFloat 3s ease-in-out infinite;
+}
+
+@keyframes giftFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+
+.gift-body {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.gift-face {
+  position: absolute;
+  background: linear-gradient(135deg, #f65d91, #ad2057);
+  border: 1px solid #ffb2cc80;
+}
+
+.gift-front {
+  width: 150px;
+  height: 105px;
+  left: 0;
+  bottom: 0;
+  transform: translateZ(38px);
+}
+
+.gift-right {
+  width: 76px;
+  height: 105px;
+  right: -38px;
+  bottom: 0;
+  transform: rotateY(90deg);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #a81c50, #7f163e);
+}
+
+.gift-left {
+  width: 76px;
+  height: 105px;
+  left: -38px;
+  bottom: 0;
+  transform: rotateY(-90deg);
+  transform-origin: right center;
+  background: linear-gradient(90deg, #f777a4, #d73870);
+}
+
+.gift-top {
+  width: 150px;
+  height: 76px;
+  left: 0;
+  top: -38px;
+  transform: rotateX(90deg);
+  transform-origin: bottom center;
+  background: linear-gradient(135deg, #ff9ebd, #e33e78);
+}
+
+.gift-ribbon {
+  position: absolute;
+  background: linear-gradient(90deg, #f9dfa0, #fff0c8, #c99548);
+  box-shadow: 0 0 7px #f8d99c60;
+}
+
+.ribbon-front {
+  width: 24px;
+  height: 105px;
+  left: 63px;
+  bottom: 0;
+  transform: translateZ(39px);
+}
+
+.ribbon-right {
+  width: 24px;
+  height: 105px;
+  right: -12px;
+  bottom: 0;
+  transform: rotateY(90deg);
+  transform-origin: left center;
+}
+
+.ribbon-top {
+  width: 150px;
+  height: 13px;
+  left: 0;
+  top: -6px;
+  transform: translateZ(40px);
+}
+
+.gift-lid {
+  position: absolute;
+  width: 166px;
+  height: 34px;
+  left: -8px;
+  top: -28px;
+  transform-style: preserve-3d;
+  transform-origin: 50% 100% -37px;
+  transition: transform 1.3s cubic-bezier(.2,.8,.2,1);
+  z-index: 5;
+}
+
+.lid-top {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #ffb3ca, #df3e78);
+  border: 1px solid #ffd6e480;
+  transform: translateZ(38px);
+}
+
+.lid-front {
+  position: absolute;
+  width: 166px;
+  height: 25px;
+  left: 0;
+  bottom: -25px;
+  transform: rotateX(-90deg);
+  transform-origin: top;
+  background: linear-gradient(90deg, #e64a80, #b51e55);
+}
+
+.lid-side {
+  position: absolute;
+  width: 76px;
+  height: 25px;
+  right: -38px;
+  bottom: -25px;
+  transform: rotateY(90deg) rotateX(-90deg);
+  transform-origin: top;
+  background: #9d1a49;
+}
+
+.lid-ribbon {
+  position: absolute;
+  width: 25px;
+  height: 34px;
+  left: 70px;
+  top: 0;
+  transform: translateZ(39px);
+  background: linear-gradient(90deg, #d0a04e, #fff0c2, #d0a04e);
+}
+
+.bow {
+  position: absolute;
+  width: 40px;
+  height: 26px;
+  top: -26px;
+  left: 45px;
+  border: 7px solid #f8d99c;
+  border-radius: 50% 50% 15% 50%;
+  transform: rotate(22deg);
+}
+
+.bow::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 26px;
+  left: 25px;
+  top: -7px;
+  border: 7px solid #e4bc72;
+  border-radius: 50% 50% 50% 15%;
+  transform: rotate(-45deg);
+}
+
+.gift-button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  color: white;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gift-button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 12px;
+  border-radius: 12px;
+}
+
+.gift-3d.opened {
+  animation: none;
+  transform: rotateX(-8deg) rotateY(-28deg) translateY(18px);
+}
+
+.gift-3d.opened .gift-lid {
+  transform: rotateX(-125deg) translateY(-6px);
+}
+
+.gift-3d.opened .gift-shadow {
+  opacity: .4;
+}
+
+/* Gift reveal */
+
+.reveal-wrap {
+  width: min(100%, 620px);
+  animation: revealPhoto .9s ease both;
+}
+
+.reveal-wrap img {
+  display: block;
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  margin: 20px auto;
+  border-radius: 15px;
+  box-shadow: 0 0 35px #ff83ad26;
+  background: #ffffff08;
+}
+
+@keyframes revealPhoto {
+  from { opacity: 0; transform: scale(.8) translateY(18px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- ==================================
-       SCENE 1: ROSE OPENING
-  =================================== -->
-  <section id="roseScene" class="scene active">
-    <p class="eyebrow">A little world made for you</p>
-    <h1>Our <span class="accent">Love Story</span></h1>
+<!-- SCENE 1: ROSE VIDEO -->
+<section id="roseScene" class="scene active">
+  <p class="eyebrow">A little world made for you</p>
+  <h1>Our <span class="accent">Love Story</span></h1>
+  <p class="subtitle">
+    Some feelings are too beautiful for words.
+    This little surprise is just for you. ❤️
+  </p>
 
-    <p class="subtitle">
-      Some feelings are too beautiful for words.
-      So I made you a little surprise. ❤️
+  <div class="character-stage">
+    <div class="glow-orb"></div>
+    <video id="roseVideo"
+      class="character-video"
+      autoplay muted loop playsinline preload="auto">
+      <source src="videos/rose-transparent.webm" type="video/webm">
+    </video>
+  </div>
+
+  <button id="beginButton" class="btn">Begin Our Story ❤️</button>
+  <p class="small-note">Made with love, just for you.</p>
+</section>
+
+
+<!-- SCENE 2: FIVE PHOTO REVEALS -->
+<section id="memoriesScene" class="scene">
+  <p class="eyebrow">Every moment matters</p>
+  <h2>Our Little <span class="accent">Memories</span></h2>
+  <p class="subtitle">
+    Five little moments. A thousand feelings.
+    Every memory has a place in my heart. 💗
+  </p>
+
+  <div id="memoryGrid" class="memory-grid">
+    <figure class="memory-card">
+      <img src="images/memory1.jpg" alt="Memory one">
+      <figcaption>Our beautiful beginning</figcaption>
+    </figure>
+
+    <figure class="memory-card">
+      <img src="images/memory2.jpg" alt="Memory two">
+      <figcaption>Your smile, my happiness</figcaption>
+    </figure>
+
+    <figure class="memory-card">
+      <img src="images/memory3.jpg" alt="Memory three">
+      <figcaption>A moment to remember</figcaption>
+    </figure>
+
+    <figure class="memory-card">
+      <img src="images/memory4.jpg" alt="Memory four">
+      <figcaption>Little things, big feelings</figcaption>
+    </figure>
+
+    <figure class="memory-card">
+      <img src="images/memory5.jpg" alt="Memory five">
+      <figcaption>More memories to come</figcaption>
+    </figure>
+  </div>
+
+  <button id="memoriesNext" class="btn">Continue 💌</button>
+</section>
+
+
+<!-- SCENE 3: PASSWORD -->
+<section id="passwordScene" class="scene">
+  <div class="panel">
+    <div class="lock-icon">🔐</div>
+    <p class="eyebrow">A little secret</p>
+    <h2>Only for <span class="accent">you</span></h2>
+    <p class="subtitle">Enter the secret word to unlock the next surprise.</p>
+
+    <form id="passwordForm">
+      <label for="passwordInput">Secret password</label>
+      <input id="passwordInput" class="password-input"
+        type="password" placeholder="Enter password"
+        autocomplete="off" autocapitalize="none" required>
+
+      <p id="passwordError" class="error-text" aria-live="polite"></p>
+      <button class="btn" type="submit">Unlock My Heart 💗</button>
+    </form>
+  </div>
+</section>
+
+
+<!-- SCENE 4: TEDDY PROPOSAL -->
+<section id="proposalScene" class="scene">
+  <p class="eyebrow">One question from my heart</p>
+  <h2>Will You Be <span class="accent">Mine?</span></h2>
+  <p class="subtitle">
+    A little teddy has something very special to ask you. 🧸
+  </p>
+
+  <div class="character-stage">
+    <div class="glow-orb"></div>
+    <video id="proposalVideo" class="character-video"
+      muted playsinline autoplay loop preload="auto">
+      <source src="videos/teddy-proposal-transparent.webm" type="video/webm">
+    </video>
+  </div>
+
+  <p class="video-hint">Choose your answer when you're ready. ❤️</p>
+
+  <div class="button-row">
+    <button id="yesButton" class="btn">YES! 💖</button>
+    <button id="noButton" class="btn secondary">NO 🖤</button>
+  </div>
+</section>
+
+
+<!-- SCENE 5: ACCEPTANCE -->
+<section id="acceptedScene" class="scene">
+  <p class="eyebrow">A moment to treasure</p>
+  <h2>You Made Me <span class="accent">Smile!</span></h2>
+  <p class="subtitle">A little celebration from my heart to yours. 💗</p>
+
+  <div class="character-stage">
+    <div class="glow-orb"></div>
+    <video id="acceptedVideo" class="character-video"
+      muted playsinline preload="auto">
+      <source src="videos/proposal-accepted-transparent.webm" type="video/webm">
+    </video>
+  </div>
+
+  <p id="acceptedStatus" class="video-hint">Your surprise is waiting...</p>
+
+  <button id="continueGiftButton" class="btn gold hidden">
+    Open Your Birthday Gift 🎁
+  </button>
+</section>
+
+
+<!-- SCENE 6: NO MESSAGE -->
+<section id="noScene" class="scene">
+  <div class="panel">
+    <div class="sad-heart">🖤</div>
+    <p class="eyebrow">A wish from my heart</p>
+    <p class="birthday-message">
+      Happy birthday to you 🖤<br>
+      life long stay happy like this moment 🫂👑
     </p>
+  </div>
+</section>
 
-    <div class="rose-frame">
-      <video
-        id="roseVideo"
-        src="videos/rose.mp4"
-        playsinline
-        autoplay
-        muted
-        loop
-        preload="metadata"
-        aria-label="Opening rose animation">
-      </video>
-    </div>
 
-    <button id="beginButton" class="btn" type="button">
-      Begin Our Story ❤️
+<!-- SCENE 7: 3D GIFT -->
+<section id="giftScene" class="scene">
+  <p class="eyebrow">One last surprise</p>
+  <h2>A Gift From <span class="accent">My Heart</span></h2>
+
+  <p id="giftInstruction" class="subtitle">
+    Tap the three-dimensional gift to open it. 🎀
+  </p>
+
+  <div id="giftArea" class="gift-scene">
+    <div class="gift-shadow"></div>
+
+    <button id="giftButton" class="gift-button" aria-label="Open 3D gift">
+      <div id="gift3d" class="gift-3d">
+        <div class="gift-body">
+          <div class="gift-face gift-front"></div>
+          <div class="gift-face gift-right"></div>
+          <div class="gift-face gift-left"></div>
+          <div class="gift-face gift-top"></div>
+
+          <div class="gift-ribbon ribbon-front"></div>
+          <div class="gift-ribbon ribbon-right"></div>
+          <div class="gift-ribbon ribbon-top"></div>
+        </div>
+
+        <div class="gift-lid">
+          <div class="lid-top"></div>
+          <div class="lid-front"></div>
+          <div class="lid-side"></div>
+          <div class="lid-ribbon"></div>
+          <div class="bow"></div>
+        </div>
+      </div>
     </button>
+  </div>
 
-    <p class="tiny-note">Made with love, just for you.</p>
-  </section>
-
-
-  <!-- ==================================
-       SCENE 2: FIVE MEMORIES
-  =================================== -->
-  <section id="memoriesScene" class="scene">
-    <p class="eyebrow">Every moment matters</p>
-    <h2>Our Little <span class="accent">Memories</span></h2>
-
+  <div id="giftReveal" class="reveal-wrap hidden">
+    <h2 class="accent">For You, With Love ❤️</h2>
+    <img src="images/gift-reveal.jpg" alt="Your special birthday surprise">
     <p class="subtitle">
-      Every memory has a place in my heart.
-      These moments are a little part of our story. 💗
+      You are a beautiful part of my world.
+      I hope this little surprise makes you smile. 💗
     </p>
+  </div>
 
-    <div class="memory-grid">
-      <figure class="memory-card">
-        <img src="images/memory1.jpg" alt="Our first memory"
-             loading="eager">
-        <figcaption>Our beautiful beginning</figcaption>
-      </figure>
-
-      <figure class="memory-card">
-        <img src="images/memory2.jpg" alt="A special memory"
-             loading="eager">
-        <figcaption>A moment to remember</figcaption>
-      </figure>
-
-      <figure class="memory-card">
-        <img src="images/memory3.jpg" alt="A happy memory"
-             loading="eager">
-        <figcaption>Your smile, my happiness</figcaption>
-      </figure>
-
-      <figure class="memory-card">
-        <img src="images/memory4.jpg" alt="Another special memory"
-             loading="eager">
-        <figcaption>Little things, big feelings</figcaption>
-      </figure>
-
-      <figure class="memory-card">
-        <img src="images/memory5.jpg" alt="Our favorite memory"
-             loading="eager">
-        <figcaption>More memories to come</figcaption>
-      </figure>
-    </div>
-
-    <button id="memoriesNext" class="btn" type="button">
-      There's More 💌
-    </button>
-  </section>
+  <p class="small-note">Forever a special memory. ✨</p>
+</section>
 
 
-  <!-- ==================================
-       SCENE 3: PASSWORD
-  =================================== -->
-  <section id="passwordScene" class="scene">
-    <div class="panel">
-      <div class="lock-icon" aria-hidden="true">🔐</div>
+<script>
+"use strict";
 
-      <p class="eyebrow">A little secret</p>
-      <h2>Only for <span class="accent">you</span></h2>
+/* ===================================
+   SCENE NAVIGATION
+=================================== */
 
-      <p class="subtitle">
-        This little surprise is waiting behind a secret word.
-        Enter the password to continue.
-      </p>
+const sceneIds = [
+  "roseScene",
+  "memoriesScene",
+  "passwordScene",
+  "proposalScene",
+  "acceptedScene",
+  "noScene",
+  "giftScene"
+];
 
-      <form id="passwordForm">
-        <label for="passwordInput">Your secret password</label>
+const roseVideo = document.getElementById("roseVideo");
+const proposalVideo = document.getElementById("proposalVideo");
+const acceptedVideo = document.getElementById("acceptedVideo");
 
-        <input
-          id="passwordInput"
-          class="password-input"
-          type="password"
-          placeholder="Enter password"
-          autocomplete="off"
-          autocapitalize="none"
-          spellcheck="false"
-          required>
+const allVideos = [roseVideo, proposalVideo, acceptedVideo];
 
-        <p id="passwordError" class="error-text" role="status"></p>
+function stopAllVideos() {
+  allVideos.forEach(video => {
+    video.pause();
+    video.muted = true;
+  });
+}
 
-        <button class="btn" type="submit">
-          Unlock My Heart 💗
-        </button>
-      </form>
-    </div>
-  </section>
+function playMuted(video, restart = false) {
+  video.muted = true;
 
+  if (restart) {
+    try { video.currentTime = 0; } catch (_) {}
+  }
 
-  <!-- ==================================
-       SCENE 4: TEDDY PROPOSAL
-  =================================== -->
-  <section id="proposalScene" class="scene">
-    <p class="eyebrow">One question from my heart</p>
-    <h2>Will You Be <span class="accent">Mine?</span></h2>
+  video.play().catch(() => {
+    console.info("Video playback may require a user tap.");
+  });
+}
 
-    <p class="subtitle">
-      This little teddy has something very special to ask you. 🧸
-    </p>
+function showScene(sceneId) {
+  stopAllVideos();
 
-    <div class="video-frame">
-      <video
-        id="proposalVideo"
-        src="videos/teddy-proposal.mp4"
-        playsinline
-        controls
-        preload="metadata"
-        aria-label="Teddy bear proposal animation">
-      </video>
-    </div>
+  sceneIds.forEach(id => {
+    document.getElementById(id).classList.toggle("active", id === sceneId);
+  });
 
-    <p class="video-hint">
-      Watch the little surprise, then choose your answer. ❤️
-    </p>
+  if (sceneId === "roseScene") {
+    playMuted(roseVideo);
+  }
 
-    <div class="button-row">
-      <button id="yesButton" class="btn" type="button">
-        YES! 💖
-      </button>
+  if (sceneId === "proposalScene") {
+    playMuted(proposalVideo, true);
+  }
 
-      <button id="noButton" class="btn secondary" type="button">
-        NO 🖤
-      </button>
-    </div>
-  </section>
+  if (sceneId === "acceptedScene") {
+    playMuted(acceptedVideo, true);
+  }
 
+  if (sceneId === "memoriesScene") {
+    const grid = document.getElementById("memoryGrid");
 
-  <!-- ==================================
-       SCENE 5: ACCEPTANCE VIDEO
-  =================================== -->
-  <section id="acceptedScene" class="scene">
-    <p class="eyebrow">A moment to treasure</p>
-    <h2>You Made Me <span class="accent">Smile!</span></h2>
+    // Restart all five staggered reveal animations every time.
+    grid.classList.remove("memories-active");
 
-    <p class="subtitle">
-      Let this little moment say what words sometimes cannot. 💗
-    </p>
-
-    <div class="video-frame">
-      <video
-        id="acceptedVideo"
-        src="videos/proposal-accepted.mp4"
-        playsinline
-        controls
-        preload="metadata"
-        aria-label="Proposal acceptance animation">
-      </video>
-    </div>
-
-    <p id="acceptedStatus" class="video-hint">
-      Your next surprise is waiting...
-    </p>
-
-    <button id="continueGiftButton" class="btn gold hidden" type="button">
-      Open Your Birthday Gift 🎁
-    </button>
-  </section>
-
-
-  <!-- ==================================
-       SCENE 6: NO RESPONSE
-  =================================== -->
-  <section id="noScene" class="scene">
-    <div class="panel">
-      <div class="sad-heart" aria-hidden="true">🖤</div>
-
-      <p class="eyebrow">A wish from my heart</p>
-
-      <p class="birthday-message">
-        Happy birthday to you 🖤<br>
-        life long stay happy like this moment 🫂👑
-      </p>
-
-      <p class="tiny-note">
-        No matter what, I wish you happiness always.
-      </p>
-    </div>
-  </section>
-
-
-  <!-- ==================================
-       SCENE 7: GIFT
-  =================================== -->
-  <section id="giftScene" class="scene">
-    <p class="eyebrow">One last surprise</p>
-    <h2>A Gift From <span class="accent">My Heart</span></h2>
-
-    <p id="giftInstruction" class="subtitle">
-      There's something special waiting inside.
-      Tap the gift to open it. 🎀
-    </p>
-
-    <div id="giftArea" class="gift-area">
-      <button
-        id="giftButton"
-        class="gift-button"
-        type="button"
-        aria-label="Open your birthday gift">
-        <span class="gift-emoji" aria-hidden="true">🎁</span>
-      </button>
-    </div>
-
-    <div id="giftReveal" class="reveal-wrap hidden">
-      <h2 class="accent">For You, With Love ❤️</h2>
-
-      <img
-        id="giftImage"
-        src="images/gift-reveal.jpg"
-        alt="Your special birthday surprise">
-
-      <p class="subtitle">
-        You are a beautiful part of my world.
-        I hope this surprise makes you smile. 💗
-      </p>
-    </div>
-
-    <p class="footer-note">Forever a special memory. ✨</p>
-  </section>
-
-
-  <script>
-    "use strict";
-
-    /* ==================================
-       1. SCENE NAVIGATION
-    =================================== */
-
-    const sceneIds = [
-      "roseScene",
-      "memoriesScene",
-      "passwordScene",
-      "proposalScene",
-      "acceptedScene",
-      "noScene",
-      "giftScene"
-    ];
-
-    const videos = [
-      document.getElementById("roseVideo"),
-      document.getElementById("proposalVideo"),
-      document.getElementById("acceptedVideo")
-    ];
-
-    function stopOtherVideos(exceptVideo = null) {
-      videos.forEach((video) => {
-        if (video !== exceptVideo) {
-          video.pause();
-        }
-      });
-    }
-
-    function showScene(sceneId) {
-      const target = document.getElementById(sceneId);
-
-      if (!target) {
-        console.error("Scene not found:", sceneId);
-        return;
-      }
-
-      stopOtherVideos();
-
-      sceneIds.forEach((id) => {
-        const scene = document.getElementById(id);
-        scene.classList.toggle("active", id === sceneId);
-      });
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
-
-      // Play the rose animation when returning to its scene.
-      if (sceneId === "roseScene") {
-        const roseVideo = document.getElementById("roseVideo");
-        roseVideo.play().catch(() => {
-          // Autoplay may be restricted by the browser.
-        });
-      }
-    }
-
-
-    /* ==================================
-       2. OPENING TO MEMORIES
-    =================================== */
-
-    document.getElementById("beginButton").addEventListener("click", () => {
-      showScene("memoriesScene");
+    grid.querySelectorAll(".memory-card").forEach(card => {
+      card.style.animation = "none";
+      void card.offsetWidth;
+      card.style.animation = "";
     });
 
-    document.getElementById("memoriesNext").addEventListener("click", () => {
-      showScene("passwordScene");
-      document.getElementById("passwordInput").focus();
+    requestAnimationFrame(() => {
+      grid.classList.add("memories-active");
     });
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
 
-    /* ==================================
-       3. PASSWORD CHECK
-       Password: rise
-    =================================== */
+/* ===================================
+   OPENING AND MEMORIES
+=================================== */
 
-    const passwordForm = document.getElementById("passwordForm");
-    const passwordInput = document.getElementById("passwordInput");
-    const passwordError = document.getElementById("passwordError");
+document.getElementById("beginButton").addEventListener("click", () => {
+  showScene("memoriesScene");
+});
 
-    passwordForm.addEventListener("submit", (event) => {
-      event.preventDefault();
+document.getElementById("memoriesNext").addEventListener("click", () => {
+  showScene("passwordScene");
+});
 
-      const enteredPassword = passwordInput.value.trim();
 
-      if (enteredPassword.toLowerCase() === "rise") {
-        passwordError.textContent = "";
-        passwordInput.value = "";
+/* ===================================
+   PASSWORD: rise
+=================================== */
 
-        showScene("proposalScene");
+const passwordForm = document.getElementById("passwordForm");
+const passwordInput = document.getElementById("passwordInput");
+const passwordError = document.getElementById("passwordError");
 
-        const proposalVideo = document.getElementById("proposalVideo");
+passwordForm.addEventListener("submit", event => {
+  event.preventDefault();
 
-        // Try to start the video; its controls remain available.
-        proposalVideo.currentTime = 0;
-        proposalVideo.play().catch(() => {
-          // If autoplay is blocked, the visitor can press Play.
-        });
-      } else {
-        passwordError.textContent = "That's not the secret word. Try again. 💌";
-        passwordInput.value = "";
-        passwordInput.focus();
-      }
+  if (passwordInput.value.trim().toLowerCase() === "rise") {
+    passwordError.textContent = "";
+    passwordInput.value = "";
+    showScene("proposalScene");
+  } else {
+    passwordError.textContent = "Incorrect password. Try again. 💌";
+    passwordInput.value = "";
+    passwordInput.focus();
+  }
+});
+
+
+/* ===================================
+   YES: PLAY ACCEPTANCE ANIMATION
+=================================== */
+
+const continueGiftButton = document.getElementById("continueGiftButton");
+const acceptedStatus = document.getElementById("acceptedStatus");
+
+function acceptanceComplete() {
+  acceptedStatus.textContent = "Your birthday gift is ready. 💗";
+  continueGiftButton.classList.remove("hidden");
+}
+
+acceptedVideo.addEventListener("ended", acceptanceComplete);
+
+document.getElementById("yesButton").addEventListener("click", () => {
+  continueGiftButton.classList.add("hidden");
+  acceptedStatus.textContent = "A special moment, just for you... 💗";
+  showScene("acceptedScene");
+
+  // Transparent animation video is muted.
+  acceptedVideo.loop = false;
+});
+
+continueGiftButton.addEventListener("click", () => {
+  showScene("giftScene");
+});
+
+// If the acceptance video cannot load, don't trap the visitor.
+acceptedVideo.addEventListener("error", () => {
+  acceptedStatus.textContent =
+    "The animation could not load. You can still continue to your gift.";
+  continueGiftButton.classList.remove("hidden");
+});
+
+
+/* ===================================
+   NO: END THE SEQUENCE
+=================================== */
+
+document.getElementById("noButton").addEventListener("click", () => {
+  showScene("noScene");
+});
+
+
+/* ===================================
+   3D GIFT OPENING
+=================================== */
+
+const giftButton = document.getElementById("giftButton");
+const gift3d = document.getElementById("gift3d");
+const giftArea = document.getElementById("giftArea");
+const giftReveal = document.getElementById("giftReveal");
+const giftInstruction = document.getElementById("giftInstruction");
+
+let giftHasOpened = false;
+
+giftButton.addEventListener("click", () => {
+  if (giftHasOpened) return;
+
+  giftHasOpened = true;
+
+  // Open the 3D lid first.
+  gift3d.classList.add("opened");
+  giftInstruction.textContent = "A little surprise, made just for you... ❤️";
+
+  // Then remove the box and show the surprise image.
+  window.setTimeout(() => {
+    giftArea.classList.add("hidden");
+    giftInstruction.classList.add("hidden");
+    giftReveal.classList.remove("hidden");
+
+    giftReveal.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
     });
+  }, 1250);
+});
 
 
-    /* ==================================
-       4. YES: ACCEPTANCE VIDEO
-    =================================== */
+/* ===================================
+   FLOATING HEARTS
+=================================== */
 
-    const acceptedVideo = document.getElementById("acceptedVideo");
-    const continueGiftButton = document.getElementById("continueGiftButton");
-    const acceptedStatus = document.getElementById("acceptedStatus");
+const reduceMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
 
-    let acceptanceFinished = false;
+function createHeart() {
+  if (reduceMotion || document.hidden) return;
 
-    function finishAcceptance() {
-      acceptanceFinished = true;
-      acceptedStatus.textContent = "Your birthday gift is ready. 💗";
-      continueGiftButton.classList.remove("hidden");
-    }
+  const heart = document.createElement("span");
+  heart.className = "heart";
+  heart.textContent = Math.random() > .5 ? "♥" : "♡";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (12 + Math.random() * 18) + "px";
+  heart.style.animationDuration = (7 + Math.random() * 5) + "s";
 
-    document.getElementById("yesButton").addEventListener("click", () => {
-      acceptanceFinished = false;
-      continueGiftButton.classList.add("hidden");
-      acceptedStatus.textContent = "Playing your special moment... 💗";
+  document.body.appendChild(heart);
 
-      showScene("acceptedScene");
+  heart.addEventListener("animationend", () => heart.remove(), { once: true });
+}
 
-      acceptedVideo.currentTime = 0;
-      acceptedVideo.play().then(() => {
-        // The next button appears when the video finishes.
-      }).catch(() => {
-        acceptedStatus.textContent =
-          "Tap Play on the video. When it finishes, continue to your gift.";
-        continueGiftButton.classList.remove("hidden");
-      });
-    });
-
-    acceptedVideo.addEventListener("ended", finishAcceptance);
-
-    // If the visitor manually pauses or seeks to the end,
-    // keep the next step available.
-    acceptedVideo.addEventListener("timeupdate", () => {
-      if (
-        Number.isFinite(acceptedVideo.duration) &&
-        acceptedVideo.duration > 0 &&
-        acceptedVideo.currentTime >= acceptedVideo.duration - 0.25
-      ) {
-        finishAcceptance();
-      }
-    });
-
-    continueGiftButton.addEventListener("click", () => {
-      showScene("giftScene");
-    });
+if (!reduceMotion) {
+  window.setInterval(createHeart, 950);
+}
 
 
-    /* ==================================
-       5. NO: STOP AND SHOW MESSAGE
-    =================================== */
+/* ===================================
+   MUTE ALL VIDEO AUDIO
+=================================== */
 
-    document.getElementById("noButton").addEventListener("click", () => {
-      showScene("noScene");
-    });
+allVideos.forEach(video => {
+  video.muted = true;
+  video.defaultMuted = true;
+  video.volume = 0;
 
+  video.addEventListener("volumechange", () => {
+    video.muted = true;
+    video.volume = 0;
+  });
+});
 
-    /* ==================================
-       6. GIFT OPENING AND IMAGE REVEAL
-    =================================== */
-
-    const giftButton = document.getElementById("giftButton");
-    const giftArea = document.getElementById("giftArea");
-    const giftReveal = document.getElementById("giftReveal");
-    const giftInstruction = document.getElementById("giftInstruction");
-    const giftImage = document.getElementById("giftImage");
-
-    let giftOpened = false;
-
-    giftButton.addEventListener("click", () => {
-      if (giftOpened) return;
-
-      giftOpened = true;
-
-      // Remove the gift visual and reveal the image.
-      giftArea.classList.add("hidden");
-      giftInstruction.classList.add("hidden");
-      giftReveal.classList.remove("hidden");
-
-      // Bring the revealed surprise into view.
-      giftReveal.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
-    });
-
-    giftImage.addEventListener("error", () => {
-      giftImage.alt = "Gift image could not be loaded. Check the image filename.";
-      giftImage.style.minHeight = "120px";
-      giftImage.style.border = "1px dashed rgba(255,255,255,.4)";
-      giftImage.style.padding = "20px";
-      giftImage.style.color = "white";
-    });
-
-
-    /* ==================================
-       7. FLOATING HEARTS
-    =================================== */
-
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    function createFloatingHeart() {
-      if (reducedMotion || document.hidden) return;
-
-      const heart = document.createElement("span");
-      heart.className = "floating-heart";
-      heart.textContent = Math.random() > 0.5 ? "♥" : "♡";
-
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = (12 + Math.random() * 20) + "px";
-      heart.style.animationDuration = (7 + Math.random() * 6) + "s";
-
-      document.body.appendChild(heart);
-
-      heart.addEventListener("animationend", () => {
-        heart.remove();
-      }, { once: true });
-    }
-
-    if (!reducedMotion) {
-      setInterval(createFloatingHeart, 900);
-    }
-
-
-    /* ==================================
-       8. FRIENDLY MEDIA ERROR CHECKS
-    =================================== */
-
-    videos.forEach((video) => {
-      video.addEventListener("error", () => {
-        console.warn(
-          "Could not load video. Check the file path:",
-          video.getAttribute("src")
-        );
-      });
-    });
-
-    document.querySelectorAll(".memory-card img").forEach((img) => {
-      img.addEventListener("error", () => {
-        img.alt = "Photo not found — check the image filename.";
-      });
-    });
-  </script>
+// Start the opening animation muted.
+playMuted(roseVideo);
+</script>
 
 </body>
 </html>
