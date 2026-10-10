@@ -22,6 +22,7 @@
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   font-family: Georgia, "Times New Roman", serif;
   color: white;
   background:
@@ -118,7 +119,7 @@ p {
   border: 1px solid #ffffff44;
   border-radius: 30px;
   padding: 10px 13px;
-  background: #251326eF;
+  background: #251326ef;
   color: white;
   font-size: .8rem;
 }
@@ -131,6 +132,30 @@ p {
   background: var(--card);
   box-shadow: 0 15px 50px #00000030;
   backdrop-filter: blur(12px);
+}
+
+/* ROSE VIDEO */
+
+.rose-video {
+  width: min(80vw, 340px);
+  height: min(42vh, 340px);
+  min-height: 200px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.rose-video video,
+.rose-video .rose {
+  grid-area: 1 / 1;
+}
+
+.rose-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
 }
 
 .rose {
@@ -162,7 +187,8 @@ p {
   to { transform: translateY(-115vh) rotate(35deg); opacity: 0; }
 }
 
-/* Five tappable memory cards */
+/* FIVE TAP-TO-REVEAL PHOTOS */
+
 .memory-grid {
   width: min(100%, 680px);
   display: grid;
@@ -190,7 +216,7 @@ p {
   justify-self: center;
 }
 
-.memory-card .card-front {
+.card-front {
   height: 100%;
   width: 100%;
   padding: 12px;
@@ -202,7 +228,6 @@ p {
   background:
     radial-gradient(circle at 50% 30%, #ad477c66, transparent 55%),
     linear-gradient(145deg, #39203e, #1b1026);
-  transition: opacity .35s;
 }
 
 .card-heart {
@@ -226,12 +251,11 @@ p {
   font-size: .78rem;
 }
 
-.memory-card .card-back {
+.card-back {
   display: none;
   position: absolute;
   inset: 0;
   background: #241327;
-  animation: sceneIn .45s ease both;
 }
 
 .memory-card.revealed .card-front {
@@ -241,6 +265,7 @@ p {
 .memory-card.revealed .card-back {
   display: flex;
   flex-direction: column;
+  animation: sceneIn .45s ease both;
 }
 
 .card-back img {
@@ -327,6 +352,8 @@ input[type="password"]:focus {
   justify-content: center;
 }
 
+/* 3D GIFT */
+
 .gift-stage {
   perspective: 900px;
   padding: 35px 0;
@@ -396,6 +423,7 @@ input[type="password"]:focus {
   left: 58px;
   width: 65px;
   height: 40px;
+  transition: transform 1s ease;
 }
 
 .gift-bow::before, .gift-bow::after {
@@ -416,7 +444,6 @@ input[type="password"]:focus {
 
 .gift.open .gift-bow {
   transform: translateY(-65px) rotate(-25deg);
-  transition: transform 1s ease;
 }
 
 .gift-reveal {
@@ -478,11 +505,16 @@ input[type="password"]:focus {
   <source src="audio/romantic-music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- SCENE 1: INTRO -->
+<!-- SCENE 1: ROSE INTRO -->
 <section id="intro" class="scene active">
   <div class="eyebrow">A little surprise made with love</div>
 
-  <div class="rose" aria-hidden="true">🌹</div>
+  <div class="rose-video">
+    <video id="roseVideo" autoplay muted loop playsinline preload="auto">
+      <source src="videos/rose-transparent.webm" type="video/webm">
+    </video>
+    <div id="roseFallback" class="rose" aria-hidden="true">🌹</div>
+  </div>
 
   <h1>Our Love Story</h1>
 
@@ -497,15 +529,12 @@ input[type="password"]:focus {
   </button>
 </section>
 
-<!-- SCENE 2: FIVE TAP-TO-REVEAL PHOTOS -->
+<!-- SCENE 2: FIVE TAPPABLE PHOTOS -->
 <section id="memories" class="scene">
   <div class="eyebrow">Little pieces of us</div>
   <h2>Tap to Reveal Our Memories 💗</h2>
 
-  <p>
-    Every picture holds a little feeling.
-    Tap each card to reveal the photo and its message.
-  </p>
+  <p>Tap each card to reveal its photo and message.</p>
 
   <div class="memory-grid" id="memoryGrid">
 
@@ -534,7 +563,7 @@ input[type="password"]:focus {
       <span class="card-back">
         <img src="images/memory2.jpg" alt="Our second memory">
         <span class="memory-message">
-          Your smile has a way of making ordinary moments special. 🫶
+          Your smile makes ordinary moments special. 🫶
         </span>
       </span>
     </button>
@@ -564,7 +593,7 @@ input[type="password"]:focus {
       <span class="card-back">
         <img src="images/memory4.jpg" alt="Our fourth memory">
         <span class="memory-message">
-          Thank you for the laughter, the warmth, and the memories. 🖤
+          Thank you for the laughter, warmth, and memories. 🖤
         </span>
       </span>
     </button>
@@ -579,7 +608,7 @@ input[type="password"]:focus {
       <span class="card-back">
         <img src="images/memory5.jpg" alt="Our fifth memory">
         <span class="memory-message">
-          My favourite part of this story is all the moments still to come. 👑
+          My favourite part is all the moments still to come. 👑
         </span>
       </span>
     </button>
@@ -604,37 +633,28 @@ input[type="password"]:focus {
     <p>Enter our special password to unlock the next surprise.</p>
 
     <form id="passwordForm">
-      <input
-        id="passwordInput"
-        type="password"
-        placeholder="Enter password"
-        autocomplete="off"
-        aria-label="Special password"
-        required
-      >
+      <input id="passwordInput" type="password"
+        placeholder="Enter password" autocomplete="off"
+        aria-label="Special password" required>
 
       <div style="height:16px"></div>
 
       <button class="primary" type="submit">Unlock My Heart ❤️</button>
-
       <p id="passwordError" class="error" aria-live="polite"></p>
     </form>
   </div>
 </section>
 
-<!-- SCENE 4: PROPOSAL -->
+<!-- SCENE 4: TEDDY PROPOSAL -->
 <section id="proposal" class="scene">
   <div class="eyebrow">From my heart to yours</div>
   <h2>A Question Just for You 💍</h2>
 
   <div class="video-frame">
-    <video
-      id="proposalVideo"
-      class="hidden"
-      playsinline
-      preload="metadata"
-    >
-      <source src="videos/teddy-proposal-transparent.webm" type="video/webm">
+    <video id="proposalVideo" class="hidden"
+      muted playsinline preload="metadata">
+      <source src="videos/teddy-proposal-transparent.webm"
+        type="video/webm">
     </video>
 
     <div id="proposalFallback" class="video-fallback">
@@ -649,13 +669,8 @@ input[type="password"]:focus {
   </p>
 
   <div class="choices">
-    <button id="yesButton" class="primary" type="button">
-      YES! ❤️
-    </button>
-
-    <button id="noButton" class="secondary" type="button">
-      NO
-    </button>
+    <button id="yesButton" class="primary" type="button">YES! ❤️</button>
+    <button id="noButton" class="secondary" type="button">NO</button>
   </div>
 </section>
 
@@ -665,12 +680,8 @@ input[type="password"]:focus {
   <h1>Yay! You Said YES! 💖</h1>
 
   <div class="video-frame">
-    <video
-      id="acceptedVideo"
-      class="hidden"
-      playsinline
-      preload="metadata"
-    >
+    <video id="acceptedVideo" class="hidden"
+      muted playsinline preload="metadata">
       <source src="videos/proposal-accepted-transparent.webm"
         type="video/webm">
     </video>
@@ -691,14 +702,13 @@ input[type="password"]:focus {
   </button>
 </section>
 
-<!-- SCENE 6: GIFT -->
+<!-- SCENE 6: GIFT BOX -->
 <section id="giftScene" class="scene">
   <div class="eyebrow">Made especially for you</div>
   <h2>Your Little Birthday Gift 🎁</h2>
-
   <p>Tap the gift box to open it and discover your surprise.</p>
 
-  <div class="gift-stage" id="giftStage">
+  <div class="gift-stage">
     <div id="giftBox" class="gift" role="button" tabindex="0"
       aria-label="Open the birthday gift">
       <div class="gift-bow"></div>
@@ -725,7 +735,6 @@ input[type="password"]:focus {
 <!-- SCENE 7: FINAL MESSAGE -->
 <section id="finalScene" class="scene">
   <div class="rose" aria-hidden="true">🖤</div>
-
   <div class="eyebrow">Always wishing you happiness</div>
 
   <h1>Happy Birthday, Uyire 🎂</h1>
@@ -748,7 +757,7 @@ input[type="password"]:focus {
 <script>
 "use strict";
 
-/* ---------- Scene navigation ---------- */
+/* ---------- SCENE NAVIGATION ---------- */
 
 const scenes = document.querySelectorAll(".scene");
 
@@ -763,22 +772,21 @@ function showScene(sceneId) {
   }
 }
 
-/* ---------- Background music ---------- */
+/* ---------- BACKGROUND MUSIC ---------- */
 
 const backgroundMusic = document.getElementById("backgroundMusic");
 const musicToggle = document.getElementById("musicToggle");
 
-let musicStarted = false;
-
+backgroundMusic.loop = true;
 backgroundMusic.volume = 0.35;
 
 async function startBackgroundMusic() {
   try {
     await backgroundMusic.play();
-    musicStarted = true;
     musicToggle.textContent = "🔊 Music On";
   } catch (error) {
     musicToggle.textContent = "🎵 Tap for music";
+    console.warn("Music could not start. Check the MP3 path.", error);
   }
 }
 
@@ -791,31 +799,71 @@ musicToggle.addEventListener("click", async () => {
   }
 });
 
-/* ---------- Floating hearts ---------- */
+/* ---------- KEEP ALL VIDEOS MUTED ---------- */
+
+const videoIds = ["roseVideo", "proposalVideo", "acceptedVideo"];
+
+videoIds.forEach(id => {
+  const video = document.getElementById(id);
+
+  video.muted = true;
+  video.defaultMuted = true;
+  video.volume = 0;
+
+  video.addEventListener("play", () => {
+    video.muted = true;
+    video.volume = 0;
+  });
+});
+
+/* ---------- ROSE VIDEO ---------- */
+
+const roseVideo = document.getElementById("roseVideo");
+const roseFallback = document.getElementById("roseFallback");
+
+roseVideo.addEventListener("playing", () => {
+  roseFallback.classList.add("hidden");
+});
+
+roseVideo.addEventListener("error", () => {
+  roseFallback.classList.remove("hidden");
+});
+
+function playRoseVideo() {
+  roseVideo.muted = true;
+
+  roseVideo.play().catch(error => {
+    roseFallback.classList.remove("hidden");
+    console.warn("Rose video could not play.", error);
+  });
+}
+
+/* ---------- FLOATING HEARTS ---------- */
 
 for (let i = 0; i < 14; i++) {
   const heart = document.createElement("div");
+
   heart.className = "floating-heart";
   heart.textContent = ["♥", "♡", "✦"][i % 3];
   heart.style.setProperty("--left", (Math.random() * 100) + "%");
   heart.style.setProperty("--duration", (9 + Math.random() * 10) + "s");
   heart.style.setProperty("--delay", (-Math.random() * 15) + "s");
   heart.style.fontSize = (14 + Math.random() * 18) + "px";
+
   document.body.appendChild(heart);
 }
 
-/* ---------- Begin story ---------- */
+/* ---------- BEGIN ---------- */
 
-document.getElementById("beginButton").addEventListener("click", async () => {
-  // Starting audio here works with mobile browser user-gesture rules.
-  if (!musicStarted && backgroundMusic.paused) {
-    await startBackgroundMusic();
+document.getElementById("beginButton").addEventListener("click", () => {
+  if (backgroundMusic.paused) {
+    startBackgroundMusic();
   }
 
   showScene("memories");
 });
 
-/* ---------- Tap-to-reveal memories ---------- */
+/* ---------- FIVE TAP-TO-REVEAL PHOTOS ---------- */
 
 const memoryCards = document.querySelectorAll(".memory-card");
 const memoryProgress = document.getElementById("memoryProgress");
@@ -837,8 +885,7 @@ memoryCards.forEach(card => {
 
     if (revealedMemories.size === memoryCards.length) {
       continueMemories.classList.remove("hidden");
-      memoryProgress.textContent =
-        "All five memories revealed! ❤️";
+      memoryProgress.textContent = "All five memories revealed! ❤️";
     }
   });
 });
@@ -847,7 +894,7 @@ continueMemories.addEventListener("click", () => {
   showScene("passwordScene");
 });
 
-/* ---------- Password ---------- */
+/* ---------- PASSWORD: rise ---------- */
 
 const passwordForm = document.getElementById("passwordForm");
 const passwordInput = document.getElementById("passwordInput");
@@ -859,6 +906,7 @@ passwordForm.addEventListener("submit", event => {
   if (passwordInput.value.trim().toLowerCase() === "rise") {
     passwordError.textContent = "";
     passwordInput.value = "";
+
     showScene("proposal");
     playOptionalVideo("proposalVideo", "proposalFallback");
   } else {
@@ -870,28 +918,34 @@ passwordForm.addEventListener("submit", event => {
   }
 });
 
-/* ---------- Optional videos and fallbacks ---------- */
+/* ---------- OPTIONAL VIDEOS WITH FALLBACKS ---------- */
 
 function playOptionalVideo(videoId, fallbackId) {
   const video = document.getElementById(videoId);
   const fallback = document.getElementById(fallbackId);
 
+  video.pause();
   video.classList.add("hidden");
   fallback.classList.remove("hidden");
 
-  video.pause();
+  video.muted = true;
+  video.defaultMuted = true;
+  video.volume = 0;
 
-  // If no video file exists or playback fails, keep the fallback visible.
   video.oncanplay = () => {
-    fallback.classList.add("hidden");
+    video.muted = true;
+    video.volume = 0;
+
     video.classList.remove("hidden");
+    fallback.classList.add("hidden");
 
     const playback = video.play();
 
     if (playback && typeof playback.catch === "function") {
-      playback.catch(() => {
+      playback.catch(error => {
         video.classList.add("hidden");
         fallback.classList.remove("hidden");
+        console.warn("Optional video could not play.", error);
       });
     }
   };
@@ -915,7 +969,7 @@ document.getElementById("noButton").addEventListener("click", () => {
   showScene("finalScene");
 });
 
-/* ---------- Gift ---------- */
+/* ---------- GIFT ---------- */
 
 const giftBox = document.getElementById("giftBox");
 const giftReveal = document.getElementById("giftReveal");
@@ -957,17 +1011,15 @@ finishButton.addEventListener("click", () => {
   showScene("finalScene");
 });
 
-/* ---------- Restart ---------- */
+/* ---------- RESTART ---------- */
 
 document.getElementById("restartButton").addEventListener("click", () => {
-  // Reset memory cards and progress.
   memoryCards.forEach(card => card.classList.remove("revealed"));
   revealedMemories.clear();
 
   memoryProgress.textContent = "Memories revealed: 0 / 5";
   continueMemories.classList.add("hidden");
 
-  // Reset gift.
   giftOpened = false;
   giftBox.classList.remove("open");
   giftReveal.style.display = "none";
@@ -975,7 +1027,6 @@ document.getElementById("restartButton").addEventListener("click", () => {
   finishButton.classList.add("hidden");
   giftHint.textContent = "Tap the gift box ✨";
 
-  // Reset videos.
   ["proposalVideo", "acceptedVideo"].forEach(id => {
     const video = document.getElementById(id);
     video.pause();
@@ -989,7 +1040,21 @@ document.getElementById("restartButton").addEventListener("click", () => {
   passwordError.textContent = "";
   passwordInput.value = "";
 
+  roseFallback.classList.remove("hidden");
+  playRoseVideo();
+
   showScene("intro");
+});
+
+/* ---------- INITIALISE ---------- */
+
+// Muted video can usually autoplay. If it cannot, the rose emoji remains visible.
+playRoseVideo();
+
+// If the MP3 fails to load, log a useful diagnostic in the browser console.
+backgroundMusic.addEventListener("error", () => {
+  musicToggle.textContent = "⚠️ Check music file";
+  console.warn("Could not load audio/romantic-music.mp3. Check the filename and path.");
 });
 </script>
 
