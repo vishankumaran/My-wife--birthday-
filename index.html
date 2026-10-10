@@ -4,285 +4,655 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#100923">
-<title>Our Love Story 🖤🩷</title>
+<meta name="theme-color" content="#140b2b">
+<meta name="description" content="A romantic birthday surprise made with love.">
+<title>Our Love Story ❤️</title>
 
 <style>
 :root {
-  --pink: #ff83bd;
-  --gold: #f6d58c;
   --night: #100923;
-  --cream: #fff0e6;
+  --purple: #281447;
+  --pink: #ff82bc;
+  --rose: #f7a6b8;
+  --gold: #f7d58a;
+  --cream: #fff3e4;
 }
 * { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  color: #fff6fc;
+  color: #fff7fc;
   font-family: Georgia, "Times New Roman", serif;
   background:
-    radial-gradient(ellipse at 50% 15%, #51265e 0%, transparent 48%),
-    linear-gradient(145deg, #0d0920, #28113d 58%, #100923);
+    radial-gradient(ellipse at 50% 15%, #49245d 0%, transparent 48%),
+    linear-gradient(145deg, #0d0920, #25103c 60%, #100923);
 }
 button, input { font: inherit; }
 button {
-  min-height: 48px;
-  padding: 12px 19px;
-  border: 1px solid #f6d58c99;
-  border-radius: 28px;
-  background: linear-gradient(135deg, #ffe7b8, #ff91c7);
-  color: #32132e;
-  font-weight: bold;
   cursor: pointer;
   touch-action: manipulation;
-  box-shadow: 0 5px 24px #ff82bc24;
+  border: 1px solid #f7d58a99;
+  border-radius: 30px;
+  padding: 13px 20px;
+  min-height: 46px;
+  color: #2b1232;
+  background: linear-gradient(135deg, #ffe5b2, #ff91c7);
+  font-weight: bold;
+  box-shadow: 0 5px 25px #ff82bc28;
+  transition: transform .2s, filter .2s;
 }
 button:active { transform: scale(.97); }
-button:focus-visible { outline: 3px solid white; outline-offset: 3px; }
-button:disabled { opacity: .6; cursor: default; }
-.secondary { color: white; background: #ffffff12; border-color: #ffffff55; }
+button:focus-visible, input:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+button:disabled { opacity: .6; cursor: wait; }
+.secondary {
+  color: white;
+  background: #ffffff12;
+  border-color: #ffffff55;
+}
 [hidden] { display: none !important; }
 
-header { text-align: center; padding: 24px 12px 8px; position: relative; z-index: 1; }
-.eyebrow { color: var(--gold); letter-spacing: 3px; text-transform: uppercase; font-size: .72rem; }
-h1 { font-size: clamp(2rem, 8vw, 3.6rem); font-weight: normal; color: #ffe3f1; text-shadow: 0 0 24px #ff70bb70; margin: 10px 0; }
-h2 { font-size: clamp(1.5rem, 6vw, 2.2rem); font-weight: normal; color: #ffe3f1; }
-p { line-height: 1.7; color: #f4e7f5; }
-main { width: min(100% - 24px, 700px); margin: auto; position: relative; z-index: 1; padding-bottom: 90px; }
-.scene { display: none; text-align: center; padding: 20px 6px 32px; }
-.scene.active { display: block; animation: sceneIn .6s ease both; }
-@keyframes sceneIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0; }
-.small { color: #d7c6e3; font-size: .88rem; }
-#stars, #effects { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
-#stars { z-index: 0; }
-#effects { z-index: 20; }
-.star { position: absolute; color: #ffdfa4; animation: twinkle 2.5s ease-in-out infinite alternate; }
-@keyframes twinkle { to { opacity: .15; transform: scale(.5); } }
-
-/* VIDEO: fills the scene, never a framed player */
-.video-stage {
-  width: 100%;
-  max-width: 560px;
-  min-height: 180px;
-  margin: 18px auto;
-  display: grid;
-  place-items: center;
+header {
   position: relative;
-  overflow: hidden;
-  background: radial-gradient(ellipse, #642d66 0%, #21102f 58%, transparent 75%);
-  border-radius: 18px;
+  z-index: 1;
+  text-align: center;
+  padding: 22px 12px 0;
 }
-.story-video {
-  display: block;
-  width: 100%;
-  max-height: 65vh;
-  object-fit: contain;
-  border: 0;
-  outline: 0;
-  background: transparent;
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: .7rem;
 }
-.video-fallback { font-size: 6rem; padding: 25px 0; filter: drop-shadow(0 0 20px #ff82bc); }
-.video-note { font-size: .8rem; color: #d7c6e3; }
+h1 {
+  margin: 8px 0;
+  font-size: clamp(2rem, 9vw, 4rem);
+  font-weight: normal;
+  color: #ffe4f2;
+  text-shadow: 0 0 24px #ff70bb80;
+}
+h2 {
+  color: #ffe4f2;
+  font-weight: normal;
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
+}
+p { line-height: 1.7; color: #f4e7f5; }
+.small { font-size: .85rem; color: #d7c6e3; }
 
-/* MEMORY CARDS: tap each card to reveal its own photo */
-.memory-grid {
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.star {
+  position: absolute;
+  color: #ffdfaa;
+  opacity: .65;
+  animation: twinkle 2.5s ease-in-out infinite alternate;
+}
+@keyframes twinkle {
+  to { opacity: .15; transform: scale(.55); }
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 24px, 760px);
+  margin: auto;
+  padding: 15px 0 90px;
+}
+.scene {
+  display: none;
+  text-align: center;
+  padding: 18px 8px 35px;
+}
+.scene.active {
+  display: block;
+  animation: sceneIn .65s ease both;
+}
+@keyframes sceneIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.status {
+  min-height: 1.5em;
+  color: var(--gold);
+  overflow-wrap: anywhere;
+}
+
+/* INTRO HEARTS */
+.heart-stage {
+  min-height: 210px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 12px auto;
+}
+.half {
+  display: inline-block;
+  font-size: clamp(4.5rem, 20vw, 7rem);
+}
+.half.left { animation: leftJoin 1.8s ease-in-out both; }
+.half.right { animation: rightJoin 1.8s ease-in-out both; }
+@keyframes leftJoin {
+  from { transform: translateX(-75px) rotate(-20deg); }
+  to { transform: translateX(5px); filter: drop-shadow(0 0 18px #ff78bf); }
+}
+@keyframes rightJoin {
+  from { transform: translateX(75px) rotate(20deg); }
+  to { transform: translateX(-5px); filter: drop-shadow(0 0 18px #ff78bf); }
+}
+
+/* MEMORIES */
+.heart-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 13px;
-  margin: 24px auto;
+  max-width: 570px;
+  margin: 25px auto;
 }
 .memory-card {
   min-width: 0;
   padding: 10px;
-  border: 1px solid #f6d58c66;
-  border-radius: 15px;
-  background: #ffffff09;
-  box-shadow: 0 8px 25px #0002;
-}
-.memory-card button {
-  width: 100%;
-  min-height: 115px;
-  padding: 8px;
-  border: 0;
+  color: white;
+  background: #ffffff0a;
+  border: 1px solid #ffb9da55;
+  border-radius: 17px;
   box-shadow: none;
-  background: linear-gradient(145deg, #512653, #30133f);
-  color: white;
-  border-radius: 10px;
+  animation: gentleFloat 3s ease-in-out infinite;
 }
-.memory-icon { display: block; font-size: 3rem; }
-.memory-label { display: block; font-size: .85rem; margin-top: 5px; }
-.memory-photo {
+.memory-card:nth-child(even) { animation-delay: -.9s; }
+.memory-card .heart {
+  display: block;
+  font-size: 2.8rem;
+  margin-bottom: 4px;
+}
+.memory-card .memory-label {
+  display: block;
+  font-size: .8rem;
+  color: #f9d7eb;
+}
+.memory-card.done {
+  border-color: var(--gold);
+  background: #ff8cbd17;
+}
+@keyframes gentleFloat {
+  50% { transform: translateY(-5px); }
+}
+.memory-display {
   width: 100%;
-  height: 0;
-  opacity: 0;
-  object-fit: cover;
-  border-radius: 10px;
+  max-width: 550px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #f7d58a;
+  border-radius: 15px;
+  background: linear-gradient(140deg, #ffe8ce, #f7a6c6);
+  box-shadow: 0 15px 45px #0007;
+  transform-origin: left center;
+  animation: unfold .8s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes unfold {
+  from {
+    opacity: 0;
+    transform: perspective(900px) rotateY(-75deg) scale(.85);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(900px) rotateY(0) scale(1);
+  }
+}
+.memory-display img {
   display: block;
-  transition: opacity .5s ease, height .5s ease;
+  width: 100%;
+  max-height: 58vh;
+  object-fit: contain;
+  border-radius: 7px;
+  background: #351b42;
 }
-.memory-card.revealed .memory-photo {
-  height: 210px;
-  opacity: 1;
-  margin-top: 8px;
-  animation: photoReveal .65s ease both;
-}
-@keyframes photoReveal {
-  from { opacity: 0; transform: perspective(600px) rotateY(-35deg) scale(.88); }
-  to { opacity: 1; transform: perspective(600px) rotateY(0) scale(1); }
-}
-.photo-error { display: none; font-size: .8rem; overflow-wrap: anywhere; color: #ffd4e9; padding: 8px; }
-.memory-card.image-missing .photo-error { display: block; }
-.memory-card.revealed button { background: linear-gradient(135deg, #9e477b, #55255f); }
-
-/* ROSE PASSWORD */
-.rose-emoji { font-size: clamp(6rem, 28vw, 10rem); animation: roseSway 3s ease-in-out infinite; filter: drop-shadow(0 0 25px #ff6da6); }
-@keyframes roseSway { 50% { transform: rotate(7deg) scale(1.05); } }
-input[type=password] {
-  display: block;
-  width: min(100%, 320px);
-  margin: 15px auto;
-  padding: 14px;
-  text-align: center;
-  border: 1px solid #ffadd1;
-  border-radius: 12px;
-  color: white;
-  background: #ffffff12;
-}
-
-/* PROPOSAL */
-.proposal-stage { max-width: 540px; }
-.proposal-stage video { width: 100%; max-height: 60vh; object-fit: contain; }
-.proposal-fallback { font-size: 5rem; padding: 15px; }
-.feedback { min-height: 28px; color: #ffd5eb; }
-
-/* CURTAIN */
-.curtain {
-  height: 120px;
-  position: relative;
-  overflow: hidden;
+.photo-fallback {
+  min-height: 240px;
   display: grid;
   place-items: center;
-  margin: 18px auto;
-  border: 1px solid #f6d58c88;
-  background: radial-gradient(circle, #ff91c7, #421747);
+  padding: 15px;
+  overflow-wrap: anywhere;
+  color: #fff;
+  background: linear-gradient(135deg, #442452, #a34e83);
+  border-radius: 7px;
+  font-size: 2.5rem;
 }
-.curtain::before, .curtain::after {
-  content: "";
-  position: absolute;
-  top: 0; bottom: 0; width: 50%;
-  background: repeating-linear-gradient(90deg, #650e38, #a62b5d 18%, #510c32 38%);
-  transition: transform 1.4s ease;
-  z-index: 2;
-}
-.curtain::before { left: 0; }
-.curtain::after { right: 0; }
-.curtain.open::before { transform: translateX(-100%); }
-.curtain.open::after { transform: translateX(100%); }
-.curtain span { color: var(--gold); }
 
-/* 3D GIFT */
-.gift-scene { perspective: 900px; padding: 20px 0; }
+/* ROSE VIDEO */
+.video-stage {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  min-height: 220px;
+  margin: 20px auto;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 22px;
+  background: radial-gradient(ellipse, #5d245d66, transparent 72%);
+}
+.rose-video {
+  display: block;
+  width: 100%;
+  max-height: 55vh;
+  object-fit: contain;
+  background: transparent;
+}
+.rose-fallback {
+  font-size: clamp(7rem, 30vw, 11rem);
+  filter: drop-shadow(0 0 25px #ff65a7);
+  animation: roseSway 3s ease-in-out infinite;
+}
+@keyframes roseSway {
+  50% { transform: rotate(6deg) scale(1.05); }
+}
+.password-input {
+  display: block;
+  width: min(100%, 330px);
+  margin: 15px auto;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #ffadd1;
+  color: white;
+  background: #ffffff12;
+  text-align: center;
+}
+.password-input::placeholder { color: #e0cce4; }
+
+/* PROPOSAL VIDEO AND TEDDY FALLBACK */
+.proposal-stage {
+  position: relative;
+  width: 100%;
+  max-width: 570px;
+  min-height: 280px;
+  margin: 20px auto;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid #f7d58a44;
+  background:
+    radial-gradient(ellipse at center, #66306c 0%, #29153e 70%);
+  box-shadow: 0 15px 40px #0005;
+}
+.character-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 65vh;
+  object-fit: contain;
+  background: transparent;
+}
+.teddy-fallback {
+  width: 100%;
+  padding: 25px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+.teddy {
+  width: 43%;
+  max-width: 210px;
+  position: relative;
+  text-align: center;
+  filter: drop-shadow(0 12px 12px #0005);
+}
+.teddy-emoji {
+  display: block;
+  font-size: clamp(4.5rem, 20vw, 7rem);
+  animation: teddyIdle 2.4s ease-in-out infinite;
+}
+.teddy:nth-child(2) .teddy-emoji { animation-delay: -.8s; }
+@keyframes teddyIdle {
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+.teddy-name {
+  display: inline-block;
+  padding: 5px 7px;
+  border-radius: 9px;
+  color: #ffe6f1;
+  font-size: .8rem;
+  font-weight: bold;
+  background: #35153d;
+  border: 1px solid #f7d58a77;
+}
+.proposal-ring {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  font-size: 2rem;
+  animation: ringFloat 2s ease-in-out infinite;
+}
+@keyframes ringFloat {
+  50% { transform: translateY(-8px) rotate(8deg); }
+}
+
+/* FULL SIZE THEATRE REVEAL */
+.theatre {
+  position: relative;
+  width: 100%;
+  height: clamp(350px, 76vh, 700px);
+  min-height: 350px;
+  margin: 24px auto;
+  overflow: hidden;
+  isolation: isolate;
+  border: 2px solid #f6d28a;
+  border-radius: 9px;
+  background: #160b24;
+  box-shadow: 0 18px 55px #0008;
+}
+.theatre-art {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse at center, #ffb6d744, transparent 60%),
+    linear-gradient(135deg, #27103c, #100923);
+}
+.surprise-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(.85);
+  transition: opacity 1.2s ease, transform 1.5s ease;
+}
+.theatre.revealed .surprise-image {
+  opacity: 1;
+  transform: scale(1);
+}
+.surprise-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  background:
+    radial-gradient(ellipse, #8d3f76, transparent 65%),
+    linear-gradient(135deg, #27103c, #100923);
+}
+.surprise-fallback .big-heart { font-size: clamp(5rem, 20vw, 9rem); }
+.theatre.revealed .surprise-fallback { opacity: 1; }
+.theatre.has-image .surprise-fallback { display: none; }
+
+.curtain-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 51%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #430a2a 0%, #6d123e 8%,
+      #a42c5d 17%, #71113f 26%,
+      #4b0b30 35%
+    );
+  box-shadow: inset 0 0 35px #19051488;
+  transition: transform 2s cubic-bezier(.2,.75,.15,1);
+}
+.curtain-panel.left {
+  left: 0;
+  border-right: 3px solid #d7a14b;
+  transform-origin: left center;
+}
+.curtain-panel.right {
+  right: 0;
+  border-left: 3px solid #d7a14b;
+  transform-origin: right center;
+}
+.theatre.revealed .curtain-panel.left { transform: translateX(-102%); }
+.theatre.revealed .curtain-panel.right { transform: translateX(102%); }
+
+.curtain-top {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: linear-gradient(#ffe3a0, #c78a37 45%, #8b5426);
+  transition: transform 1s ease;
+}
+.theatre.revealed .curtain-top {
+  transform: translateY(-100%);
+}
+.curtain-caption {
+  position: absolute;
+  z-index: 5;
+  left: 10px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #ffe8b2;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  text-shadow: 0 3px 12px #000;
+  transition: opacity .4s ease;
+}
+.theatre.revealed .curtain-caption {
+  opacity: 0;
+}
+.theatre.revealed {
+  box-shadow: 0 0 40px #ff8cbd55, 0 18px 55px #0008;
+}
+.theatre:not(.revealed) .surprise-image { visibility: visible; }
+
+/* GIFT BOX */
+.gift-scene {
+  perspective: 1000px;
+  padding: 15px 0;
+}
 .gift {
   position: relative;
-  width: 190px;
-  height: 175px;
-  margin: 30px auto 10px;
+  width: min(230px, 70vw);
+  height: 205px;
+  margin: 45px auto 15px;
   transform-style: preserve-3d;
   animation: giftFloat 3s ease-in-out infinite;
 }
-@keyframes giftFloat { 50% { transform: translateY(-8px) rotateY(5deg); } }
+@keyframes giftFloat {
+  50% { transform: translateY(-8px) rotateY(4deg); }
+}
 .gift-box {
   position: absolute;
+  left: 10%;
   bottom: 0;
-  width: 100%;
-  height: 125px;
-  border: 2px solid #ffdf9b;
-  background: linear-gradient(90deg, #bd3376, #ffafd0 45%, #db478b);
-  box-shadow: 0 20px 40px #0006;
+  width: 80%;
+  height: 130px;
+  border: 2px solid #ffdfa0;
+  background: linear-gradient(90deg, #c82f78, #ffb4d3 48%, #d63f87);
+  box-shadow: 0 15px 30px #0007;
 }
 .gift-box::before {
   content: "";
   position: absolute;
-  left: 42%;
-  width: 16%;
+  left: 41%;
+  width: 18%;
   height: 100%;
-  background: linear-gradient(90deg, #b88027, #fff0ac, #c18a31);
+  background: linear-gradient(90deg, #b77b2d, #fff0b0, #d5a049);
 }
 .gift-lid {
   position: absolute;
+  left: 5%;
+  top: 39px;
   z-index: 2;
-  top: 30px;
-  left: -8px;
-  width: 206px;
-  height: 38px;
-  border: 2px solid #ffe4a8;
-  background: linear-gradient(#ffcee3, #e45498);
+  width: 90%;
+  height: 39px;
+  border: 2px solid #ffe7aa;
+  background: linear-gradient(#ffd5e6, #e4589a);
   transform-origin: left bottom;
   transition: transform 1.1s ease;
 }
 .gift-lid::after {
   content: "🎀";
   position: absolute;
-  left: 40%;
   top: -39px;
+  left: 35%;
   font-size: 3.5rem;
 }
-.gift.open .gift-lid { transform: translateY(-80px) translateX(25px) rotate(-32deg); }
+.gift.open .gift-lid {
+  transform: translateY(-80px) rotate(-28deg) translateX(35px);
+}
 .gift.open { animation: none; }
-.gift-aura { width: 190px; height: 25px; margin: auto; background: #ff7ab7; filter: blur(25px); }
+.gift-aura {
+  width: 220px;
+  max-width: 80%;
+  height: 28px;
+  margin: auto;
+  border-radius: 50%;
+  background: #ff7ab7;
+  filter: blur(25px);
+  opacity: .65;
+}
+
+/* LETTER */
 .letter {
   display: none;
-  max-width: 540px;
-  margin: 22px auto;
+  max-width: 560px;
+  margin: 24px auto;
   padding: 24px 20px;
   color: #593449;
   text-align: left;
   background: linear-gradient(135deg, #fff7e9, #ffdfeb);
   border: 5px double #d7a45c;
+  border-radius: 5px;
   box-shadow: 0 15px 50px #0006;
+  white-space: pre-line;
 }
 .letter.show { display: block; animation: letterRise 1s ease both; }
-.letter h2 { color: #a34475; text-align: center; }
-.letter p { color: #593449; white-space: pre-line; }
-@keyframes letterRise { from { opacity: 0; transform: translateY(55px) scale(.85); } to { opacity: 1; transform: translateY(0) scale(1); } }
-
-/* FINAL MESSAGE */
-.final-message {
-  white-space: pre-line;
-  font-size: clamp(1.05rem, 4vw, 1.3rem);
-  line-height: 1.9;
-  opacity: 0;
+@keyframes letterRise {
+  from { opacity: 0; transform: translateY(65px) scale(.85); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
-.final-message.show { animation: wishIn 1.5s ease forwards; }
-@keyframes wishIn { from { opacity: 0; transform: translateY(22px); filter: blur(5px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
-.final-heart { font-size: clamp(6rem, 28vw, 10rem); animation: heartbeat 1.3s infinite; filter: drop-shadow(0 0 25px #ff62b6); }
-@keyframes heartbeat { 15% { transform: scale(1.12); } 30% { transform: scale(1); } 45% { transform: scale(1.08); } }
-.particle { position: absolute; top: -35px; animation: fall 2.8s ease-in forwards; }
-@keyframes fall { to { transform: translate(var(--drift), 110vh) rotate(600deg); opacity: 0; } }
+.letter p { color: #593449; }
+.letter h2 { color: #a34475; text-align: center; }
 
+/* FINAL WISH */
+.final-heart {
+  font-size: clamp(6rem, 28vw, 11rem);
+  animation: heartBeat 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 25px #ff62b6);
+}
+@keyframes heartBeat {
+  0%,100% { transform: scale(1); }
+  15% { transform: scale(1.12); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+}
+.final-message {
+  max-width: 620px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #f7d58a88;
+  border-radius: 15px;
+  background: #ffffff0a;
+  white-space: pre-line;
+  animation: wishIn 1.3s ease both;
+}
+@keyframes wishIn {
+  from { opacity: 0; transform: translateY(25px); filter: blur(5px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* PARTICLES */
+#effects {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 30;
+}
+.particle {
+  position: absolute;
+  top: -40px;
+  user-select: none;
+  animation: particleFall var(--duration, 3s) ease-in forwards;
+}
+@keyframes particleFall {
+  to {
+    transform: translate(var(--drift), 110vh) rotate(650deg) scale(.5);
+    opacity: 0;
+  }
+}
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #c7b0d3;
+  font-size: .76rem;
+  padding: 14px 12px 85px;
+}
+
+/* MUSIC CONTROLS */
 .music-controls {
   position: fixed;
-  z-index: 30;
-  bottom: max(10px, env(safe-area-inset-bottom));
-  right: 10px;
+  z-index: 50;
+  left: 8px;
+  right: 8px;
+  bottom: max(8px, env(safe-area-inset-bottom));
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 6px;
+  gap: 7px;
+  pointer-events: none;
 }
-.music-controls button { min-height: 40px; padding: 8px 12px; font-size: .8rem; }
-footer { text-align: center; color: #c7b0d3; font-size: .78rem; padding: 15px 10px 85px; }
+.music-controls button {
+  pointer-events: auto;
+  padding: 9px 13px;
+  min-height: 40px;
+  font-size: .82rem;
+  backdrop-filter: blur(10px);
+}
+.music-status {
+  width: 100%;
+  text-align: center;
+  color: #ffe4f2;
+  font-size: .75rem;
+  text-shadow: 0 2px 8px #000;
+}
 
-@media (min-width: 520px) { .memory-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 560px) {
+  .heart-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 420px) {
+  main { width: calc(100% - 16px); }
+  .scene { padding-left: 3px; padding-right: 3px; }
+  .theatre { height: 68vh; min-height: 330px; }
+  .teddy-fallback { gap: 8px; }
+  .music-controls button { padding: 8px 10px; font-size: .76rem; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
     scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
   }
 }
 </style>
@@ -294,146 +664,225 @@ footer { text-align: center; color: #c7b0d3; font-size: .78rem; padding: 15px 10
 
 <header>
   <div class="eyebrow">A little universe made for you</div>
-  <h1 id="pageTitle">Our Love Story 🖤🩷</h1>
+  <h1 id="pageTitle">Our Love Story ❤️</h1>
   <div>Every heartbeat holds a memory. ❤️</div>
 </header>
 
 <main>
-  <!-- 1. ROSE VIDEO -->
-  <section class="scene active" id="s1">
-    <h2>A rose, just for you 🌹</h2>
-    <p>Every petal carries a little piece of my love.</p>
-    <div class="video-stage">
-      <video id="roseVideo" class="story-video" playsinline muted loop preload="metadata">
-        <source src="videos/rose-transparent.webm" type="video/webm">
-        <source src="videos/rose-animation.mp4" type="video/mp4">
-      </video>
-      <div class="video-fallback" id="roseFallback" hidden>🌹</div>
+
+<!-- SCENE 1: INTRO -->
+<section id="s1" class="scene active">
+  <h2>Two hearts. One beautiful story.</h2>
+  <p>In this enormous universe, my heart found you.</p>
+  <div class="heart-stage">
+    <span class="half left">🖤</span>
+    <span class="half right">🩷</span>
+  </div>
+  <p>Two little hearts, one beautiful journey.</p>
+  <div class="actions">
+    <button id="beginButton" type="button">Begin Our Story ✨</button>
+  </div>
+</section>
+
+<!-- SCENE 2: FIVE TAP-TO-REVEAL MEMORIES -->
+<section id="s2" class="scene">
+  <h2>Five little pieces of us 💕</h2>
+  <p>Tap each heart to unfold a special memory.</p>
+  <div id="heartGrid" class="heart-grid"></div>
+  <div id="photoReveal" aria-live="polite"></div>
+  <p id="memoryCount" class="small">Memories discovered: 0 / 5</p>
+  <div class="actions">
+    <button id="roseButton" type="button" hidden>Let Our Love Bloom 🌹</button>
+  </div>
+</section>
+
+<!-- SCENE 3: ROSE AND PASSWORD -->
+<section id="s3" class="scene">
+  <h2>A rose for my favorite person 🌹</h2>
+  <div class="video-stage">
+    <video
+      id="roseVideo"
+      class="rose-video"
+      muted
+      playsinline
+      loop
+      preload="metadata"
+      hidden
+    >
+      <source src="videos/rose-transparent.webm" type="video/webm">
+    </video>
+    <div id="roseFallback" class="rose-fallback" aria-label="Animated rose">🌹</div>
+  </div>
+  <p>Put the password to peel the petal.</p>
+  <form id="passwordForm">
+    <input
+      id="rosePassword"
+      class="password-input"
+      type="password"
+      placeholder="Enter the secret word"
+      autocomplete="off"
+      aria-label="Rose password"
+      required
+    >
+    <button type="submit">Unlock the Rose 🔐</button>
+  </form>
+  <p id="passwordMessage" class="status" aria-live="polite"></p>
+  <div id="proceedWrap" hidden>
+    <p>You found the secret. Shall we open the next chapter?</p>
+    <button id="proceedButton" type="button">Proceed 💫</button>
+  </div>
+</section>
+
+<!-- SCENE 4: PROPOSAL -->
+<section id="s4" class="scene">
+  <h2>A tiny question from my heart 💍</h2>
+  <p id="proposalIntro">Vishan has something very special to ask you...</p>
+
+  <div id="proposalStage" class="proposal-stage">
+    <video
+      id="proposalVideo"
+      class="character-video"
+      muted
+      playsinline
+      loop
+      preload="metadata"
+      hidden
+    >
+      <source src="videos/teddy-proposal.mp4" type="video/mp4">
+    </video>
+
+    <div id="proposalFallback" class="teddy-fallback">
+      <div class="teddy">
+        <span class="teddy-emoji">🧸</span>
+        <span class="teddy-name">VISHAN 🖤</span>
+      </div>
+      <div class="teddy">
+        <span class="teddy-emoji">🐻‍❄️</span>
+        <span class="teddy-name">DHARSHINI 🩷</span>
+      </div>
+      <span class="proposal-ring">💍</span>
     </div>
-    <p class="video-note">A little rose animation made for you.</p>
+  </div>
+
+  <h2 id="proposalQuestion">Dharshini, will you be mine forever? ❤️</h2>
+  <div class="actions" id="proposalActions">
+    <button id="yesButton" type="button">Yes, with all my heart! 💖</button>
+    <button id="noButton" class="secondary" type="button">Not yet 🙈</button>
+  </div>
+  <p id="proposalFeedback" class="status" aria-live="polite"></p>
+
+  <!-- FULL-SIZE CURTAIN WITH IMAGE BEHIND IT -->
+  <h2 id="revealTitle" hidden>Our beautiful surprise is waiting... ✨</h2>
+  <div id="theatre" class="theatre" hidden>
+    <div class="theatre-art">
+      <img
+        id="surpriseImage"
+        class="surprise-image"
+        src="images/surprise.jpg"
+        alt="Our special birthday photograph"
+      >
+      <div id="surpriseFallback" class="surprise-fallback">
+        <div class="big-heart">💖</div>
+        <h2>Our Love Story</h2>
+        <p>Every moment with you is my favorite memory.</p>
+        <p>Add your photograph as <strong>images/surprise.jpg</strong>.</p>
+      </div>
+    </div>
+    <div class="curtain-panel left"></div>
+    <div class="curtain-panel right"></div>
+    <div class="curtain-top"></div>
+    <div id="curtainCaption" class="curtain-caption">
+      A surprise is waiting behind the curtain ❤️
+    </div>
+  </div>
+  <div class="actions">
+    <button id="revealButton" type="button" hidden>Open the Curtains 🎉</button>
+    <button id="giftContinueButton" type="button" hidden>Continue to Your Gift 🎁</button>
+  </div>
+</section>
+
+<!-- SCENE 5: GIFT -->
+<section id="s5" class="scene">
+  <h2>A little gift, with a universe of love 🎁</h2>
+  <p>Vishan has one more surprise for Dharshini...</p>
+
+  <div class="gift-scene">
+    <div class="gift-aura"></div>
+    <div id="gift" class="gift">
+      <div class="gift-box"></div>
+      <div class="gift-lid"></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button id="openGiftButton" type="button">Open Your Gift 🎁</button>
+  </div>
+
+  <article id="letter" class="letter">
+    <h2>To My Favorite Person ❤️</h2>
+    <p id="letterContent"></p>
     <div class="actions">
-      <button id="beginButton" type="button">Begin Our Story ✨</button>
+      <button id="finalButton" type="button">One Last Surprise ✨</button>
     </div>
-  </section>
+  </article>
+</section>
 
-  <!-- 2. FIVE TAP-TO-REVEAL PHOTOS -->
-  <section class="scene" id="s2">
-    <h2>Five little pieces of us 💕</h2>
-    <p>Tap each heart to reveal a memory. Open all five to continue.</p>
-    <div class="memory-grid" id="memoryGrid"></div>
-    <p id="memoryCount" aria-live="polite">Memories discovered: 0 / 5</p>
-    <div class="actions">
-      <button id="toRoseButton" type="button" hidden>Let Our Love Bloom 🌹</button>
-    </div>
-  </section>
+<!-- SCENE 6: FINAL WISH -->
+<section id="s6" class="scene">
+  <h2 id="finalHeading">For You, My Love</h2>
+  <div class="final-heart">💖</div>
+  <div id="finalMessage" class="final-message"></div>
+  <div class="actions">
+    <button id="magicButton" type="button">A Little More Magic 💖</button>
+    <button id="replayButton" class="secondary" type="button">Relive Our Story ↻</button>
+  </div>
+</section>
 
-  <!-- 3. PASSWORD -->
-  <section class="scene" id="s3">
-    <h2>A rose for my favorite person</h2>
-    <div class="rose-emoji">🌹</div>
-    <p>Put the password to peel the petal.</p>
-    <form id="passwordForm">
-      <input id="rosePassword" type="password" placeholder="Enter the secret word"
-        autocomplete="off" aria-label="Rose password" required>
-      <button type="submit">Unlock the Rose 🔐</button>
-    </form>
-    <p id="passwordMessage" class="feedback" aria-live="polite"></p>
-    <div id="proceedWrap" hidden>
-      <p>The petals have revealed the secret. Shall we continue?</p>
-      <button id="proceedButton" type="button">Proceed 💫</button>
-    </div>
-  </section>
+<!-- SCENE 7: FINAL WISH IF PROPOSAL IS DECLINED THREE TIMES -->
+<section id="declinedScene" class="scene">
+  <div class="final-heart">🖤🩷</div>
+  <h2>Happy Birthday, My Dear ❤️</h2>
+  <div id="declinedMessage" class="final-message">
+    HAPPY BIRTHDAY TO YOU 🖤
+    Life long stay happy like this moment 🫂👑
+  </div>
+  <div class="actions">
+    <button id="declinedMagicButton" type="button">Sending You Love 💖</button>
+    <button id="declinedReplayButton" class="secondary" type="button">Start Again ↻</button>
+  </div>
+</section>
 
-  <!-- 4. PROPOSAL VIDEO -->
-  <section class="scene" id="s4">
-    <h2>A tiny question from my heart...</h2>
-    <div class="video-stage proposal-stage">
-      <video id="proposalVideo" class="story-video" playsinline muted preload="metadata">
-        <source src="videos/teddy-proposal.mp4" type="video/mp4">
-      </video>
-      <div class="video-fallback" id="proposalFallback" hidden>🧸💍</div>
-    </div>
-    <p id="proposalText"></p>
-    <div class="actions" id="proposalActions">
-      <button id="yesButton" type="button">Yes, with all my heart! 💖</button>
-      <button id="noButton" class="secondary" type="button">Not yet 🙈</button>
-    </div>
-    <p id="proposalFeedback" class="feedback" aria-live="polite"></p>
-    <div id="acceptedArea" hidden>
-      <div class="video-stage">
-        <video id="acceptedVideo" class="story-video" playsinline muted preload="metadata">
-          <source src="videos/teddy-hug.mp4" type="video/mp4">
-        </video>
-        <div class="video-fallback" id="acceptedFallback" hidden>🧸🩷🧸</div>
-      </div>
-      <div class="curtain" id="curtain">
-        <span>Our next memory is waiting ✨</span>
-      </div>
-      <div class="actions">
-        <button id="revealButton" type="button">Reveal Our Surprise 🎉</button>
-      </div>
-    </div>
-    <div id="goodbyeArea" hidden>
-      <h2 id="goodbyeMessage"></h2>
-      <button id="finishButton" type="button">One Last Little Surprise 💖</button>
-    </div>
-  </section>
-
-  <!-- 5. 3D GIFT -->
-  <section class="scene" id="s5">
-    <h2>A little gift, with a universe of love 🎁</h2>
-    <p>Vishan has one more surprise for Dharshini...</p>
-    <div class="gift-scene">
-      <div class="gift-aura"></div>
-      <div class="gift" id="gift">
-        <div class="gift-box"></div>
-        <div class="gift-lid"></div>
-      </div>
-    </div>
-    <div class="actions">
-      <button id="openGiftButton" type="button">Open Your Gift 🎁</button>
-    </div>
-    <article class="letter" id="letter">
-      <h2>To My Favorite Person ❤️</h2>
-      <p id="letterContent"></p>
-      <div class="actions">
-        <button id="finalButton" type="button">One Last Surprise ✨</button>
-      </div>
-    </article>
-  </section>
-
-  <!-- 6. FINAL WISH -->
-  <section class="scene" id="s6">
-    <h2 id="finalHeading">For You, My Love</h2>
-    <div class="final-heart">💖</div>
-    <p class="final-message" id="finalMessage"></p>
-    <div class="actions">
-      <button id="magicButton" type="button">A Little More Magic 💖</button>
-      <button id="replayButton" class="secondary" type="button">Relive Our Story ↻</button>
-    </div>
-  </section>
 </main>
 
+<!-- MUSIC: PLAYBACK STARTS AFTER THE USER TAPS PLAY -->
+<audio id="music" loop preload="auto">
+  <source src="romantic-music.mp3" type="audio/mpeg">
+</audio>
+
 <div class="music-controls">
-  <audio id="music" preload="metadata" loop>
-    <source src="romantic-music.mp3" type="audio/mpeg">
-  </audio>
-  <button class="secondary" id="musicButton" type="button">♫ Play Music</button>
-  <button class="secondary" id="stopMusicButton" type="button">■ Stop</button>
+  <button id="musicButton" type="button">♫ Play Music</button>
+  <button id="pauseMusicButton" class="secondary" type="button">Ⅱ Pause</button>
+  <button id="stopMusicButton" class="secondary" type="button">■ Stop</button>
+  <div id="musicStatus" class="music-status" aria-live="polite">
+    Tap Play Music to start your song.
+  </div>
 </div>
 
-<footer>Made with love, just for you. 🖤🩷</footer>
+<footer>Made with love, just for you. ✨</footer>
 
 <script>
 "use strict";
 
 /* =====================================================
-   PERSONAL SETTINGS — EDIT THESE VALUES
+   PERSONALIZATION — CHANGE THESE VALUES
    ===================================================== */
+
 const RECIPIENT_NAME = "Dharshini";
 const ROMANTIC_NICKNAME = "Uyire";
 const PROPOSAL_NAME = "Dharshini";
+const YOUR_NAME = "UNNAVAN";
 
+/* Birthday letter */
 const BIRTHDAY_LETTER = `My favorite person,
 
 Happy Birthday to the person who makes my world brighter just by being in it.
@@ -447,31 +896,24 @@ Today is your day, but having you in my life feels like a gift every day.
 Happy Birthday, My Love. ❤️
 
 With all my love,
-UNNAVAN`;
+${YOUR_NAME}`;
 
-const FINAL_SURPRISE_MESSAGE = `HAPPY BIRTHDAY TO YOU MY DEAR WIFE 🖤
+/* Final romantic message */
+const FINAL_SURPRISE_MESSAGE =
+`HAPPY BIRTHDAY TO YOU MY DEAR WIFE
+
 na evlo sanda pottalu onnatha thedi varuve,
 onna vitta enaku yar iruka,
 Nama rendu peru strangers ahh irunthu friends ara mari ipo ivlo close ahh iruko,
 Na en life fulla onaku tharanu nu nenaikikire
+
 LOVE YOU PONDATI 🖤🩷`;
 
-/*
-  FILES EXPECTED:
-  videos/rose-transparent.webm
-  videos/rose-animation.mp4       optional backup
-  videos/teddy-proposal.mp4
-  videos/teddy-hug.mp4
-  romantic-music.mp3
-  images/memory1.jpg ... images/memory5.jpg
-*/
+/* The exact local filename of your background song */
+const MUSIC_FILE = "romantic-music.mp3";
 
-/* =====================================================
-   LOGIC — NO NEED TO EDIT BELOW HERE
-   ===================================================== */
-const $ = id => document.getElementById(id);
-
-const memoryFiles = [
+/* Five photos, revealed individually when their hearts are tapped */
+const MEMORY_PHOTOS = [
   "images/memory1.jpg",
   "images/memory2.jpg",
   "images/memory3.jpg",
@@ -479,33 +921,34 @@ const memoryFiles = [
   "images/memory5.jpg"
 ];
 
-const memoryCaptions = [
-  "Every beginning becomes a beautiful memory.",
-  "Your smile is my favorite view.",
-  "Little moments, endless meaning.",
-  "My heart keeps choosing you.",
-  "Our story is my favorite adventure."
-];
+/* =====================================================
+   MAIN LOGIC
+   ===================================================== */
 
-const revealedMemories = new Set();
+const $ = id => document.getElementById(id);
+
+let openedMemories = new Set();
 let roseUnlocked = false;
-let proposalAccepted = false;
-let giftOpened = false;
 let rejectedCount = 0;
-let endingShown = false;
+let accepted = false;
+let giftOpened = false;
+let curtainOpened = false;
+let celebrationTimer = null;
+let musicStatusTimer = null;
 
-$("pageTitle").textContent = "For " + RECIPIENT_NAME + " 🖤🩷";
-$("proposalText").textContent =
-  PROPOSAL_NAME + ", will you accept my little proposal and make this story even more beautiful? 💍";
+/* Set personalized content */
+$("pageTitle").textContent = "For " + RECIPIENT_NAME + " ❤️";
+$("proposalQuestion").textContent =
+  PROPOSAL_NAME + ", will you be mine forever? ❤️";
+$("letterContent").textContent = BIRTHDAY_LETTER;
 $("finalHeading").textContent = "For You, " + ROMANTIC_NICKNAME;
 $("finalMessage").textContent = FINAL_SURPRISE_MESSAGE;
-$("letterContent").textContent = BIRTHDAY_LETTER.replace(
-  "My favorite person,",
-  "My favorite person, " + RECIPIENT_NAME + ","
-);
 
-/* Stars */
-for (let i = 0; i < 38; i++) {
+/* Music path: the MP3 must sit beside index.html */
+$("music").src = MUSIC_FILE;
+
+/* Create stars */
+for (let i = 0; i < 45; i++) {
   const star = document.createElement("span");
   star.className = "star";
   star.textContent = Math.random() > .5 ? "✦" : "·";
@@ -516,148 +959,213 @@ for (let i = 0; i < 38; i++) {
   $("stars").appendChild(star);
 }
 
-/* Scene changes */
+/* Scene navigation */
 function showScene(id) {
   document.querySelectorAll(".scene").forEach(scene => {
     scene.classList.toggle("active", scene.id === id);
   });
-  window.scrollTo({ top: 0, behavior: "auto" });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  if (id === "s3") playVideoIfAvailable("roseVideo");
+  if (id === "s4" && !accepted) playVideoIfAvailable("proposalVideo");
 }
 
-/* Play video silently; fallback art remains visible if video is missing */
-function playSilentVideo(videoId, fallbackId, restart = true) {
-  const video = $(videoId);
-  const fallback = $(fallbackId);
+/* Safely attempt muted video playback */
+function playVideoIfAvailable(id) {
+  const video = $(id);
+  if (!video || video.hidden) return;
+
   video.muted = true;
   video.defaultMuted = true;
   video.playsInline = true;
 
-  if (restart) {
-    try { video.currentTime = 0; } catch (_) {}
-  }
-
-  if (!video.currentSrc && !video.querySelector("source")) {
-    fallback.hidden = false;
-    video.hidden = true;
-    return;
-  }
-
-  video.hidden = false;
-  fallback.hidden = true;
-
-  const playAttempt = video.play();
-  if (playAttempt && typeof playAttempt.catch === "function") {
-    playAttempt.catch(() => {
-      /* Keep the video visible; Android may need a user tap to play. */
+  const promise = video.play();
+  if (promise && typeof promise.catch === "function") {
+    promise.catch(() => {
+      /* Browser or file preview may prevent playback.
+         The fallback illustration remains available. */
     });
   }
 }
 
-function stopVideo(videoId) {
-  const video = $(videoId);
-  video.pause();
-  try { video.currentTime = 0; } catch (_) {}
+/* Stop scene videos when leaving their scenes */
+function stopSceneVideos() {
+  ["roseVideo", "proposalVideo"].forEach(id => {
+    const video = $(id);
+    if (video && !video.paused) video.pause();
+  });
 }
 
-/* Detect missing video files */
-["roseVideo", "proposalVideo", "acceptedVideo"].forEach(id => {
-  const video = $(id);
-  video.addEventListener("error", () => {
-    const fallbackMap = {
-      roseVideo: "roseFallback",
-      proposalVideo: "proposalFallback",
-      acceptedVideo: "acceptedFallback"
-    };
-    $(fallbackMap[id]).hidden = false;
-  });
-});
+/* Keep navigation simple */
+const originalShowScene = showScene;
+showScene = function(id) {
+  stopSceneVideos();
+  originalShowScene(id);
+};
 
-/* START */
+/* =====================================================
+   INTRO AND MEMORIES
+   ===================================================== */
+
 $("beginButton").addEventListener("click", () => {
+  buildMemories();
   showScene("s2");
-  buildMemoryCards();
 });
 
-/* Build cards once */
-function buildMemoryCards() {
-  const grid = $("memoryGrid");
+function buildMemories() {
+  const grid = $("heartGrid");
   if (grid.children.length) return;
 
-  memoryFiles.forEach((path, index) => {
-    const card = document.createElement("div");
-    card.className = "memory-card";
-
+  for (let i = 0; i < 5; i++) {
     const button = document.createElement("button");
     button.type = "button";
-    button.setAttribute("aria-expanded", "false");
-    button.setAttribute("aria-label", "Reveal memory " + (index + 1));
-
-    const icon = document.createElement("span");
-    icon.className = "memory-icon";
-    icon.textContent = "💗";
-
-    const label = document.createElement("span");
-    label.className = "memory-label";
-    label.textContent = "Tap to reveal " + (index + 1);
-
-    button.append(icon, label);
-
-    const img = document.createElement("img");
-    img.className = "memory-photo";
-    img.alt = "Memory " + (index + 1) + " with " + RECIPIENT_NAME;
-    img.loading = "lazy";
-
-    const error = document.createElement("div");
-    error.className = "photo-error";
-    error.textContent = "Photo not found: " + path;
-
-    img.addEventListener("error", () => {
-      card.classList.add("image-missing");
-    });
-
-    img.src = path;
-
-    const caption = document.createElement("p");
-    caption.className = "small";
-    caption.textContent = memoryCaptions[index];
-    caption.hidden = true;
+    button.className = "memory-card";
+    button.innerHTML =
+      `<span class="heart">💗</span><span class="memory-label">Memory ${i + 1} · Tap to reveal</span>`;
 
     button.addEventListener("click", () => {
-      /* This changes state directly; it does not depend on animation callbacks. */
-      const isRevealed = card.classList.toggle("revealed");
-      button.setAttribute("aria-expanded", String(isRevealed));
-      label.textContent = isRevealed ? "Hide memory " + (index + 1) : "Tap to reveal " + (index + 1);
-      icon.textContent = isRevealed ? "💖" : "💗";
-      caption.hidden = !isRevealed;
-
-      if (isRevealed) revealedMemories.add(index);
-      else revealedMemories.delete(index);
-
-      $("memoryCount").textContent =
-        "Memories discovered: " + revealedMemories.size + " / 5";
-
-      $("toRoseButton").hidden = revealedMemories.size !== 5;
+      revealMemory(i, button);
     });
 
-    card.append(button, img, error, caption);
-    grid.appendChild(card);
-  });
+    grid.appendChild(button);
+  }
 }
 
-/* Rose/password */
-$("toRoseButton").addEventListener("click", () => showScene("s3"));
+function revealMemory(index, button) {
+  if (!openedMemories.has(index)) {
+    openedMemories.add(index);
+    button.classList.add("done");
+    button.querySelector(".heart").textContent = "💖";
+    button.querySelector(".memory-label").textContent =
+      "Memory " + (index + 1) + " ✓";
+  }
+
+  $("memoryCount").textContent =
+    "Memories discovered: " + openedMemories.size + " / 5";
+
+  showMemoryPhoto(index);
+
+  if (openedMemories.size === 5) {
+    $("roseButton").hidden = false;
+  }
+}
+
+function showMemoryPhoto(index) {
+  const frame = document.createElement("div");
+  frame.className = "memory-display";
+
+  const img = document.createElement("img");
+  img.src = MEMORY_PHOTOS[index];
+  img.alt = "Our memory " + (index + 1);
+  img.loading = "eager";
+
+  img.addEventListener("error", () => {
+    if (!img.isConnected) return;
+
+    img.hidden = true;
+    const fallback = document.createElement("div");
+    fallback.className = "photo-fallback";
+    fallback.innerHTML = "💞<div style='font-size:1rem;color:white'>Photo not found<br>" +
+      MEMORY_PHOTOS[index] + "</div>";
+    frame.insertBefore(fallback, img);
+  }, { once: true });
+
+  const captions = [
+    "Every beginning becomes a beautiful memory.",
+    "Your smile is my favorite view.",
+    "Little moments, endless meaning.",
+    "My heart keeps choosing you.",
+    "Our story is my favorite adventure."
+  ];
+
+  const caption = document.createElement("p");
+  caption.style.color = "#593449";
+  caption.textContent = captions[index];
+
+  const close = document.createElement("button");
+  close.type = "button";
+  close.className = "secondary";
+  close.textContent = "Close Memory";
+  close.addEventListener("click", () => {
+    frame.remove();
+  });
+
+  frame.append(img, caption, close);
+  $("photoReveal").replaceChildren(frame);
+
+  frame.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+$("roseButton").addEventListener("click", () => {
+  showScene("s3");
+});
+
+/* =====================================================
+   VIDEO FALLBACKS
+   ===================================================== */
+
+function setupVideoFallback(videoId, fallbackId) {
+  const video = $(videoId);
+  const fallback = $(fallbackId);
+
+  function showFallback() {
+    video.hidden = true;
+    fallback.hidden = false;
+  }
+
+  function showVideo() {
+    video.hidden = false;
+    fallback.hidden = true;
+    video.muted = true;
+    video.defaultMuted = true;
+  }
+
+  video.addEventListener("error", showFallback);
+
+  video.addEventListener("loadeddata", () => {
+    showVideo();
+  });
+
+  video.addEventListener("canplay", () => {
+    showVideo();
+  });
+
+  video.addEventListener("ended", () => {
+    if (videoId === "proposalVideo" && !accepted) {
+      /* Keep the last frame or fallback available.
+         The proposal buttons stay active. */
+    }
+  });
+
+  /* Some local editors fire error only after load is attempted. */
+  video.load();
+
+  if (video.readyState >= 2) showVideo();
+}
+
+setupVideoFallback("roseVideo", "roseFallback");
+setupVideoFallback("proposalVideo", "proposalFallback");
+
+/* =====================================================
+   PASSWORD
+   ===================================================== */
 
 $("passwordForm").addEventListener("submit", event => {
   event.preventDefault();
+
   const answer = $("rosePassword").value.trim().toLowerCase();
 
   if (answer === "rise") {
     roseUnlocked = true;
-    $("passwordMessage").textContent = "The petals recognize your secret. 🌹";
+    $("passwordMessage").textContent =
+      "The petals recognize your secret. 🌹";
     $("proceedWrap").hidden = false;
     $("rosePassword").disabled = true;
+    particleBurst(25);
   } else {
-    $("passwordMessage").textContent = "Not quite, my love. Try again. 💗";
+    $("passwordMessage").textContent =
+      "Not quite. Try again, my love. 💗";
     $("rosePassword").value = "";
     $("rosePassword").focus();
   }
@@ -665,166 +1173,362 @@ $("passwordForm").addEventListener("submit", event => {
 
 $("proceedButton").addEventListener("click", () => {
   if (!roseUnlocked) return;
+
+  particleBurst(55);
   showScene("s4");
-  playSilentVideo("proposalVideo", "proposalFallback");
 });
 
-/* Proposal response */
-$("yesButton").addEventListener("click", () => {
-  if (proposalAccepted || endingShown) return;
-  proposalAccepted = true;
+/* =====================================================
+   PROPOSAL — ACCEPT OR REJECT
+   ===================================================== */
 
+$("yesButton").addEventListener("click", acceptProposal);
+$("noButton").addEventListener("click", rejectProposal);
+
+function acceptProposal() {
+  if (accepted) return;
+
+  accepted = true;
+  $("yesButton").disabled = true;
+  $("noButton").disabled = true;
+
+  $("proposalFeedback").textContent =
+    "She said YES! Two hearts, one forever. 💖";
+  $("proposalQuestion").textContent = "A lifetime of love begins here! ❤️";
+  $("proposalIntro").textContent = "Vishan and Dharshini are celebrating!";
+
+  /* Stop the proposal clip before starting the hug clip */
+  const proposalVideo = $("proposalVideo");
+  proposalVideo.pause();
+
+  /* Hide the proposal buttons after acceptance */
   $("proposalActions").hidden = true;
-  $("proposalFeedback").textContent = "You made Vishan the happiest teddy in the world! 🧸💖";
-  $("acceptedArea").hidden = false;
-  $("curtain").classList.remove("open");
 
-  stopVideo("proposalVideo");
-  playSilentVideo("acceptedVideo", "acceptedFallback");
-  particleBurst(65);
-});
+  /* Try to play the couple-hug video; fallback is always visible */
+  const stage = $("proposalStage");
+  const hugVideo = document.createElement("video");
+  hugVideo.className = "character-video";
+  hugVideo.id = "hugVideo";
+  hugVideo.muted = true;
+  hugVideo.defaultMuted = true;
+  hugVideo.playsInline = true;
+  hugVideo.autoplay = true;
+  hugVideo.loop = true;
+  hugVideo.preload = "auto";
 
-$("noButton").addEventListener("click", () => {
-  if (proposalAccepted || endingShown) return;
+  const source = document.createElement("source");
+  source.src = "videos/teddy-hug.mp4";
+  source.type = "video/mp4";
+  hugVideo.appendChild(source);
+
+  hugVideo.addEventListener("error", () => {
+    hugVideo.remove();
+    $("proposalFallback").hidden = false;
+    $("proposalFallback").style.animation =
+      "teddyIdle 1s ease-in-out infinite alternate";
+  });
+
+  hugVideo.addEventListener("loadeddata", () => {
+    $("proposalVideo").hidden = true;
+    $("proposalFallback").hidden = true;
+    hugVideo.hidden = false;
+  });
+
+  stage.appendChild(hugVideo);
+
+  const promise = hugVideo.play();
+  if (promise && typeof promise.catch === "function") {
+    promise.catch(() => {
+      hugVideo.remove();
+      $("proposalFallback").hidden = false;
+    });
+  }
+
+  particleBurst(70);
+
+  $("revealTitle").hidden = false;
+  $("theatre").hidden = false;
+  $("revealButton").hidden = false;
+  $("giftContinueButton").hidden = true;
+
+  $("curtainCaption").textContent =
+    "Pull the curtains together to reveal our memory ✨";
+
+  $("theatre").classList.remove("revealed");
+  curtainOpened = false;
+
+  setTimeout(() => {
+    $("theatre").scrollIntoView({ behavior: "smooth", block: "center" });
+  }, 250);
+}
+
+function rejectProposal() {
+  if (accepted) return;
 
   rejectedCount++;
+
   const messages = [
-    "Yoschi sollu 🥺 Give this little teddy a chance.",
-    "Na vena la? 🧸 Think once more, my love.",
-    "Accept panla na next varathu 🙈"
+    "Yoschi sollu! 🥺 Give this teddy a chance.",
+    "Na vena la? 🧸 Think once more, my love!",
+    "Accept panla na next varathu! 💗"
   ];
 
   if (rejectedCount < 3) {
-    $("proposalFeedback").textContent = messages[rejectedCount - 1];
+    $("proposalFeedback").textContent =
+      messages[rejectedCount - 1];
+    particleBurst(12);
     return;
   }
 
-  endingShown = true;
-  $("proposalActions").hidden = true;
-  $("proposalFeedback").textContent = "";
-  $("goodbyeArea").hidden = false;
-  $("goodbyeMessage").textContent =
-    "HAPPY BIRTHDAY TO YOU 🖤\nLife long stay happy like this moment 🫂👑";
+  $("proposalFeedback").textContent =
+    "Whatever you choose, you deserve happiness. ❤️";
 
-  stopVideo("proposalVideo");
-  particleBurst(35);
+  $("declinedMessage").textContent =
+    "HAPPY BIRTHDAY TO YOU 🖤\n\nLife long stay happy like this moment 🫂👑";
+
+  particleBurst(45);
+  showScene("declinedScene");
+}
+
+/* =====================================================
+   CURTAIN AND IMAGE REVEAL
+   ===================================================== */
+
+const surpriseImage = $("surpriseImage");
+
+surpriseImage.addEventListener("load", () => {
+  $("theatre").classList.add("has-image");
 });
 
-$("revealButton").addEventListener("click", () => {
-  if (!proposalAccepted) return;
-  $("curtain").classList.add("open");
-  particleBurst(70);
+surpriseImage.addEventListener("error", () => {
+  $("theatre").classList.remove("has-image");
+});
+
+function revealCurtain() {
+  if (!accepted || curtainOpened) return;
+
+  curtainOpened = true;
+  $("theatre").classList.add("revealed");
   $("revealButton").disabled = true;
-  $("revealButton").textContent = "Surprise Revealed 💖";
+  $("revealButton").textContent = "Our Memory Revealed ❤️";
 
-  setTimeout(() => showScene("s5"), 1550);
+  particleBurst(100);
+
+  /* If the photo file is missing, the fallback message is revealed */
+  setTimeout(() => {
+    $("giftContinueButton").hidden = false;
+    $("giftContinueButton").scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }, 1900);
+}
+
+$("revealButton").addEventListener("click", revealCurtain);
+
+$("giftContinueButton").addEventListener("click", () => {
+  if (!accepted || !curtainOpened) return;
+  showScene("s5");
 });
 
-/* Gift opens once. Repeated taps cannot restart the animation. */
-$("openGiftButton").addEventListener("click", () => {
+/* =====================================================
+   GIFT OPENING — PREVENT DUPLICATE ANIMATION
+   ===================================================== */
+
+$("openGiftButton").addEventListener("click", openGift);
+
+function openGift() {
   if (giftOpened) return;
   giftOpened = true;
+
   $("openGiftButton").disabled = true;
+  $("openGiftButton").textContent = "Your gift is opening... 💖";
+
   $("gift").classList.add("open");
   particleBurst(75);
 
   setTimeout(() => {
     $("letter").classList.add("show");
     $("letter").scrollIntoView({ behavior: "smooth", block: "center" });
-  }, 750);
+    $("openGiftButton").textContent = "Opened With Love ❤️";
+  }, 950);
+}
+
+$("finalButton").addEventListener("click", () => {
+  showScene("s6");
+  particleBurst(55);
 });
 
-$("finalButton").addEventListener("click", showFinal);
-$("finishButton").addEventListener("click", showFinal);
+$("magicButton").addEventListener("click", () => {
+  particleBurst(100);
+});
 
-function showFinal() {
-  showScene("s6");
-  $("finalMessage").classList.remove("show");
-  /* Restart the CSS entrance animation safely. */
-  void $("finalMessage").offsetWidth;
-  $("finalMessage").classList.add("show");
-  particleBurst(55);
-}
+$("declinedMagicButton").addEventListener("click", () => {
+  particleBurst(80);
+});
 
-$("magicButton").addEventListener("click", () => particleBurst(100));
+/* =====================================================
+   CELEBRATION PARTICLES
+   ===================================================== */
 
-/* Celebration particles */
-function particleBurst(amount = 45) {
-  const layer = $("effects");
-  const symbols = ["💖", "💕", "✨", "🌸", "🎉", "💗", "⭐"];
+function particleBurst(count = 40) {
+  const effects = $("effects");
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-  for (let i = 0; i < amount; i++) {
-    const item = document.createElement("span");
-    item.className = "particle";
-    item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    item.style.left = Math.random() * 100 + "%";
-    item.style.fontSize = (15 + Math.random() * 22) + "px";
-    item.style.setProperty("--drift", (Math.random() * 220 - 110) + "px");
-    item.style.animationDelay = (Math.random() * .7) + "s";
-    layer.appendChild(item);
-    item.addEventListener("animationend", () => item.remove(), { once: true });
+  const actualCount = reducedMotion ? Math.min(count, 12) : count;
+  const symbols = ["💖", "💕", "💗", "✨", "🌸", "🎉", "💝", "⭐"];
+
+  for (let i = 0; i < actualCount; i++) {
+    const particle = document.createElement("span");
+    particle.className = "particle";
+    particle.textContent = symbols[
+      Math.floor(Math.random() * symbols.length)
+    ];
+
+    particle.style.left = Math.random() * 100 + "%";
+    particle.style.fontSize = (14 + Math.random() * 23) + "px";
+    particle.style.setProperty(
+      "--drift",
+      (Math.random() * 180 - 90) + "px"
+    );
+    particle.style.setProperty(
+      "--duration",
+      (1.8 + Math.random() * 2.2) + "s"
+    );
+    particle.style.animationDelay = Math.random() * .7 + "s";
+
+    effects.appendChild(particle);
+    particle.addEventListener("animationend", () => particle.remove(), {
+      once: true
+    });
   }
 }
 
-/* Music: Android requires a user interaction before playback. */
+/* =====================================================
+   BACKGROUND MUSIC CONTROLS
+   ===================================================== */
+
 const music = $("music");
 
-$("musicButton").addEventListener("click", async () => {
-  if (music.paused) {
-    try {
-      await music.play();
-      $("musicButton").textContent = "Ⅱ Pause Music";
-    } catch (error) {
-      $("musicButton").textContent = "Tap to Retry Music";
-      alert("Music could not play. Check that romantic-music.mp3 is in the same folder as index.html, then reload the page.");
-    }
-  } else {
-    music.pause();
+music.addEventListener("playing", () => {
+  $("musicButton").textContent = "♫ Music Playing";
+  $("musicStatus").textContent = "Love is in the air. ♡";
+});
+
+music.addEventListener("pause", () => {
+  if (!music.ended) {
     $("musicButton").textContent = "♫ Play Music";
   }
+});
+
+music.addEventListener("error", () => {
+  $("musicStatus").textContent =
+    "Music file not found. Check romantic-music.mp3 beside index.html.";
+});
+
+$("musicButton").addEventListener("click", async () => {
+  if (!MUSIC_FILE) {
+    $("musicStatus").textContent =
+      "Set MUSIC_FILE to your MP3 filename in the JavaScript.";
+    return;
+  }
+
+  try {
+    if (music.paused) {
+      if (music.readyState === 0) music.load();
+      await music.play();
+      $("musicStatus").textContent = "Love is in the air. ♡";
+    } else {
+      music.pause();
+      $("musicStatus").textContent = "Music paused.";
+    }
+  } catch (error) {
+    $("musicStatus").textContent =
+      "Couldn't play the song. Check the MP3 filename, file location and audio format.";
+  }
+});
+
+$("pauseMusicButton").addEventListener("click", () => {
+  music.pause();
+  $("musicStatus").textContent = "Music paused.";
+  $("musicButton").textContent = "♫ Play Music";
 });
 
 $("stopMusicButton").addEventListener("click", () => {
   music.pause();
   music.currentTime = 0;
   $("musicButton").textContent = "♫ Play Music";
+  $("musicStatus").textContent = "Music stopped.";
 });
 
-/* Replay without reloading the page */
-$("replayButton").addEventListener("click", () => {
-  revealedMemories.clear();
-  roseUnlocked = false;
-  proposalAccepted = false;
-  giftOpened = false;
-  rejectedCount = 0;
-  endingShown = false;
+/* =====================================================
+   REPLAY
+   ===================================================== */
 
-  $("memoryGrid").replaceChildren();
+$("replayButton").addEventListener("click", resetStory);
+$("declinedReplayButton").addEventListener("click", resetStory);
+
+function resetStory() {
+  openedMemories = new Set();
+  roseUnlocked = false;
+  rejectedCount = 0;
+  accepted = false;
+  giftOpened = false;
+  curtainOpened = false;
+
+  $("heartGrid").replaceChildren();
+  $("photoReveal").replaceChildren();
   $("memoryCount").textContent = "Memories discovered: 0 / 5";
-  $("toRoseButton").hidden = true;
+  $("roseButton").hidden = true;
+
   $("rosePassword").disabled = false;
   $("rosePassword").value = "";
   $("passwordMessage").textContent = "";
   $("proceedWrap").hidden = true;
+
   $("proposalActions").hidden = false;
+  $("yesButton").disabled = false;
+  $("noButton").disabled = false;
   $("proposalFeedback").textContent = "";
-  $("acceptedArea").hidden = true;
-  $("goodbyeArea").hidden = true;
-  $("curtain").classList.remove("open");
+  $("proposalQuestion").textContent =
+    PROPOSAL_NAME + ", will you be mine forever? ❤️";
+  $("proposalIntro").textContent =
+    "Vishan has something very special to ask you...";
+
+  $("theatre").hidden = true;
+  $("theatre").classList.remove("revealed");
+  $("theatre").classList.remove("has-image");
+  $("revealTitle").hidden = true;
+  $("revealButton").hidden = true;
   $("revealButton").disabled = false;
-  $("revealButton").textContent = "Reveal Our Surprise 🎉";
+  $("revealButton").textContent = "Open the Curtains 🎉";
+  $("giftContinueButton").hidden = true;
+
   $("gift").classList.remove("open");
   $("openGiftButton").disabled = false;
+  $("openGiftButton").textContent = "Open Your Gift 🎁";
   $("letter").classList.remove("show");
-  $("finalMessage").classList.remove("show");
 
-  stopVideo("proposalVideo");
-  stopVideo("acceptedVideo");
+  const hug = $("hugVideo");
+  if (hug) {
+    hug.pause();
+    hug.remove();
+  }
+
+  $("proposalVideo").hidden = true;
+  $("proposalFallback").hidden = false;
+
   showScene("s1");
-  playSilentVideo("roseVideo", "roseFallback");
+}
+
+$("replayButton").addEventListener("click", () => {
+  $("giftContinueButton").hidden = true;
 });
-/* Start the rose animation silently; if Android blocks playback, tap Begin. */
-playSilentVideo("roseVideo", "roseFallback");
+
+/* Start with memories initialized only when needed */
+buildMemories();
 </script>
 </body>
 </html>
