@@ -29,6 +29,7 @@ body {
     radial-gradient(ellipse at top, #482356, transparent 60%),
     linear-gradient(145deg, #100923, #28103d, #100923);
 }
+
 header { text-align: center; padding: 25px 12px 0; }
 h1 { color: #ffe4f2; font-weight: normal; text-shadow: 0 0 22px #ff82bc; }
 h2 { color: #ffe4f2; font-weight: normal; }
@@ -87,11 +88,10 @@ button:disabled { opacity: .55; cursor: not-allowed; }
 
 header, main, footer { position: relative; z-index: 1; }
 
-/* VIDEO SCENES: original visual appearance preserved */
 .video-stage {
   position: relative;
   width: 100%;
-  min-height: 200px;
+  min-height: 120px;
   display: grid;
   place-items: center;
   margin: 20px auto;
@@ -109,10 +109,8 @@ header, main, footer { position: relative; z-index: 1; }
   filter: drop-shadow(0 0 20px #ff75bd44);
 }
 
-/* Transparent video backgrounds require an alpha-channel video. */
 .video-note { color: #d9c4e4; font-size: .8rem; }
 
-/* HEART MEMORIES */
 .heart-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -163,26 +161,6 @@ header, main, footer { position: relative; z-index: 1; }
 }
 .photo-caption { color: #592c49; }
 
-/* ROSE */
-.rose-emoji {
-  font-size: clamp(6rem, 27vw, 10rem);
-  animation: sway 3s ease-in-out infinite;
-}
-@keyframes sway { 50% { transform: rotate(7deg) scale(1.05); } }
-
-input {
-  display: block;
-  width: min(100%, 320px);
-  padding: 14px;
-  margin: 14px auto;
-  border-radius: 12px;
-  border: 1px solid var(--pink);
-  background: #ffffff12;
-  color: white;
-  text-align: center;
-}
-
-/* PROPOSAL */
 .proposal-card {
   padding: 12px;
   border: 1px solid #ffadd155;
@@ -190,31 +168,6 @@ input {
   background: #140b2b66;
 }
 
-/* CURTAIN */
-.curtain {
-  height: 120px;
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--gold);
-  margin: 22px auto;
-  color: var(--gold);
-}
-.curtain::before, .curtain::after {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 50%;
-  background: repeating-linear-gradient(90deg, #600d38, #ad3166 20%, #4d0b2d 40%);
-  transition: transform 1.4s ease;
-  z-index: 2;
-}
-.curtain::after { left: auto; right: 0; }
-.curtain.open::before { transform: translateX(-100%); }
-.curtain.open::after { transform: translateX(100%); }
-
-/* 3D GIFT BOX */
 .gift-space { perspective: 900px; padding: 25px 0; }
 
 .gift {
@@ -278,7 +231,6 @@ input {
   margin: auto;
 }
 
-/* GIFT PHOTO AND PARTICLES */
 .gift-photo {
   width: min(85%, 350px);
   display: block;
@@ -286,14 +238,6 @@ input {
   border-radius: 12px;
   box-shadow: 0 0 35px #ff82bc;
   cursor: pointer;
-}
-
-.vanish {
-  animation: vanish .9s ease forwards;
-  pointer-events: none;
-}
-@keyframes vanish {
-  to { opacity: 0; transform: scale(.15) rotate(15deg); filter: blur(12px); }
 }
 
 .particle {
@@ -307,7 +251,6 @@ input {
   to { transform: translate(var(--x), var(--y)) rotate(540deg) scale(.2); opacity: 0; }
 }
 
-/* LETTER */
 .letter {
   display: none;
   max-width: 520px;
@@ -347,6 +290,99 @@ footer {
   padding: 12px;
 }
 
+/* PASSWORD OPENING SCREEN */
+#passwordGate {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at top, #702b66 0%, transparent 55%),
+    linear-gradient(145deg, #100923, #28103d, #100923);
+}
+
+#passwordGate.unlocked {
+  animation: gateFadeOut .8s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes gateFadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+.gate-card {
+  width: 100%;
+  max-width: 390px;
+  padding: 30px 22px;
+  text-align: center;
+  border: 1px solid #ffb9da88;
+  border-radius: 25px;
+  background: #170b2bdf;
+  box-shadow: 0 0 45px #ff70bc30;
+  backdrop-filter: blur(15px);
+  animation: gateAppear .9s ease both;
+}
+
+@keyframes gateAppear {
+  from { opacity: 0; transform: translateY(20px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.gate-heart {
+  font-size: 55px;
+  margin-bottom: 10px;
+  animation: gateHeartbeat 1.5s infinite;
+}
+
+@keyframes gateHeartbeat {
+  50% { transform: scale(1.12); }
+}
+
+.gate-card h1 {
+  font-size: clamp(25px, 7vw, 34px);
+  line-height: 1.3;
+  margin: 10px 0;
+  color: #ffe4f2;
+}
+
+.gate-card p { color: #e5cde8; font-size: 15px; }
+
+#partnerAnswer {
+  width: 100%;
+  margin: 22px 0 14px;
+  padding: 15px;
+  border: 1px solid #ff91c7;
+  border-radius: 14px;
+  background: #ffffff0d;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+#partnerAnswer:focus {
+  border-color: #f7d58a;
+  box-shadow: 0 0 15px #ff91c733;
+}
+
+#partnerAnswer::placeholder { color: #c8b0d0; }
+#unlockButton { width: 100%; min-height: 49px; }
+
+#gateMessage {
+  min-height: 24px;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ff9dc8;
+}
+
+.gate-footer {
+  margin-top: 22px;
+  font-size: 12px;
+  color: #bfa7cb;
+}
+
 @media (max-width: 420px) {
   .proposal-card { padding: 8px; }
   .scene-video { max-height: 58vh; }
@@ -364,6 +400,35 @@ footer {
 </head>
 
 <body>
+
+<!-- PASSWORD GATE: shown before the story -->
+<div id="passwordGate">
+  <div class="gate-card">
+    <div class="gate-heart">💗</div>
+    <h1>Our Love Story ❤️</h1>
+    <p>Before entering our little universe, answer one question from the heart.</p>
+
+    <form id="partnerForm">
+      <label for="partnerAnswer">What is your life partner's name?</label>
+      <input
+        id="partnerAnswer"
+        type="password"
+        placeholder="Enter your answer ❤️"
+        autocomplete="off"
+        autocapitalize="none"
+        spellcheck="false"
+        required
+      >
+      <button id="unlockButton" type="submit">
+        Unlock Our Love Story 💖
+      </button>
+      <p id="gateMessage" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="gate-footer">A little secret, made with love ✨</div>
+  </div>
+</div>
+
 <div id="stars" aria-hidden="true"></div>
 <div id="particles" aria-hidden="true"></div>
 
@@ -374,22 +439,14 @@ footer {
 </header>
 
 <main>
-  <!-- SCENE 1: ROSE VIDEO -->
+  <!-- SCENE 1: ROSE -->
   <section class="scene active" id="s1">
     <h2>For my favorite person 🌹</h2>
     <p>A little flower, with all my love.</p>
 
     <div class="video-stage">
-      <video
-        class="scene-video"
-        id="roseVideo"
-        muted
-        playsinline
-        autoplay
-        loop
-        preload="auto"
-        webkit-playsinline
-      >
+      <video class="scene-video" id="roseVideo"
+        muted playsinline autoplay loop preload="auto">
         <source src="videos/rose.mp4" type="video/mp4">
       </video>
     </div>
@@ -401,7 +458,7 @@ footer {
     </div>
   </section>
 
-  <!-- SCENE 2: FIVE TAPPABLE PHOTOS -->
+  <!-- SCENE 2: MEMORIES -->
   <section class="scene" id="s2">
     <h2>Five little pieces of us 💕</h2>
     <p>Tap each heart to unfold a memory.</p>
@@ -417,20 +474,14 @@ footer {
     </div>
   </section>
 
-  <!-- SCENE 3: PROPOSAL VIDEO -->
+  <!-- SCENE 3: PROPOSAL -->
   <section class="scene" id="s3">
     <h2>A question from my heart 💍</h2>
 
     <div class="proposal-card">
       <div class="video-stage">
-        <video
-          class="scene-video"
-          id="proposeVideo"
-          muted
-          playsinline
-          preload="auto"
-          webkit-playsinline
-        >
+        <video class="scene-video" id="proposeVideo"
+          muted playsinline preload="auto">
           <source src="videos/propose.mp4" type="video/mp4">
         </video>
       </div>
@@ -441,24 +492,17 @@ footer {
         <button id="yesButton" type="button">Yes, with all my heart! 💖</button>
         <button class="secondary" id="noButton" type="button">No 🙈</button>
       </div>
-
       <p id="proposalFeedback" aria-live="polite"></p>
     </div>
   </section>
 
-  <!-- SCENE 4: ACCEPT OR GOODBYE -->
+  <!-- SCENE 4: RESULT -->
   <section class="scene" id="s4">
     <h2 id="resultHeading">A moment to remember ❤️</h2>
 
     <div class="video-stage" id="acceptStage" hidden>
-      <video
-        class="scene-video"
-        id="acceptVideo"
-        muted
-        playsinline
-        preload="auto"
-        webkit-playsinline
-      >
+      <video class="scene-video" id="acceptVideo"
+        muted playsinline preload="auto">
         <source src="videos/accept.mp4" type="video/mp4">
       </video>
     </div>
@@ -493,13 +537,12 @@ footer {
     </div>
 
     <div id="giftReveal" hidden>
-      <img
-        class="gift-photo"
-        id="giftPhoto"
+      <img class="gift-photo" id="giftPhoto"
         src="images/gift-photo.jpg"
-        alt="A special photograph for you"
-      >
-      <p class="small" id="photoHint">Tap the photograph to reveal your birthday letter ✨</p>
+        alt="A special photograph for you">
+      <p class="small" id="photoHint">
+        Tap the photograph to reveal your birthday letter ✨
+      </p>
     </div>
 
     <article class="letter" id="letter">
@@ -511,7 +554,7 @@ footer {
     </article>
   </section>
 
-  <!-- SCENE 6: FINAL -->
+  <!-- SCENE 6: FINAL SURPRISE -->
   <section class="scene" id="s6">
     <h2 id="finalHeading">For You, My Love</h2>
     <div class="final-heart">💖</div>
@@ -522,7 +565,7 @@ footer {
   </section>
 </main>
 
-<audio id="music" autoplay loop preload="auto">
+<audio id="music" loop preload="auto">
   <source src="audio/romantic.mp3" type="audio/mpeg">
 </audio>
 
@@ -535,9 +578,9 @@ footer {
 <script>
 "use strict";
 
-/* =====================================================
+/* =========================================
    PERSONALIZATION
-   ===================================================== */
+   ========================================= */
 
 const RECIPIENT_NAME = "Dharshini";
 const ROMANTIC_NICKNAME = "Uyire";
@@ -570,19 +613,6 @@ LOVE YOU PONDATI 🖤🩷`;
 const REJECTION_MESSAGE =
 "Happy birthday to you 🖤 life long stay happy like this moment 🫂👑";
 
-/* =====================================================
-   CONFIGURATION
-   Keep these paths identical to your actual filenames.
-   ===================================================== */
-
-const VIDEO_PATHS = {
-  rose: "videos/rose.mp4",
-  proposal: "videos/propose.mp4",
-  acceptance: "videos/accept.mp4"
-};
-
-const MUSIC_PATH = "audio/romantic.mp3";
-
 const MEMORY_PHOTOS = [
   "images/memory1.jpg",
   "images/memory2.jpg",
@@ -599,10 +629,6 @@ const MEMORY_CAPTIONS = [
   "Our story is my favorite adventure. 💞"
 ];
 
-/* =====================================================
-   ELEMENTS AND STATE
-   ===================================================== */
-
 const $ = id => document.getElementById(id);
 
 const music = $("music");
@@ -613,16 +639,61 @@ const acceptVideo = $("acceptVideo");
 let openedMemories = new Set();
 let giftOpened = false;
 let proposalAnswered = false;
-let musicRetryInstalled = false;
-let currentScene = "s1";
 let musicAttemptInProgress = false;
 
-/* =====================================================
-   PERSONALIZE TEXT
-   ===================================================== */
+/* =========================================
+   PASSWORD GATE
+   Answer: vishan kumaran
+   ========================================= */
+
+(() => {
+  const correctAnswer = "vishan kumaran";
+  const gate = $("passwordGate");
+  const form = $("partnerForm");
+  const answerInput = $("partnerAnswer");
+  const message = $("gateMessage");
+  const unlockButton = $("unlockButton");
+
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const answer = answerInput.value
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+
+    if (answer !== correctAnswer) {
+      message.textContent =
+        "That's not the right name. Try again, my love. 💗";
+      answerInput.value = "";
+      answerInput.setAttribute("aria-invalid", "true");
+      answerInput.focus();
+      return;
+    }
+
+    message.textContent = "Welcome to our love story! ❤️";
+    answerInput.setAttribute("aria-invalid", "false");
+    unlockButton.disabled = true;
+    unlockButton.textContent = "Opening your surprise... ✨";
+
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    gate.classList.add("unlocked");
+
+    gate.addEventListener("animationend", () => {
+      gate.remove();
+    }, { once: true });
+
+    attemptMusic();
+    playVideo(roseVideo, { loop: true });
+  });
+})();
+
+/* =========================================
+   PERSONALIZED TEXT
+   ========================================= */
 
 $("pageTitle").textContent = "For " + RECIPIENT_NAME + " ❤️";
-
 $("proposalText").textContent =
   RECIPIENT_NAME + ", will you accept my little proposal? 💖";
 
@@ -632,141 +703,115 @@ $("letterContent").textContent =
     "My favorite person, " + RECIPIENT_NAME + ","
   );
 
-$("finalHeading").textContent =
-  "For You, " + ROMANTIC_NICKNAME;
-
+$("finalHeading").textContent = "For You, " + ROMANTIC_NICKNAME;
 $("finalMessage").textContent = FINAL_SURPRISE_MESSAGE;
 
-/* =====================================================
-   BACKGROUND STARS
-   ===================================================== */
+/* =========================================
+   STARS AND PARTICLES
+   ========================================= */
 
 for (let i = 0; i < 38; i++) {
   const star = document.createElement("span");
-
   star.className = "star";
   star.textContent = Math.random() > .5 ? "✦" : "·";
   star.style.left = Math.random() * 100 + "%";
   star.style.top = Math.random() * 100 + "%";
   star.style.fontSize = (8 + Math.random() * 12) + "px";
   star.style.animationDelay = Math.random() * 3 + "s";
-
   $("stars").appendChild(star);
 }
 
-/* =====================================================
-   SCENE NAVIGATION
-   ===================================================== */
+function burstParticles(symbols = ["💖", "✨", "💕", "🌸"]) {
+  const container = $("particles");
+
+  for (let i = 0; i < 24; i++) {
+    const particle = document.createElement("span");
+    particle.className = "particle";
+    particle.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    particle.style.left = (20 + Math.random() * 60) + "%";
+    particle.style.top = (25 + Math.random() * 45) + "%";
+    particle.style.setProperty("--x", (Math.random() * 400 - 200) + "px");
+    particle.style.setProperty("--y", (Math.random() * 450 - 225) + "px");
+
+    container.appendChild(particle);
+    particle.addEventListener("animationend", () => particle.remove());
+  }
+}
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
 
 function showScene(id) {
   const target = $(id);
-
-  if (!target) {
-    console.error("Scene not found:", id);
-    return;
-  }
+  if (!target) return;
 
   document.querySelectorAll(".scene").forEach(scene => {
     scene.classList.toggle("active", scene.id === id);
   });
 
-  currentScene = id;
+  [roseVideo, proposeVideo, acceptVideo].forEach(video => {
+    if (video && video !== getSceneVideo(id)) stopVideo(video);
+  });
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 
-  // Music is attempted after a scene change, but browser
-  // autoplay restrictions may require a user interaction.
+  const activeVideo = getSceneVideo(id);
+  if (activeVideo) {
+    playVideo(activeVideo, { loop: id === "s1" });
+  }
+
   attemptMusic();
 }
 
-/* =====================================================
-   BACKGROUND MUSIC
-   ===================================================== */
+function getSceneVideo(id) {
+  if (id === "s1") return roseVideo;
+  if (id === "s3") return proposeVideo;
+  if (id === "s4" && !$("acceptStage").hidden) return acceptVideo;
+  return null;
+}
+
+/* =========================================
+   MUSIC
+   ========================================= */
 
 music.loop = true;
 music.volume = 0.45;
 
-function setMusicStatus(message) {
-  $("musicStatus").textContent = message;
+function setMusicStatus(text) {
+  $("musicStatus").textContent = text;
 }
 
 async function attemptMusic() {
-  if (musicAttemptInProgress || !music.paused) {
-    if (!music.paused) {
-      setMusicStatus("♪ Romantic music is playing");
-    }
-    return;
-  }
+  if (musicAttemptInProgress || !music.paused) return;
 
   musicAttemptInProgress = true;
 
   try {
-    const result = music.play();
-
-    if (result && typeof result.then === "function") {
-      await result;
-    }
-
+    await music.play();
     setMusicStatus("♪ Romantic music is playing");
   } catch (error) {
     setMusicStatus(
-      "Tap anywhere to start the music. If it stays silent, check audio/romantic.mp3."
+      "Tap to start music. Check audio/romantic.mp3 if silent."
     );
-
-    installMusicRetry();
   } finally {
     musicAttemptInProgress = false;
   }
 }
 
-function installMusicRetry() {
-  if (musicRetryInstalled) return;
+music.addEventListener("playing", () =>
+  setMusicStatus("♪ Romantic music is playing")
+);
 
-  musicRetryInstalled = true;
+music.addEventListener("error", () =>
+  setMusicStatus("Music could not load. Check audio/romantic.mp3.")
+);
 
-  const retry = () => {
-    attemptMusic();
-  };
-
-  document.addEventListener("pointerdown", retry);
-  document.addEventListener("keydown", retry);
-}
-
-music.addEventListener("playing", () => {
-  setMusicStatus("♪ Romantic music is playing");
-});
-
-music.addEventListener("pause", () => {
-  if (!music.ended) {
-    setMusicStatus("Romantic music is paused.");
-  }
-});
-
-music.addEventListener("error", () => {
-  setMusicStatus(
-    "Music file could not load. Check that audio/romantic.mp3 exists and is a valid MP3."
-  );
-});
-
-music.addEventListener("canplay", () => {
-  // Do not force playback here; attemptMusic handles retries.
-});
-
-window.addEventListener("load", () => {
-  attemptMusic();
-});
-
-document.addEventListener("visibilitychange", () => {
-  if (!document.hidden && music.paused) {
-    attemptMusic();
-  }
-});
-
-/* =====================================================
-   VIDEO PLAYBACK — FIXED
-   Wait for the video to be ready before playing.
-   Every story video is muted, including its audio track.
-   ===================================================== */
+/* =========================================
+   VIDEO PLAYBACK
+   ========================================= */
 
 function prepareVideo(video, loop = false) {
   if (!video) return;
@@ -776,329 +821,143 @@ function prepareVideo(video, loop = false) {
   video.volume = 0;
   video.loop = loop;
   video.playsInline = true;
-
   video.setAttribute("muted", "");
   video.setAttribute("playsinline", "");
   video.setAttribute("webkit-playsinline", "");
-  video.preload = "auto";
-
-  // Stop any previous playback.
-  video.pause();
 }
 
 function stopVideo(video) {
   if (!video) return;
-
   video.pause();
 
   try {
     video.currentTime = 0;
   } catch (error) {
-    // The media may not have loaded metadata yet.
+    // Metadata may not have loaded yet.
   }
 }
 
-function showVideoError(video, label) {
-  console.error(
-    label + " video failed.",
-    video.error ? video.error.message : "Unknown media error"
-  );
+async function playVideo(video, options = {}) {
+  if (!video) return false;
 
-  setMusicStatus(
-    label + " video could not load. Check the filename, folder and MP4 codec."
-  );
+  prepareVideo(video, options.loop === true);
+
+  try {
+    await video.play();
+    return true;
+  } catch (error) {
+    console.warn("Video playback was blocked or failed:", error);
+    return false;
+  }
 }
 
-function playVideo(video, options = {}) {
-  if (!video) return Promise.resolve(false);
-
-  const loop = options.loop === true;
-  const label = options.label || "Animation";
-
-  prepareVideo(video, loop);
-
-  return new Promise(resolve => {
-    let settled = false;
-
-    const cleanup = () => {
-      video.removeEventListener("playing", onPlaying);
-      video.removeEventListener("error", onError);
-      video.removeEventListener("loadeddata", onReady);
-      video.removeEventListener("canplay", onReady);
-    };
-
-    const finish = value => {
-      if (settled) return;
-      settled = true;
-      cleanup();
-      resolve(value);
-    };
-
-    const onPlaying = () => {
-      finish(true);
-    };
-
-    const onError = () => {
-      showVideoError(video, label);
-      finish(false);
-    };
-
-    const onReady = () => {
-      startPlayback();
-    };
-
-    const startPlayback = () => {
-      if (settled) return;
-
-      video.muted = true;
-      video.volume = 0;
-
-      try {
-        video.currentTime = 0;
-      } catch (error) {
-        // Playback can still begin when metadata becomes available.
-      }
-
-      let promise;
-
-      try {
-        promise = video.play();
-      } catch (error) {
-        console.error(label + " playback error:", error);
-        showVideoError(video, label);
-        finish(false);
-        return;
-      }
-
-      if (promise && typeof promise.then === "function") {
-        promise.then(() => {
-          if (!video.paused) finish(true);
-        }).catch(error => {
-          console.error(label + " playback was blocked:", error);
-
-          setMusicStatus(
-            label + " video playback was blocked. Tap the screen and try again."
-          );
-
-          finish(false);
-        });
-      } else if (!video.paused) {
-        finish(true);
-      }
-    };
-
-    video.addEventListener("playing", onPlaying);
-    video.addEventListener("error", onError);
-    video.addEventListener("loadeddata", onReady);
-    video.addEventListener("canplay", onReady);
-
-    if (video.error) {
-      showVideoError(video, label);
-      finish(false);
-      return;
-    }
-
-    // Calling load requests the media if the browser has not
-    // already prepared the video.
-    if (video.readyState === 0) {
-      video.load();
-    }
-
-    if (video.readyState >= 2) {
-      startPlayback();
-    }
-  });
-}
-
-// Keep all story videos muted from the beginning.
 [roseVideo, proposeVideo, acceptVideo].forEach(video => {
+  if (!video) return;
   prepareVideo(video);
-  video.addEventListener("volumechange", () => {
-    if (!video.muted || video.volume !== 0) {
-      video.muted = true;
-      video.volume = 0;
-    }
+
+  video.addEventListener("error", () => {
+    console.warn("Check video path and encoding:", video.currentSrc);
   });
 });
 
-roseVideo.loop = true;
-
-/* Rose animation loops on the opening scene. */
-window.addEventListener("load", () => {
-  if (currentScene === "s1") {
-    playVideo(roseVideo, {
-      loop: true,
-      label: "Rose animation"
-    });
-  }
-});
-
-/* =====================================================
-   SCENE 1: BEGIN STORY
-   ===================================================== */
+/* =========================================
+   SCENE 1 -> SCENE 2
+   ========================================= */
 
 $("beginButton").addEventListener("click", () => {
-  stopVideo(roseVideo);
   showScene("s2");
-  buildMemories();
+  burstParticles();
 });
 
-/* =====================================================
-   SCENE 2: FIVE TAP-TO-REVEAL MEMORIES
-   ===================================================== */
+/* =========================================
+   BUILD FIVE MEMORY HEARTS
+   ========================================= */
 
 function buildMemories() {
   const grid = $("heartGrid");
+  grid.replaceChildren();
 
-  if (grid.children.length > 0) return;
-
-  for (let i = 0; i < 5; i++) {
+  MEMORY_PHOTOS.forEach((photo, index) => {
     const button = document.createElement("button");
-
     button.type = "button";
     button.className = "memory-heart";
-    button.innerHTML = `💗<span>Memory ${i + 1}</span>`;
-    button.setAttribute("aria-label", "Reveal memory " + (i + 1));
+    button.innerHTML = "💗<span>Memory " + (index + 1) + "</span>";
+    button.setAttribute("aria-label", "Open memory " + (index + 1));
 
     button.addEventListener("click", () => {
-      revealMemory(i, button);
+      if (openedMemories.has(index)) return;
+
+      openedMemories.add(index);
+      button.classList.add("done");
+      button.innerHTML = "💖<span>Discovered!</span>";
+
+      const reveal = $("photoReveal");
+      const frame = document.createElement("div");
+      frame.className = "photo-frame";
+
+      const img = document.createElement("img");
+      img.src = photo;
+      img.alt = "Memory " + (index + 1);
+      img.loading = "lazy";
+
+      const caption = document.createElement("p");
+      caption.className = "photo-caption";
+      caption.textContent = MEMORY_CAPTIONS[index];
+
+      frame.append(img, caption);
+      reveal.prepend(frame);
+
+      $("memoryCount").textContent =
+        "Memories discovered: " + openedMemories.size + " / 5";
+
+      if (openedMemories.size === MEMORY_PHOTOS.length) {
+        $("toProposalButton").disabled = false;
+      }
+
+      burstParticles(["💗", "💕", "✨"]);
     });
 
     grid.appendChild(button);
-  }
-}
-
-function revealMemory(index, button) {
-  const frame = document.createElement("div");
-  frame.className = "photo-frame";
-
-  const img = document.createElement("img");
-  img.src = MEMORY_PHOTOS[index];
-  img.alt = "Memory " + (index + 1);
-
-  img.onerror = () => {
-    if (!img.isConnected) return;
-
-    img.remove();
-
-    const missing = document.createElement("p");
-    missing.className = "photo-caption";
-    missing.textContent =
-      "Photo not found: " + MEMORY_PHOTOS[index];
-
-    frame.prepend(missing);
-  };
-
-  const caption = document.createElement("p");
-  caption.className = "photo-caption";
-  caption.textContent = MEMORY_CAPTIONS[index];
-
-  frame.append(img, caption);
-
-  // Only one memory photo is shown at a time, matching
-  // the original visual layout.
-  $("photoReveal").replaceChildren(frame);
-
-  if (!openedMemories.has(index)) {
-    openedMemories.add(index);
-
-    button.innerHTML =
-      `💖<span>Memory ${index + 1} ✓</span>`;
-
-    button.classList.add("done");
-
-    $("memoryCount").textContent =
-      "Memories discovered: " + openedMemories.size + " / 5";
-  }
-
-  $("toProposalButton").disabled = openedMemories.size !== 5;
-}
-
-$("toProposalButton").addEventListener("click", async () => {
-  if (openedMemories.size !== 5) return;
-
-  stopVideo(roseVideo);
-
-  // Reveal the proposal scene before requesting playback.
-  showScene("s3");
-
-  $("proposalFeedback").textContent =
-    "A little question, just for you... 💖";
-
-  // A short delay lets the browser render the scene first.
-  await new Promise(resolve => window.setTimeout(resolve, 120));
-
-  if (currentScene !== "s3") return;
-
-  const played = await playVideo(proposeVideo, {
-    loop: true,
-    label: "Teddy proposal"
   });
+}
 
-  if (!played && currentScene === "s3") {
-    $("proposalFeedback").textContent =
-      "The proposal video could not start. Check videos/propose.mp4 and try again.";
-  }
+buildMemories();
+
+$("toProposalButton").addEventListener("click", () => {
+  showScene("s3");
 });
 
-/* =====================================================
-   SCENE 3: PROPOSAL ACCEPTANCE
-   ===================================================== */
+/* =========================================
+   PROPOSAL
+   ========================================= */
 
-$("yesButton").addEventListener("click", async () => {
+$("yesButton").addEventListener("click", () => {
   if (proposalAnswered) return;
-
   proposalAnswered = true;
 
-  $("yesButton").disabled = true;
-  $("noButton").disabled = true;
+  $("proposalActions").hidden = true;
   $("proposalFeedback").textContent =
-    "You made this teddy the happiest! 💖";
+    "You just made my heart the happiest! ❤️";
 
-  stopVideo(proposeVideo);
-  stopVideo(acceptVideo);
-
-  $("resultHeading").textContent = "A beautiful new chapter ❤️";
+  $("resultHeading").textContent = "You made my world brighter! 💖";
   $("resultMessage").textContent =
-    "Two hearts, one story. Happy birthday, my love! 🫂";
+    "Every beautiful story is better with you in it, " +
+    RECIPIENT_NAME + ". Happy Birthday, my love!";
 
   $("acceptStage").hidden = false;
   $("toGiftButton").hidden = false;
   $("finishButton").hidden = true;
 
   showScene("s4");
-
-  await new Promise(resolve => window.setTimeout(resolve, 120));
-
-  const played = await playVideo(acceptVideo, {
-    loop: false,
-    label: "Acceptance"
-  });
-
-  if (!played) {
-    $("resultMessage").textContent =
-      "Our next chapter begins here. If the video is missing, check videos/accept.mp4. ❤️";
-  }
-
-  acceptVideo.onended = () => {
-    acceptVideo.pause();
-  };
+  burstParticles();
 });
 
 $("noButton").addEventListener("click", () => {
   if (proposalAnswered) return;
-
   proposalAnswered = true;
 
-  $("yesButton").disabled = true;
-  $("noButton").disabled = true;
-
-  stopVideo(proposeVideo);
-  stopVideo(acceptVideo);
-
-  $("resultHeading").textContent =
-    "A birthday wish, just for you 🖤";
-
+  $("proposalActions").hidden = true;
+  $("resultHeading").textContent = "A little birthday wish ❤️";
   $("resultMessage").textContent = REJECTION_MESSAGE;
 
   $("acceptStage").hidden = true;
@@ -1108,168 +967,66 @@ $("noButton").addEventListener("click", () => {
   showScene("s4");
 });
 
-$("finishButton").addEventListener("click", () => {
-  stopVideo(acceptVideo);
-  showScene("s1");
-
-  playVideo(roseVideo, {
-    loop: true,
-    label: "Rose animation"
-  });
-});
-
-/* =====================================================
-   SCENE 4: MOVE TO THE GIFT
-   ===================================================== */
-
 $("toGiftButton").addEventListener("click", () => {
-  stopVideo(acceptVideo);
   showScene("s5");
 });
 
-/* =====================================================
-   PARTICLE EFFECTS
-   ===================================================== */
+$("finishButton").addEventListener("click", () => {
+  $("resultMessage").textContent =
+    "Thank you for being part of this little story. ❤️";
+  burstParticles();
+});
 
-function burstParticles(count = 35) {
-  const layer = $("particles");
-  const symbols = ["💖", "✨", "🌸", "💕", "✦"];
-
-  for (let i = 0; i < count; i++) {
-    const particle = document.createElement("span");
-
-    particle.className = "particle";
-    particle.textContent =
-      symbols[Math.floor(Math.random() * symbols.length)];
-
-    particle.style.setProperty(
-      "--x",
-      (Math.random() * 500 - 250) + "px"
-    );
-
-    particle.style.setProperty(
-      "--y",
-      (Math.random() * 650 - 325) + "px"
-    );
-
-    layer.appendChild(particle);
-
-    particle.addEventListener(
-      "animationend",
-      () => particle.remove(),
-      { once: true }
-    );
-  }
-}
-
-/* =====================================================
-   SCENE 5: 3D GIFT AND VANISHING PHOTO
-   ===================================================== */
+/* =========================================
+   GIFT OPENING
+   ========================================= */
 
 $("openGiftButton").addEventListener("click", () => {
   if (giftOpened) return;
 
   giftOpened = true;
-
-  $("openGiftButton").disabled = true;
   $("gift").classList.add("open");
+  $("openGiftButton").disabled = true;
+  $("openGiftButton").textContent = "Your surprise is here! 💖";
 
-  burstParticles(45);
+  burstParticles(["💝", "✨", "💗", "🎉"]);
 
-  window.setTimeout(() => {
+  setTimeout(() => {
     $("giftReveal").hidden = false;
-
-    const photo = $("giftPhoto");
-    const hint = $("photoHint");
-
-    photo.addEventListener("click", () => {
-      if (photo.classList.contains("vanish")) return;
-
-      photo.classList.add("vanish");
-      hint.textContent = "A letter, from my heart to yours... 💌";
-
-      burstParticles(35);
-
-      photo.addEventListener("animationend", event => {
-        if (event.animationName !== "vanish") return;
-
-        photo.hidden = true;
-        hint.hidden = true;
-        $("letter").classList.add("show");
-      }, { once: true });
-
-      // Fallback for reduced-motion settings or if an
-      // animationend event is not delivered by the browser.
-      window.setTimeout(() => {
-        photo.hidden = true;
-        hint.hidden = true;
-        $("letter").classList.add("show");
-      }, 1100);
-    }, { once: true });
-
-    photo.onerror = () => {
-      hint.textContent =
-        "Photo missing. Add images/gift-photo.jpg to your images folder.";
-
-      // Allow the letter to be opened even when the photo
-      // is missing, instead of leaving the story stuck.
-      photo.style.display = "none";
-
-      hint.style.cursor = "pointer";
-      hint.onclick = () => {
-        hint.hidden = true;
-        $("letter").classList.add("show");
-      };
-    };
-
-    if (photo.complete && photo.naturalWidth === 0) {
-      photo.onerror();
-    }
-  }, 1000);
+  }, 800);
 });
 
-/* =====================================================
-   SCENE 6: FINAL MESSAGE
-   ===================================================== */
+$("giftPhoto").addEventListener("click", () => {
+  $("letter").classList.add("show");
+  $("photoHint").textContent = "A letter written just for you. ❤️";
+  $("letter").scrollIntoView({ behavior: "smooth", block: "center" });
+  burstParticles(["💌", "💕", "✨"]);
+});
 
 $("finalButton").addEventListener("click", () => {
   showScene("s6");
-  burstParticles(45);
+  burstParticles(["💖", "💝", "✨", "💕"]);
 });
 
 $("magicButton").addEventListener("click", () => {
-  burstParticles(65);
+  burstParticles(["💖", "🌹", "✨", "💕", "💝"]);
 });
 
-/* =====================================================
-   MEDIA DIAGNOSTICS
-   ===================================================== */
+/* =========================================
+   FIRST LOAD
+   ========================================= */
 
-function logMediaState(video, label) {
-  video.addEventListener("loadedmetadata", () => {
-    console.info(
-      label + " metadata loaded. Duration:",
-      video.duration
-    );
-  });
+window.addEventListener("load", () => {
+  // Keep the opening gate visible until the right answer is entered.
+  // Audio and the first video are started after the unlock interaction.
+});
 
-  video.addEventListener("canplay", () => {
-    console.info(label + " is ready to play.");
-  });
-
-  video.addEventListener("error", () => {
-    console.error(
-      label + " error code:",
-      video.error ? video.error.code : "unknown"
-    );
-  });
-}
-
-logMediaState(roseVideo, "Rose video");
-logMediaState(proposeVideo, "Proposal video");
-logMediaState(acceptVideo, "Acceptance video");
-
-console.info("Birthday surprise initialized.");
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden && !music.paused) {
+    setMusicStatus("♪ Romantic music is playing");
+  }
+});
 </script>
+
 </body>
 </html>
