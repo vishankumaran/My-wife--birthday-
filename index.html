@@ -13,7 +13,6 @@
   --gold: #f3c5d3;
   --night: #24151d;
 }
-
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 
@@ -31,32 +30,13 @@ body {
 }
 
 header { text-align: center; padding: 25px 12px 0; }
-
-h1 {
-  color: #fff0f5;
-  font-weight: normal;
-  text-shadow: 0 0 22px #e99ab5;
-}
-
+h1 { color: #fff0f5; font-weight: normal; text-shadow: 0 0 22px #e99ab5; }
 h2 { color: #fff0f5; font-weight: normal; }
 p { line-height: 1.7; }
+main { width: min(94%, 700px); margin: auto; padding-bottom: 55px; }
 
-main {
-  width: min(94%, 700px);
-  margin: auto;
-  padding-bottom: 55px;
-}
-
-.scene {
-  display: none;
-  text-align: center;
-  padding: 20px 5px;
-}
-
-.scene.active {
-  display: block;
-  animation: appear .65s ease both;
-}
+.scene { display: none; text-align: center; padding: 20px 5px; }
+.scene.active { display: block; animation: appear .65s ease both; }
 
 @keyframes appear {
   from { opacity: 0; transform: translateY(15px); }
@@ -76,15 +56,9 @@ button {
   cursor: pointer;
   touch-action: manipulation;
 }
-
 button:active { transform: scale(.97); }
 button:disabled { opacity: .55; cursor: not-allowed; }
-
-.secondary {
-  color: white;
-  background: #ffffff12;
-  border-color: #ffffff66;
-}
+.secondary { color: white; background: #ffffff12; border-color: #ffffff66; }
 
 .actions {
   display: flex;
@@ -93,7 +67,6 @@ button:disabled { opacity: .55; cursor: not-allowed; }
   gap: 10px;
   margin: 20px auto;
 }
-
 .small { color: #e9ccd7; font-size: .88rem; }
 
 #stars, #particles {
@@ -102,7 +75,6 @@ button:disabled { opacity: .55; cursor: not-allowed; }
   overflow: hidden;
   pointer-events: none;
 }
-
 #stars { z-index: 0; }
 #particles { z-index: 10; }
 
@@ -111,15 +83,9 @@ button:disabled { opacity: .55; cursor: not-allowed; }
   color: #f7d9e2;
   animation: twinkle 2s ease-in-out infinite alternate;
 }
+@keyframes twinkle { to { opacity: .15; transform: scale(.5); } }
 
-@keyframes twinkle {
-  to { opacity: .15; transform: scale(.5); }
-}
-
-header, main, footer {
-  position: relative;
-  z-index: 1;
-}
+header, main, footer { position: relative; z-index: 1; }
 
 .video-stage {
   position: relative;
@@ -162,20 +128,11 @@ header, main, footer {
   font-size: clamp(2.8rem, 12vw, 4rem);
   animation: float 2.8s ease-in-out infinite;
 }
-
 .memory-heart:nth-child(even) { animation-delay: -.9s; }
-
-.memory-heart span {
-  display: block;
-  font-size: .72rem;
-  color: #f8d8ec;
-}
-
+.memory-heart span { display: block; font-size: .72rem; color: #f8d8ec; }
 .memory-heart.done { opacity: .8; }
 
-@keyframes float {
-  50% { translate: 0 -7px; }
-}
+@keyframes float { 50% { translate: 0 -7px; } }
 
 .photo-frame {
   max-width: 450px;
@@ -190,14 +147,8 @@ header, main, footer {
 }
 
 @keyframes unfold {
-  from {
-    opacity: 0;
-    transform: perspective(900px) rotateY(-85deg) scale(.8);
-  }
-  to {
-    opacity: 1;
-    transform: perspective(900px) rotateY(0) scale(1);
-  }
+  from { opacity: 0; transform: perspective(900px) rotateY(-85deg) scale(.8); }
+  to { opacity: 1; transform: perspective(900px) rotateY(0) scale(1); }
 }
 
 .photo-frame img {
@@ -207,7 +158,6 @@ header, main, footer {
   object-fit: contain;
   border-radius: 5px;
 }
-
 .photo-caption { color: #592c49; }
 
 .proposal-card {
@@ -217,10 +167,7 @@ header, main, footer {
   background: #140b2b66;
 }
 
-.gift-space {
-  perspective: 900px;
-  padding: 25px 0;
-}
+.gift-space { perspective: 900px; padding: 25px 0; }
 
 .gift {
   width: 190px;
@@ -230,10 +177,7 @@ header, main, footer {
   transform-style: preserve-3d;
   animation: giftFloat 3s ease-in-out infinite;
 }
-
-@keyframes giftFloat {
-  50% { transform: translateY(-8px) rotateY(4deg); }
-}
+@keyframes giftFloat { 50% { transform: translateY(-8px) rotateY(4deg); } }
 
 .gift-body {
   position: absolute;
@@ -245,7 +189,6 @@ header, main, footer {
   box-shadow: 0 20px 40px #0007;
   overflow: hidden;
 }
-
 .gift-body::before {
   content: "";
   position: absolute;
@@ -254,7 +197,6 @@ header, main, footer {
   height: 100%;
   background: linear-gradient(90deg, #d9a8b8, #fff0f5, #e6bdca);
 }
-
 .gift-lid {
   position: absolute;
   z-index: 3;
@@ -267,7 +209,6 @@ header, main, footer {
   transform-origin: left bottom;
   transition: transform 1s ease;
 }
-
 .gift-lid::after {
   content: "🎀";
   position: absolute;
@@ -275,11 +216,9 @@ header, main, footer {
   top: -38px;
   font-size: 3.5rem;
 }
-
 .gift.open .gift-lid {
   transform: translate3d(20px, -75px, 45px) rotateZ(-24deg) rotateY(-12deg);
 }
-
 .gift.open { animation: none; }
 
 .gift-glow {
@@ -307,12 +246,8 @@ header, main, footer {
   font-size: 20px;
   animation: burst 1.4s ease-out forwards;
 }
-
 @keyframes burst {
-  to {
-    transform: translate(var(--x), var(--y)) rotate(540deg) scale(.2);
-    opacity: 0;
-  }
+  to { transform: translate(var(--x), var(--y)) rotate(540deg) scale(.2); opacity: 0; }
 }
 
 .letter {
@@ -326,35 +261,20 @@ header, main, footer {
   border: 5px double #d9a8b8;
   box-shadow: 0 15px 45px #0007;
 }
-
-.letter.show {
-  display: block;
-  animation: letterRise 1s ease both;
-}
+.letter.show { display: block; animation: letterRise 1s ease both; }
 
 @keyframes letterRise {
   from { opacity: 0; transform: translateY(45px) scale(.92); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
-
-.letter h2 {
-  color: #a85676;
-  text-align: center;
-}
-
-.letter p {
-  color: #593543;
-  white-space: pre-line;
-}
+.letter h2 { color: #a85676; text-align: center; }
+.letter p { color: #593543; white-space: pre-line; }
 
 .final-heart {
   font-size: clamp(6rem, 28vw, 10rem);
   animation: beat 1.2s infinite;
 }
-
-@keyframes beat {
-  50% { transform: scale(1.12); }
-}
+@keyframes beat { 50% { transform: scale(1.12); } }
 
 .music-status {
   font-size: .75rem;
@@ -362,7 +282,6 @@ header, main, footer {
   text-align: center;
   padding: 8px;
 }
-
 footer {
   text-align: center;
   font-size: .8rem;
@@ -371,7 +290,6 @@ footer {
 }
 
 /* PASSWORD OPENING SCREEN */
-
 #passwordGate {
   position: fixed;
   inset: 0;
@@ -438,8 +356,7 @@ footer {
   border: 1px solid #e99ab5;
   border-radius: 14px;
   background: #ffffff0d;
-  color: white;
-  font-size: 16px;
+  color: white;  font-size: 16px;
   outline: none;
 }
 
@@ -461,7 +378,6 @@ footer {
   font-size: 14px;
   line-height: 1.6;
 }
-
 .countdown strong {
   display: block;
   margin-top: 4px;
@@ -502,7 +418,7 @@ footer {
 
 <body>
 
-<!-- PASSWORD GATE -->
+<!-- PASSWORD GATE: shown before the story -->
 <div id="passwordGate">
   <div class="gate-card">
     <div class="gate-heart">💗</div>
@@ -510,32 +426,24 @@ footer {
     <p>Before entering our little universe, answer one question from the heart.</p>
 
     <form id="partnerForm">
-      <label for="partnerAnswer">
-        What are the first 4 digits of your phone number?
-      </label>
-
+      <label for="partnerAnswer">Enter the first 4 digits of your phone number, or type the special word <strong>vishan</strong>.</label>
       <div id="countdown" class="countdown" role="status" aria-live="polite">
-        Your surprise opens in
-        <strong id="countdownTimer">Loading countdown…</strong>
+        Your surprise opens in <strong id="countdownTimer">Loading countdown…</strong>
       </div>
-
       <input
         id="partnerAnswer"
         type="password"
-        placeholder="Enter your answer ❤️"
+        placeholder="Enter 7397 or vishan ❤️"
         autocomplete="off"
         autocapitalize="none"
         spellcheck="false"
         required
-        inputmode="numeric"
-        maxlength="4"
-        disabled
+        inputmode="text"
+        maxlength="20"
       >
-
-      <button id="unlockButton" type="submit" disabled>
+      <button id="unlockButton" type="submit">
         Unlock Our Love Story 💖
       </button>
-
       <p id="gateMessage" role="status" aria-live="polite"></p>
     </form>
 
@@ -606,10 +514,11 @@ footer {
         <button id="yesButton" type="button">Yes, with all my heart! 💖</button>
         <button class="secondary" id="noButton" type="button">No 🙈</button>
       </div>
-
       <p id="proposalFeedback" aria-live="polite"></p>
     </div>
-  </section>  <!-- SCENE 4: RESULT -->
+  </section>
+
+  <!-- SCENE 4: RESULT -->
   <section class="scene" id="s4">
     <h2 id="resultHeading">A moment to remember ❤️</h2>
 
@@ -626,7 +535,6 @@ footer {
       <button id="toGiftButton" type="button" hidden>
         Open Your Birthday Gift 🎁
       </button>
-
       <button id="finishButton" type="button" hidden>
         Close Our Story ❤️
       </button>
@@ -640,7 +548,6 @@ footer {
 
     <div class="gift-space">
       <div class="gift-glow"></div>
-
       <div class="gift" id="gift">
         <div class="gift-body"></div>
         <div class="gift-lid"></div>
@@ -655,7 +562,6 @@ footer {
       <img class="gift-photo" id="giftPhoto"
         src="images/gift-photo.jpg"
         alt="A special photograph for you">
-
       <p class="small" id="photoHint">
         Tap the photograph to reveal your birthday letter ✨
       </p>
@@ -664,7 +570,6 @@ footer {
     <article class="letter" id="letter">
       <h2>To My Favorite Person ❤️</h2>
       <p id="letterContent"></p>
-
       <div class="actions">
         <button id="finalButton" type="button">One Last Surprise ✨</button>
       </div>
@@ -676,7 +581,6 @@ footer {
     <h2 id="finalHeading">For You, My Love</h2>
     <div class="final-heart">💖</div>
     <p id="finalMessage"></p>
-
     <div class="actions">
       <button id="magicButton" type="button">A Little More Magic 💖</button>
     </div>
@@ -760,17 +664,15 @@ let proposalAnswered = false;
 let musicAttemptInProgress = false;
 
 /* =========================================
-   PASSWORD GATE + COUNTDOWN
-   Answer: 7397
-   Opens: 23 October 2026, 12:00 AM IST
+   PASSWORD GATE
+   Normal answer: 7397 (opens after the countdown)
+   Special answer: vishan (opens immediately)
    ========================================= */
 
 (() => {
   const correctAnswer = "7397";
-
-  // India Standard Time is UTC+05:30.
+  const instantAnswer = "vishan";
   const unlockAt = new Date("2026-10-23T00:00:00+05:30");
-
   const countdownTimer = $("countdownTimer");
   const gate = $("passwordGate");
   const form = $("partnerForm");
@@ -782,11 +684,7 @@ let musicAttemptInProgress = false;
     const remaining = unlockAt.getTime() - Date.now();
 
     if (remaining <= 0) {
-      countdownTimer.textContent =
-        "It's time! Your surprise is ready 💗";
-
-      answerInput.disabled = false;
-      unlockButton.disabled = false;
+      countdownTimer.textContent = "It's time! Your surprise is ready 💗";
       return;
     }
 
@@ -816,24 +714,27 @@ let musicAttemptInProgress = false;
   form.addEventListener("submit", async event => {
     event.preventDefault();
 
-    // Prevent opening before the scheduled date.
-    if (Date.now() < unlockAt.getTime()) {
+    const answer = answerInput.value
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+
+    // Special word "vishan" bypasses the countdown.
+    // Normal numeric answer "7397" works only after the scheduled time.
+    if (answer === instantAnswer) {
+      // Continue to unlock immediately.
+    } else if (answer === correctAnswer && Date.now() < unlockAt.getTime()) {
       message.textContent =
-        "This surprise opens on 23 October 2026 at 12:00 AM. 💗";
+        "The normal code opens on 23 October 2026 at 12:00 AM. To open it now, enter vishan. 💗";
+      answerInput.setAttribute("aria-invalid", "false");
       return;
-    }
-
-    const answer = answerInput.value.trim();
-
-    if (answer !== correctAnswer) {
+    } else if (answer !== correctAnswer) {
       message.textContent =
         "That's not the right number. Try again, my love. 💗";
-
       answerInput.value = "";
       answerInput.setAttribute("aria-invalid", "true");
       answerInput.focus();
-      return;
-    }
+      return;    }
 
     message.textContent = "Welcome to our love story! ❤️";
     answerInput.setAttribute("aria-invalid", "false");
@@ -858,7 +759,6 @@ let musicAttemptInProgress = false;
    ========================================= */
 
 $("pageTitle").textContent = "For " + RECIPIENT_NAME + " ❤️";
-
 $("proposalText").textContent =
   RECIPIENT_NAME + ", will you accept my little proposal? 💖";
 
@@ -877,14 +777,12 @@ $("finalMessage").textContent = FINAL_SURPRISE_MESSAGE;
 
 for (let i = 0; i < 38; i++) {
   const star = document.createElement("span");
-
   star.className = "star";
   star.textContent = Math.random() > .5 ? "✦" : "·";
   star.style.left = Math.random() * 100 + "%";
   star.style.top = Math.random() * 100 + "%";
   star.style.fontSize = (8 + Math.random() * 12) + "px";
   star.style.animationDelay = Math.random() * 3 + "s";
-
   $("stars").appendChild(star);
 }
 
@@ -893,7 +791,6 @@ function burstParticles(symbols = ["💖", "✨", "💕", "🌸"]) {
 
   for (let i = 0; i < 24; i++) {
     const particle = document.createElement("span");
-
     particle.className = "particle";
     particle.textContent =
       symbols[Math.floor(Math.random() * symbols.length)];
@@ -904,10 +801,11 @@ function burstParticles(symbols = ["💖", "✨", "💕", "🌸"]) {
     particle.style.setProperty("--y", (Math.random() * 450 - 225) + "px");
 
     container.appendChild(particle);
-
     particle.addEventListener("animationend", () => particle.remove());
   }
-}/* =========================================
+}
+
+/* =========================================
    NAVIGATION
    ========================================= */
 
@@ -920,15 +818,12 @@ function showScene(id) {
   });
 
   [roseVideo, proposeVideo, acceptVideo].forEach(video => {
-    if (video && video !== getSceneVideo(id)) {
-      stopVideo(video);
-    }
+    if (video && video !== getSceneVideo(id)) stopVideo(video);
   });
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 
   const activeVideo = getSceneVideo(id);
-
   if (activeVideo) {
     playVideo(activeVideo, { loop: id === "s1" });
   }
@@ -940,7 +835,6 @@ function getSceneVideo(id) {
   if (id === "s1") return roseVideo;
   if (id === "s3") return proposeVideo;
   if (id === "s4" && !$("acceptStage").hidden) return acceptVideo;
-
   return null;
 }
 
@@ -950,7 +844,6 @@ function getSceneVideo(id) {
 
 music.loop = true;
 music.volume = 0.45;
-
 function setMusicStatus(text) {
   $("musicStatus").textContent = text;
 }
@@ -992,7 +885,6 @@ function prepareVideo(video, loop = false) {
   video.volume = 0;
   video.loop = loop;
   video.playsInline = true;
-
   video.setAttribute("muted", "");
   video.setAttribute("playsinline", "");
   video.setAttribute("webkit-playsinline", "");
@@ -1000,7 +892,6 @@ function prepareVideo(video, loop = false) {
 
 function stopVideo(video) {
   if (!video) return;
-
   video.pause();
 
   try {
@@ -1026,7 +917,6 @@ async function playVideo(video, options = {}) {
 
 [roseVideo, proposeVideo, acceptVideo].forEach(video => {
   if (!video) return;
-
   prepareVideo(video);
 
   video.addEventListener("error", () => {
@@ -1053,7 +943,6 @@ function buildMemories() {
 
   MEMORY_PHOTOS.forEach((photo, index) => {
     const button = document.createElement("button");
-
     button.type = "button";
     button.className = "memory-heart";
     button.innerHTML = "💗<span>Memory " + (index + 1) + "</span>";
@@ -1068,7 +957,6 @@ function buildMemories() {
 
       const reveal = $("photoReveal");
       const frame = document.createElement("div");
-
       frame.className = "photo-frame";
 
       const img = document.createElement("img");
@@ -1109,16 +997,13 @@ $("toProposalButton").addEventListener("click", () => {
 
 $("yesButton").addEventListener("click", () => {
   if (proposalAnswered) return;
-
   proposalAnswered = true;
 
   $("proposalActions").hidden = true;
-
   $("proposalFeedback").textContent =
     "You just made my heart the happiest! ❤️";
 
   $("resultHeading").textContent = "You made my world brighter! 💖";
-
   $("resultMessage").textContent =
     "Every beautiful story is better with you in it, " +
     RECIPIENT_NAME + ". Happy Birthday, my love!";
@@ -1133,7 +1018,6 @@ $("yesButton").addEventListener("click", () => {
 
 $("noButton").addEventListener("click", () => {
   if (proposalAnswered) return;
-
   proposalAnswered = true;
 
   $("proposalActions").hidden = true;
@@ -1154,7 +1038,6 @@ $("toGiftButton").addEventListener("click", () => {
 $("finishButton").addEventListener("click", () => {
   $("resultMessage").textContent =
     "Thank you for being part of this little story. ❤️";
-
   burstParticles();
 });
 
@@ -1166,7 +1049,6 @@ $("openGiftButton").addEventListener("click", () => {
   if (giftOpened) return;
 
   giftOpened = true;
-
   $("gift").classList.add("open");
   $("openGiftButton").disabled = true;
   $("openGiftButton").textContent = "Your surprise is here! 💖";
@@ -1181,12 +1063,7 @@ $("openGiftButton").addEventListener("click", () => {
 $("giftPhoto").addEventListener("click", () => {
   $("letter").classList.add("show");
   $("photoHint").textContent = "A letter written just for you. ❤️";
-
-  $("letter").scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
-
+  $("letter").scrollIntoView({ behavior: "smooth", block: "center" });
   burstParticles(["💌", "💕", "🖤"]);
 });
 
