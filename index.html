@@ -395,7 +395,9 @@ footer {
 @media (max-width: 420px) {
   .proposal-card { padding: 8px; }
   .scene-video { max-height: 58vh; }
-}@media (prefers-reduced-motion: reduce) {
+}
+
+@media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
@@ -452,7 +454,6 @@ footer {
 </header>
 
 <main>
-  <!-- SCENE 1: ROSE -->
   <section class="scene active" id="s1">
     <h2>For my favorite person 🌹</h2>
     <p>A little flower, with all my love.</p>
@@ -471,7 +472,6 @@ footer {
     </div>
   </section>
 
-  <!-- SCENE 2: MEMORIES -->
   <section class="scene" id="s2">
     <h2>Five little pieces of us 💕</h2>
     <p>Tap each heart to unfold a memory.</p>
@@ -487,7 +487,6 @@ footer {
     </div>
   </section>
 
-  <!-- SCENE 3: PROPOSAL -->
   <section class="scene" id="s3">
     <h2>A question from my heart 💍</h2>
 
@@ -509,7 +508,6 @@ footer {
     </div>
   </section>
 
-  <!-- SCENE 4: RESULT -->
   <section class="scene" id="s4">
     <h2 id="resultHeading">A moment to remember ❤️</h2>
 
@@ -532,7 +530,6 @@ footer {
     </div>
   </section>
 
-  <!-- SCENE 5: GIFT -->
   <section class="scene" id="s5">
     <h2>A little gift, with a universe of love 🎁</h2>
     <p>Made especially for you.</p>
@@ -567,7 +564,6 @@ footer {
     </article>
   </section>
 
-  <!-- SCENE 6: FINAL SURPRISE -->
   <section class="scene" id="s6">
     <h2 id="finalHeading">For You, My Love</h2>
     <div class="final-heart">💖</div>
@@ -586,14 +582,10 @@ footer {
   Romantic music is loading…
 </div>
 
-<footer>Made with love, just for you. ❤️</footer>
-
-<script>
+<footer>Made with love, just for you. ❤️</footer><script>
 "use strict";
 
-/* =========================================
-   PERSONALIZATION
-   ========================================= */
+/* PERSONALIZATION */
 
 const RECIPIENT_NAME = "Dharshini";
 const ROMANTIC_NICKNAME = "Uyire";
@@ -661,13 +653,12 @@ let proposalAnswered = false;
 let musicAttemptInProgress = false;
 let experienceMode = "romantic";
 
-/* =========================================
-   PASSWORD GATE
+/* PASSWORDS:
    7397 = opens after countdown
    vishan = opens immediately
-   1235 = friendship birthday mode, no surprise photo
-   1234 = friendship proposal mode
-   ========================================= */
+   1235 = birthday friendship mode, hides personal photo
+   1234 = friendship proposal mode, shows personal photo
+*/
 
 (() => {
   const correctAnswer = "7397";
@@ -675,6 +666,7 @@ let experienceMode = "romantic";
   const friendBirthdayAnswer = "1235";
   const friendForeverAnswer = "1234";
   const unlockAt = new Date("2026-10-23T00:00:00+05:30");
+
   const countdownTimer = $("countdownTimer");
   const gate = $("passwordGate");
   const form = $("partnerForm");
@@ -684,15 +676,18 @@ let experienceMode = "romantic";
 
   function updateCountdown() {
     const remaining = unlockAt.getTime() - Date.now();
+
     if (remaining <= 0) {
       countdownTimer.textContent = "It's time! Your surprise is ready 💗";
       return;
     }
+
     const totalSeconds = Math.floor(remaining / 1000);
     const days = Math.floor(totalSeconds / 86400);
     const hours = Math.floor((totalSeconds % 86400) / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
+
     countdownTimer.textContent = (days ? days + "d " : "") +
       String(hours).padStart(2, "0") + ":" +
       String(minutes).padStart(2, "0") + ":" +
@@ -700,9 +695,12 @@ let experienceMode = "romantic";
   }
 
   updateCountdown();
+
   const countdownInterval = setInterval(() => {
     updateCountdown();
-    if (Date.now() >= unlockAt.getTime()) clearInterval(countdownInterval);
+    if (Date.now() >= unlockAt.getTime()) {
+      clearInterval(countdownInterval);
+    }
   }, 1000);
 
   function applyExperienceMode(mode) {
@@ -711,36 +709,63 @@ let experienceMode = "romantic";
     if (mode === "friendBirthday") {
       document.title = "Happy Birthday, Friend! 🎂";
       $("pageTitle").textContent = "Happy Birthday, Dear Friend! 🎂";
-      document.querySelector("header .small").textContent = "A little birthday surprise just for you ✨";
-      document.querySelector("header p").textContent = "Wishing you a day full of smiles and happy memories.";
+
+      document.querySelector("header .small").textContent =
+        "A little birthday surprise just for you ✨";
+      document.querySelector("header p").textContent =
+        "Wishing you a day full of smiles and happy memories.";
+
       $("s1").querySelector("h2").textContent = "A Birthday Wish for You 🎉";
       $("s1").querySelector("p").textContent = FRIEND_BIRTHDAY_MESSAGE;
-      document.querySelectorAll(".video-stage").forEach(stage => { stage.hidden = true; });
+
+      document.querySelectorAll(".video-stage").forEach(stage => {
+        stage.hidden = true;
+      });
+
       $("beginButton").textContent = "Open Birthday Wishes 🎂";
       $("s2").querySelector("h2").textContent = "Happy Little Memories 🎈";
-      $("s2").querySelector("p").textContent = "Tap the hearts to open some birthday wishes.";
+      $("s2").querySelector("p").textContent =
+        "Tap the hearts to open some birthday wishes.";
       $("toProposalButton").textContent = "Continue to Birthday Wishes 🎉";
-      $("proposalText").textContent = "Wishing you friendship, laughter, and good memories!";
+
+      $("proposalText").textContent =
+        "Wishing you friendship, laughter, and good memories!";
       $("yesButton").textContent = "Thank You! 🎉";
       $("noButton").textContent = "Back to Wishes";
+
+      // Password 1235 intentionally hides the personal surprise photo.
       $("giftPhoto").hidden = true;
-      $("photoHint").textContent = "Your personal surprise photo is not part of this birthday mode. 💛";
-      $("letter").querySelector("h2").textContent = "A Birthday Note for a Friend 💛";
+      $("photoHint").textContent =
+        "Your personal surprise photo is not part of this birthday mode. 💛";
+
+      $("letter").querySelector("h2").textContent =
+        "A Birthday Note for a Friend 💛";
       $("letterContent").textContent = FRIEND_BIRTHDAY_MESSAGE;
+
       $("finalHeading").textContent = "Happy Birthday, Friend! 🎂";
       $("finalMessage").textContent = FRIEND_BIRTHDAY_MESSAGE;
       $("openGiftButton").textContent = "Open Birthday Wishes 🎁";
       $("toGiftButton").textContent = "More Birthday Wishes 🎁";
+
     } else if (mode === "friendForever") {
       document.title = "Friends Forever 🤝";
       $("pageTitle").textContent = "A Special Birthday Story 💛";
+
       $("proposalText").textContent = "Will you be friends forever? 🤝💛";
       $("yesButton").textContent = "Yes, Friends Forever! 🤝";
       $("noButton").textContent = "Let's Stay Kind 💛";
+
       $("finalHeading").textContent = "Friends Forever 🤝";
       $("finalMessage").textContent = FRIEND_FOREVER_MESSAGE;
+
       $("letter").querySelector("h2").textContent = "A Note for My Friend 💛";
       $("letterContent").textContent = FRIEND_FOREVER_MESSAGE;
+
+      // FIX: password 1234 must show the special birthday gift photo.
+      $("giftPhoto").hidden = false;
+      $("photoHint").textContent =
+        "Tap the photograph to reveal your birthday letter ✨";
+      $("openGiftButton").textContent = "Open Your Gift 🎁";
     }
   }
 
@@ -751,14 +776,22 @@ let experienceMode = "romantic";
 
     if (answer === instantAnswer) {
       applyExperienceMode("romantic");
+
     } else if (answer === friendBirthdayAnswer) {
       applyExperienceMode("friendBirthday");
+
     } else if (answer === friendForeverAnswer) {
       applyExperienceMode("friendForever");
-    } else if (answer === correctAnswer && Date.now() < unlockAt.getTime()) {
-      message.textContent = "Your surprise opens on 23 October 2026 at 12:00 AM. 💗";
+
+    } else if (
+      answer === correctAnswer &&
+      Date.now() < unlockAt.getTime()
+    ) {
+      message.textContent =
+        "Your surprise opens on 23 October 2026 at 12:00 AM. 💗";
       answerInput.setAttribute("aria-invalid", "false");
       return;
+
     } else if (answer !== correctAnswer) {
       message.textContent = "That answer isn't correct. Please try again. 💗";
       answerInput.value = "";
@@ -773,32 +806,33 @@ let experienceMode = "romantic";
     unlockButton.textContent = "Opening... ✨";
 
     await new Promise(resolve => setTimeout(resolve, 350));
+
     gate.classList.add("unlocked");
-    gate.addEventListener("animationend", () => gate.remove(), { once: true });
+    gate.addEventListener("animationend", () => gate.remove(), {
+      once: true
+    });
 
     attemptMusic();
     playVideo(roseVideo, { loop: true });
   });
 })();
 
-/* =========================================
-   PERSONALIZED TEXT
-   ========================================= */
+/* PERSONALIZED TEXT */
 
 $("pageTitle").textContent = "For " + RECIPIENT_NAME + " ❤️";
+
 $("proposalText").textContent =
   RECIPIENT_NAME + ", will you accept my little proposal? 💖";
 
-$("letterContent").textContent =
-  BIRTHDAY_LETTER.replace(
-    "My favorite person,",
-    "My favorite person, " + RECIPIENT_NAME + ","
-  );$("finalHeading").textContent = "For You, " + ROMANTIC_NICKNAME;
+$("letterContent").textContent = BIRTHDAY_LETTER.replace(
+  "My favorite person,",
+  "My favorite person, " + RECIPIENT_NAME + ","
+);
+
+$("finalHeading").textContent = "For You, " + ROMANTIC_NICKNAME;
 $("finalMessage").textContent = FINAL_SURPRISE_MESSAGE;
 
-/* =========================================
-   STARS AND PARTICLES
-   ========================================= */
+/* STARS AND PARTICLES */
 
 for (let i = 0; i < 38; i++) {
   const star = document.createElement("span");
@@ -828,11 +862,7 @@ function burstParticles(symbols = ["💖", "✨", "💕", "🌸"]) {
     container.appendChild(particle);
     particle.addEventListener("animationend", () => particle.remove());
   }
-}
-
-/* =========================================
-   NAVIGATION
-   ========================================= */
+}/* NAVIGATION */
 
 function showScene(id) {
   const target = $(id);
@@ -843,7 +873,9 @@ function showScene(id) {
   });
 
   [roseVideo, proposeVideo, acceptVideo].forEach(video => {
-    if (video && video !== getSceneVideo(id)) stopVideo(video);
+    if (video && video !== getSceneVideo(id)) {
+      stopVideo(video);
+    }
   });
 
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -863,9 +895,7 @@ function getSceneVideo(id) {
   return null;
 }
 
-/* =========================================
-   MUSIC
-   ========================================= */
+/* MUSIC */
 
 music.loop = true;
 music.volume = 0.45;
@@ -899,9 +929,7 @@ music.addEventListener("error", () =>
   setMusicStatus("Music could not load. Check audio/romantic.mp3.")
 );
 
-/* =========================================
-   VIDEO PLAYBACK
-   ========================================= */
+/* VIDEO PLAYBACK */
 
 function prepareVideo(video, loop = false) {
   if (!video) return;
@@ -911,6 +939,7 @@ function prepareVideo(video, loop = false) {
   video.volume = 0;
   video.loop = loop;
   video.playsInline = true;
+
   video.setAttribute("muted", "");
   video.setAttribute("playsinline", "");
   video.setAttribute("webkit-playsinline", "");
@@ -918,12 +947,13 @@ function prepareVideo(video, loop = false) {
 
 function stopVideo(video) {
   if (!video) return;
+
   video.pause();
 
   try {
     video.currentTime = 0;
   } catch (error) {
-    // Metadata may not have loaded yet.
+    // Video metadata may not have loaded yet.
   }
 }
 
@@ -943,6 +973,7 @@ async function playVideo(video, options = {}) {
 
 [roseVideo, proposeVideo, acceptVideo].forEach(video => {
   if (!video) return;
+
   prepareVideo(video);
 
   video.addEventListener("error", () => {
@@ -950,18 +981,14 @@ async function playVideo(video, options = {}) {
   });
 });
 
-/* =========================================
-   SCENE 1 -> SCENE 2
-   ========================================= */
+/* SCENE 1 -> SCENE 2 */
 
 $("beginButton").addEventListener("click", () => {
   showScene("s2");
   burstParticles();
 });
 
-/* =========================================
-   BUILD FIVE MEMORY HEARTS
-   ========================================= */
+/* BUILD FIVE MEMORY HEARTS */
 
 function buildMemories() {
   const grid = $("heartGrid");
@@ -1026,25 +1053,28 @@ $("toProposalButton").addEventListener("click", () => {
   }
 });
 
-/* =========================================
-   PROPOSAL
-   ========================================= */
+/* PROPOSAL */
 
 $("yesButton").addEventListener("click", () => {
   if (proposalAnswered) return;
   proposalAnswered = true;
 
   $("proposalActions").hidden = true;
+
   if (experienceMode === "friendBirthday") {
-    $("proposalFeedback").textContent = "Thank you for being such a wonderful friend! 🎉";
+    $("proposalFeedback").textContent =
+      "Thank you for being such a wonderful friend! 🎉";
     $("resultHeading").textContent = "Happy Birthday, Friend! 🎂";
     $("resultMessage").textContent = FRIEND_BIRTHDAY_MESSAGE;
+
   } else if (experienceMode === "friendForever") {
     $("proposalFeedback").textContent = "Friends forever! 🤝💛";
     $("resultHeading").textContent = "Best Friends Forever 🤝";
     $("resultMessage").textContent = FRIEND_FOREVER_MESSAGE;
+
   } else {
-    $("proposalFeedback").textContent = "You just made my heart the happiest! ❤️";
+    $("proposalFeedback").textContent =
+      "You just made my heart the happiest! ❤️";
     $("resultHeading").textContent = "You made my world brighter! 💖";
     $("resultMessage").textContent =
       "Every beautiful story is better with you in it, " +
@@ -1064,12 +1094,15 @@ $("noButton").addEventListener("click", () => {
   proposalAnswered = true;
 
   $("proposalActions").hidden = true;
+
   if (experienceMode === "friendForever") {
     $("resultHeading").textContent = "Let's Keep Our Friendship 💛";
     $("resultMessage").textContent = FRIEND_FOREVER_MESSAGE;
+
   } else if (experienceMode === "friendBirthday") {
     $("resultHeading").textContent = "Birthday Wishes for You 🎂";
     $("resultMessage").textContent = FRIEND_BIRTHDAY_MESSAGE;
+
   } else {
     $("resultHeading").textContent = "A little birthday wish ❤️";
     $("resultMessage").textContent = REJECTION_MESSAGE;
@@ -1092,9 +1125,7 @@ $("finishButton").addEventListener("click", () => {
   burstParticles();
 });
 
-/* =========================================
-   GIFT OPENING
-   ========================================= */
+/* GIFT OPENING — FIXED FOR PASSWORD 1234 */
 
 $("openGiftButton").addEventListener("click", () => {
   if (giftOpened) return;
@@ -1108,19 +1139,34 @@ $("openGiftButton").addEventListener("click", () => {
 
   setTimeout(() => {
     $("giftReveal").hidden = false;
+
     if (experienceMode === "friendBirthday") {
+      // Password 1235: hide the personal surprise image.
       $("giftPhoto").hidden = true;
-      $("photoHint").textContent = "Sending you birthday wishes instead of the personal surprise photo. 💛";
+      $("photoHint").textContent =
+        "Sending you birthday wishes instead of the personal surprise photo. 💛";
+    } else {
+      // Password 1234 and romantic modes: show the special image.
+      $("giftPhoto").hidden = false;
+      $("photoHint").textContent =
+        "Tap the photograph to reveal your birthday letter ✨";
     }
   }, 800);
 });
 
+/* PHOTO -> BIRTHDAY LETTER */
+
 $("giftPhoto").addEventListener("click", () => {
   $("letter").classList.add("show");
   $("photoHint").textContent = "A letter written just for you. ❤️";
-  $("letter").scrollIntoView({ behavior: "smooth", block: "center" });
+  $("letter").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
   burstParticles(["💌", "💕", "🖤"]);
 });
+
+/* FINAL SURPRISE */
 
 $("finalButton").addEventListener("click", () => {
   showScene("s6");
@@ -1131,13 +1177,11 @@ $("magicButton").addEventListener("click", () => {
   burstParticles(["💖", "🌹", "✨", "🖤", "💝"]);
 });
 
-/* =========================================
-   FIRST LOAD
-   ========================================= */
+/* FIRST LOAD */
 
 window.addEventListener("load", () => {
-  // Keep the opening gate visible until the right answer is entered.
-  // Audio and the first video are started after the unlock interaction.
+  // The password screen stays visible until a valid password is entered.
+  // Audio and video start after the user's unlock interaction.
 });
 
 document.addEventListener("visibilitychange", () => {
