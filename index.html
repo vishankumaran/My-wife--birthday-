@@ -3,62 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#24151d">
+<meta name="theme-color" content="#101a2b">
 <meta name="description" content="A magical birthday surprise made with love.">
 <title>Our Love Story ❤️</title>
 
 <style>
 :root {
-  --pink: #e99ab5;
-  --gold: #f3c5d3;
-  --night: #24151d;
+  --pink: #d8bd82;
+  --gold: #e8d7ae;
+  --night: #101a2b;
+  --navy: #0b1220;
+  --ivory: #f7f2e8;
+  --champagne: #d8bd82;
 }
-* { box-sizing: border-box; }
-[hidden] { display: none !important; }
 
-html { scroll-behavior: smooth; }
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  color: #fff7fc;
-  font-family: Georgia, serif;
+  color: var(--ivory);
+  font-family: Georgia, "Times New Roman", serif;
   background:
-    radial-gradient(ellipse at top, #6b3d50, transparent 60%),
-    linear-gradient(145deg, #24151d, #422536, #24151d);
+    radial-gradient(ellipse at top, #263b55, transparent 58%),
+    linear-gradient(145deg, #0b1220, #18283c, #0b1220);
 }
 
-header { text-align: center; padding: 25px 12px 0; }
-h1 { color: #fff0f5; font-weight: normal; text-shadow: 0 0 22px #e99ab5; }
-h2 { color: #fff0f5; font-weight: normal; }
-p { line-height: 1.7; }
-main { width: min(94%, 700px); margin: auto; padding-bottom: 55px; }
+header {
+  text-align: center;
+  padding: 25px 12px 0;
+}
 
-.scene { display: none; text-align: center; padding: 20px 5px; }
-.scene.active { display: block; animation: appear .65s ease both; }
+h1 {
+  color: #f7e9c7;
+  font-weight: normal;
+  text-shadow: 0 0 18px #d8bd8233;
+}
+
+h2 {
+  color: #f7e9c7;
+  font-weight: normal;
+}
+
+p {
+  line-height: 1.7;
+}
+
+main {
+  width: min(94%, 700px);
+  margin: auto;
+  padding-bottom: 55px;
+}
+
+.scene {
+  display: none;
+  text-align: center;
+  padding: 20px 5px;
+}
+
+.scene.active {
+  display: block;
+  animation: appear .65s ease both;
+}
 
 @keyframes appear {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-button, input { font: inherit; }
+button,
+input {
+  font: inherit;
+}
 
 button {
   font-weight: bold;
   min-height: 46px;
   padding: 12px 19px;
-  border: 1px solid #f3c5d3;
+  border: 1px solid var(--gold);
   border-radius: 28px;
-  background: linear-gradient(135deg, #fff0f5, #e99ab5);
-  color: #482735;
+  background: linear-gradient(135deg, #fff8e8, #d8bd82);
+  color: #172235;
   cursor: pointer;
   touch-action: manipulation;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    opacity .2s ease;
 }
-button:active { transform: scale(.97); }
-button:disabled { opacity: .55; cursor: not-allowed; }
-.secondary { color: white; background: #ffffff12; border-color: #ffffff66; }
+
+button:hover {
+  box-shadow: 0 5px 22px #d8bd8233;
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.secondary {
+  color: var(--ivory);
+  background: #ffffff0a;
+  border-color: #d8bd8277;
+}
 
 .actions {
   display: flex;
@@ -67,25 +136,47 @@ button:disabled { opacity: .55; cursor: not-allowed; }
   gap: 10px;
   margin: 20px auto;
 }
-.small { color: #e9ccd7; font-size: .88rem; }
 
-#stars, #particles {
+.small {
+  color: #d6dceb;
+  font-size: .88rem;
+}
+
+#stars,
+#particles {
   position: fixed;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
 }
-#stars { z-index: 0; }
-#particles { z-index: 10; }
+
+#stars {
+  z-index: 0;
+}
+
+#particles {
+  z-index: 10;
+}
 
 .star {
   position: absolute;
-  color: #f7d9e2;
+  color: #f0dfad;
   animation: twinkle 2s ease-in-out infinite alternate;
 }
-@keyframes twinkle { to { opacity: .15; transform: scale(.5); } }
 
-header, main, footer { position: relative; z-index: 1; }
+@keyframes twinkle {
+  to {
+    opacity: .15;
+    transform: scale(.5);
+  }
+}
+
+header,
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
 
 .video-stage {
   position: relative;
@@ -105,10 +196,13 @@ header, main, footer { position: relative; z-index: 1; }
   background: transparent;
   border: 0;
   border-radius: 0;
-  filter: drop-shadow(0 0 20px #e99ab544);
+  filter: drop-shadow(0 0 20px #d8bd8244);
 }
 
-.video-note { color: #d9c4e4; font-size: .8rem; }
+.video-note {
+  color: #d6dceb;
+  font-size: .8rem;
+}
 
 .heart-grid {
   display: grid;
@@ -128,17 +222,32 @@ header, main, footer { position: relative; z-index: 1; }
   font-size: clamp(2.8rem, 12vw, 4rem);
   animation: float 2.8s ease-in-out infinite;
 }
-.memory-heart:nth-child(even) { animation-delay: -.9s; }
-.memory-heart span { display: block; font-size: .72rem; color: #f8d8ec; }
-.memory-heart.done { opacity: .8; }
 
-@keyframes float { 50% { translate: 0 -7px; } }
+.memory-heart:nth-child(even) {
+  animation-delay: -.9s;
+}
+
+.memory-heart span {
+  display: block;
+  font-size: .72rem;
+  color: #e8d7ae;
+}
+
+.memory-heart.done {
+  opacity: .8;
+}
+
+@keyframes float {
+  50% {
+    translate: 0 -7px;
+  }
+}
 
 .photo-frame {
   max-width: 450px;
   margin: 22px auto;
   padding: 10px;
-  background: linear-gradient(135deg, #fff0f5, #e8a4bb);
+  background: linear-gradient(135deg, #fff8e8, #e8d7ae);
   border: 1px solid var(--gold);
   border-radius: 12px;
   box-shadow: 0 15px 40px #0006;
@@ -147,8 +256,15 @@ header, main, footer { position: relative; z-index: 1; }
 }
 
 @keyframes unfold {
-  from { opacity: 0; transform: perspective(900px) rotateY(-85deg) scale(.8); }
-  to { opacity: 1; transform: perspective(900px) rotateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: perspective(900px) rotateY(-85deg) scale(.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: perspective(900px) rotateY(0) scale(1);
+  }
 }
 
 .photo-frame img {
@@ -158,16 +274,22 @@ header, main, footer { position: relative; z-index: 1; }
   object-fit: contain;
   border-radius: 5px;
 }
-.photo-caption { color: #592c49; }
+
+.photo-caption {
+  color: #26354b;
+}
 
 .proposal-card {
   padding: 12px;
-  border: 1px solid #e99ab555;
+  border: 1px solid #d8bd8255;
   border-radius: 18px;
-  background: #140b2b66;
+  background: #0b122088;
 }
 
-.gift-space { perspective: 900px; padding: 25px 0; }
+.gift-space {
+  perspective: 900px;
+  padding: 25px 0;
+}
 
 .gift {
   width: 190px;
@@ -177,26 +299,43 @@ header, main, footer { position: relative; z-index: 1; }
   transform-style: preserve-3d;
   animation: giftFloat 3s ease-in-out infinite;
 }
-@keyframes giftFloat { 50% { transform: translateY(-8px) rotateY(4deg); } }
+
+@keyframes giftFloat {
+  50% {
+    transform: translateY(-8px) rotateY(4deg);
+  }
+}
 
 .gift-body {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 112px;
-  border: 2px solid #ffdf96;
-  background: linear-gradient(90deg, #b85f80, #f6c4d4 48%, #c77995);
+  border: 2px solid #f0dfad;
+  background: linear-gradient(
+    90deg,
+    #243a55,
+    #e8d7ae 48%,
+    #314c6b
+  );
   box-shadow: 0 20px 40px #0007;
   overflow: hidden;
 }
+
 .gift-body::before {
   content: "";
   position: absolute;
   left: 41%;
   width: 18%;
   height: 100%;
-  background: linear-gradient(90deg, #d9a8b8, #fff0f5, #e6bdca);
+  background: linear-gradient(
+    90deg,
+    #d8bd82,
+    #fff8e8,
+    #d8bd82
+  );
 }
+
 .gift-lid {
   position: absolute;
   z-index: 3;
@@ -204,11 +343,12 @@ header, main, footer { position: relative; z-index: 1; }
   left: -8px;
   width: 206px;
   height: 38px;
-  border: 2px solid #ffe5a3;
-  background: linear-gradient(#f9dce6, #cc7897);
+  border: 2px solid #f0dfad;
+  background: linear-gradient(#fff3cf, #c6a663);
   transform-origin: left bottom;
   transition: transform 1s ease;
 }
+
 .gift-lid::after {
   content: "🎀";
   position: absolute;
@@ -216,16 +356,23 @@ header, main, footer { position: relative; z-index: 1; }
   top: -38px;
   font-size: 3.5rem;
 }
+
 .gift.open .gift-lid {
-  transform: translate3d(20px, -75px, 45px) rotateZ(-24deg) rotateY(-12deg);
+  transform:
+    translate3d(20px, -75px, 45px)
+    rotateZ(-24deg)
+    rotateY(-12deg);
 }
-.gift.open { animation: none; }
+
+.gift.open {
+  animation: none;
+}
 
 .gift-glow {
   width: 180px;
   height: 25px;
   border-radius: 50%;
-  background: #e99ab5;
+  background: #d8bd82;
   filter: blur(25px);
   margin: auto;
 }
@@ -235,7 +382,7 @@ header, main, footer { position: relative; z-index: 1; }
   display: block;
   margin: 15px auto;
   border-radius: 12px;
-  box-shadow: 0 0 35px #e99ab5;
+  box-shadow: 0 0 30px #d8bd8255;
   cursor: pointer;
 }
 
@@ -246,8 +393,15 @@ header, main, footer { position: relative; z-index: 1; }
   font-size: 20px;
   animation: burst 1.4s ease-out forwards;
 }
+
 @keyframes burst {
-  to { transform: translate(var(--x), var(--y)) rotate(540deg) scale(.2); opacity: 0; }
+  to {
+    transform:
+      translate(var(--x), var(--y))
+      rotate(540deg)
+      scale(.2);
+    opacity: 0;
+  }
 }
 
 .letter {
@@ -256,40 +410,68 @@ header, main, footer { position: relative; z-index: 1; }
   margin: 25px auto;
   padding: 24px 20px;
   text-align: left;
-  color: #593543;
-  background: linear-gradient(135deg, #fff7e9, #ffdfeb);
-  border: 5px double #d9a8b8;
+  color: #233047;
+  background: linear-gradient(135deg, #fffdf6, #f1e6cc);
+  border: 5px double #b99a57;
   box-shadow: 0 15px 45px #0007;
 }
-.letter.show { display: block; animation: letterRise 1s ease both; }
+
+.letter.show {
+  display: block;
+  animation: letterRise 1s ease both;
+}
 
 @keyframes letterRise {
-  from { opacity: 0; transform: translateY(45px) scale(.92); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(45px) scale(.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
-.letter h2 { color: #a85676; text-align: center; }
-.letter p { color: #593543; white-space: pre-line; }
+
+.letter h2 {
+  color: #8a6b2e;
+  text-align: center;
+  text-shadow: none;
+}
+
+.letter p {
+  color: #28364a;
+  white-space: pre-line;
+}
 
 .final-heart {
   font-size: clamp(6rem, 28vw, 10rem);
   animation: beat 1.2s infinite;
+  filter: drop-shadow(0 0 16px #d8bd8266);
 }
-@keyframes beat { 50% { transform: scale(1.12); } }
+
+@keyframes beat {
+  50% {
+    transform: scale(1.12);
+  }
+}
 
 .music-status {
   font-size: .75rem;
-  color: #e9ccd7;
+  color: #d6dceb;
   text-align: center;
   padding: 8px;
 }
+
 footer {
   text-align: center;
   font-size: .8rem;
-  color: #d5c0df;
+  color: #c1cbd9;
   padding: 12px;
 }
 
 /* PASSWORD OPENING SCREEN */
+
 #passwordGate {
   position: fixed;
   inset: 0;
@@ -299,8 +481,8 @@ footer {
   justify-content: center;
   padding: 24px;
   background:
-    radial-gradient(ellipse at top, #8b526b 0%, transparent 55%),
-    linear-gradient(145deg, #24151d, #422536, #24151d);
+    radial-gradient(ellipse at top, #344b67 0%, transparent 55%),
+    linear-gradient(145deg, #0b1220, #18283c, #0b1220);
 }
 
 #passwordGate.unlocked {
@@ -309,7 +491,10 @@ footer {
 }
 
 @keyframes gateFadeOut {
-  to { opacity: 0; visibility: hidden; }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .gate-card {
@@ -317,17 +502,24 @@ footer {
   max-width: 390px;
   padding: 30px 22px;
   text-align: center;
-  border: 1px solid #e99ab588;
+  border: 1px solid #d8bd8277;
   border-radius: 25px;
-  background: #2b1923df;
-  box-shadow: 0 0 45px #e99ab530;
+  background: #101a2bef;
+  box-shadow: 0 0 45px #d8bd8220;
   backdrop-filter: blur(15px);
   animation: gateAppear .9s ease both;
 }
 
 @keyframes gateAppear {
-  from { opacity: 0; transform: translateY(20px) scale(.96); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .gate-heart {
@@ -337,45 +529,66 @@ footer {
 }
 
 @keyframes gateHeartbeat {
-  50% { transform: scale(1.12); }
+  50% {
+    transform: scale(1.12);
+  }
 }
 
 .gate-card h1 {
   font-size: clamp(25px, 7vw, 34px);
   line-height: 1.3;
   margin: 10px 0;
-  color: #fff0f5;
+  color: #f7e9c7;
 }
 
-.gate-card p { color: #f0d9e2; font-size: 15px; }
+.gate-card p {
+  color: #d6dceb;
+  font-size: 15px;
+}
 
 #partnerAnswer {
   width: 100%;
   margin: 22px 0 14px;
   padding: 15px;
-  border: 1px solid #e99ab5;
+  border: 1px solid #d8bd82;
   border-radius: 14px;
-  background: #ffffff0d;
+  background: #ffffff0b;
   color: white;
   font-size: 16px;
   outline: none;
 }
 
 #partnerAnswer:focus {
-  border-color: #f7d58a;
-  box-shadow: 0 0 15px #e99ab533;
+  border-color: #fff0bd;
+  box-shadow: 0 0 15px #d8bd8233;
 }
 
-#partnerAnswer::placeholder { color: #d9bbc7; }
-#unlockButton { width: 100%; min-height: 49px; }
-.countdown {
-  margin: 18px 0; padding: 14px 12px;
-  border: 1px solid #e99ab577; border-radius: 14px;
-  background: #e99ab510; color: #f8dce6; font-size: 14px; line-height: 1.6;
+#partnerAnswer::placeholder {
+  color: #d6dceb;
 }
+
+#unlockButton {
+  width: 100%;
+  min-height: 49px;
+}
+
+.countdown {
+  margin: 18px 0;
+  padding: 14px 12px;
+  border: 1px solid #d8bd8277;
+  border-radius: 14px;
+  background: #d8bd820c;
+  color: #e8dfcd;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 .countdown strong {
-  display: block; margin-top: 4px; color: #fff0f5;
-  font-size: clamp(18px, 5vw, 24px); letter-spacing: 1px;
+  display: block;
+  margin-top: 4px;
+  color: #fff1c9;
+  font-size: clamp(18px, 5vw, 24px);
+  letter-spacing: 1px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -383,45 +596,79 @@ footer {
   min-height: 24px;
   margin-top: 15px;
   font-size: 14px;
-  color: #f1b4c8;
+  color: #e8d7ae;
 }
 
 .gate-footer {
   margin-top: 22px;
   font-size: 12px;
-  color: #bfa7cb;
+  color: #c1cbd9;
 }
 
 @media (max-width: 420px) {
-  .proposal-card { padding: 8px; }
-  .scene-video { max-height: 58vh; }
+  .proposal-card {
+    padding: 8px;
+  }
+
+  .scene-video {
+    max-height: 58vh;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
 }
+
+/* Friendship mode: show only the friendship letter after reveal */
+
+.friend-letter-only > h2,
+.friend-letter-only > p,
+.friend-letter-only .gift-space,
+.friend-letter-only #openGiftButton,
+.friend-letter-only #giftReveal,
+.friend-letter-only #photoHint {
+  display: none !important;
+}
+
+.friend-letter-only #letter {
+  display: block;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- PASSWORD GATE: shown before the story -->
+<!-- PASSWORD GATE -->
 <div id="passwordGate">
   <div class="gate-card">
     <div class="gate-heart">💗</div>
+
     <h1>Our Love Story ❤️</h1>
-    <p>Before entering our little universe, answer one question from the heart.</p>
+
+    <p>
+      Before entering our little universe,
+      answer one question from the heart.
+    </p>
 
     <form id="partnerForm">
-      <label for="partnerAnswer">Answer the little question to enter our story. ❤️</label>
-      <div id="countdown" class="countdown" role="status" aria-live="polite">
-        Your surprise opens in <strong id="countdownTimer">Loading countdown…</strong>
+      <label for="partnerAnswer">
+        Answer the little question to enter our story. ❤️
+      </label>
+
+      <div id="countdown" class="countdown"
+           role="status" aria-live="polite">
+        Your surprise opens in
+        <strong id="countdownTimer">Loading countdown…</strong>
       </div>
+
       <input
         id="partnerAnswer"
         type="password"
@@ -434,13 +681,17 @@ footer {
         maxlength="20"
         aria-label="Enter your answer"
       >
+
       <button id="unlockButton" type="submit">
         Unlock Our Love Story 💖
       </button>
+
       <p id="gateMessage" role="status" aria-live="polite"></p>
     </form>
 
-    <div class="gate-footer">A little secret, made with love ✨</div>
+    <div class="gate-footer">
+      A little secret, made with love ✨
+    </div>
   </div>
 </div>
 
@@ -454,31 +705,48 @@ footer {
 </header>
 
 <main>
+
+  <!-- SCENE 1: ROSE -->
   <section class="scene active" id="s1">
     <h2>For my favorite person 🌹</h2>
     <p>A little flower, with all my love.</p>
 
     <div class="video-stage">
-      <video class="scene-video" id="roseVideo"
-        muted playsinline autoplay loop preload="auto">
+      <video
+        class="scene-video"
+        id="roseVideo"
+        muted
+        playsinline
+        autoplay
+        loop
+        preload="auto"
+      >
         <source src="videos/rose.mp4" type="video/mp4">
       </video>
     </div>
 
-    <p class="video-note">A rose, made magical just for you.</p>
+    <p class="video-note">
+      A rose, made magical just for you.
+    </p>
 
     <div class="actions">
-      <button id="beginButton" type="button">Begin Our Story ✨</button>
+      <button id="beginButton" type="button">
+        Begin Our Story ✨
+      </button>
     </div>
   </section>
 
+  <!-- SCENE 2: MEMORIES -->
   <section class="scene" id="s2">
     <h2>Five little pieces of us 💕</h2>
     <p>Tap each heart to unfold a memory.</p>
 
     <div class="heart-grid" id="heartGrid"></div>
     <div id="photoReveal" aria-live="polite"></div>
-    <p class="small" id="memoryCount">Memories discovered: 0 / 5</p>
+
+    <p class="small" id="memoryCount">
+      Memories discovered: 0 / 5
+    </p>
 
     <div class="actions">
       <button id="toProposalButton" type="button" disabled>
@@ -487,33 +755,53 @@ footer {
     </div>
   </section>
 
+  <!-- SCENE 3: PROPOSAL -->
   <section class="scene" id="s3">
     <h2>A question from my heart 💍</h2>
 
     <div class="proposal-card">
       <div class="video-stage">
-        <video class="scene-video" id="proposeVideo"
-          muted playsinline preload="auto">
+        <video
+          class="scene-video"
+          id="proposeVideo"
+          muted
+          playsinline
+          preload="auto"
+        >
           <source src="videos/propose.mp4" type="video/mp4">
         </video>
       </div>
 
-      <p id="proposalText">Dharshini, will you accept my little proposal? 💖</p>
+      <p id="proposalText">
+        Dharshini, will you accept my little proposal? 💖
+      </p>
 
       <div class="actions" id="proposalActions">
-        <button id="yesButton" type="button">Yes, with all my heart! 💖</button>
-        <button class="secondary" id="noButton" type="button">No 🙈</button>
+        <button id="yesButton" type="button">
+          Yes, with all my heart! 💖
+        </button>
+
+        <button class="secondary" id="noButton" type="button">
+          No 🙈
+        </button>
       </div>
+
       <p id="proposalFeedback" aria-live="polite"></p>
     </div>
   </section>
 
+  <!-- SCENE 4: RESULT -->
   <section class="scene" id="s4">
     <h2 id="resultHeading">A moment to remember ❤️</h2>
 
     <div class="video-stage" id="acceptStage" hidden>
-      <video class="scene-video" id="acceptVideo"
-        muted playsinline preload="auto">
+      <video
+        class="scene-video"
+        id="acceptVideo"
+        muted
+        playsinline
+        preload="auto"
+      >
         <source src="videos/accept.mp4" type="video/mp4">
       </video>
     </div>
@@ -524,18 +812,21 @@ footer {
       <button id="toGiftButton" type="button" hidden>
         Open Your Birthday Gift 🎁
       </button>
+
       <button id="finishButton" type="button" hidden>
         Close Our Story ❤️
       </button>
     </div>
   </section>
 
+  <!-- SCENE 5: GIFT -->
   <section class="scene" id="s5">
     <h2>A little gift, with a universe of love 🎁</h2>
     <p>Made especially for you.</p>
 
     <div class="gift-space">
       <div class="gift-glow"></div>
+
       <div class="gift" id="gift">
         <div class="gift-body"></div>
         <div class="gift-lid"></div>
@@ -543,13 +834,19 @@ footer {
     </div>
 
     <div class="actions">
-      <button id="openGiftButton" type="button">Open Your Gift 🎁</button>
+      <button id="openGiftButton" type="button">
+        Open Your Gift 🎁
+      </button>
     </div>
 
     <div id="giftReveal" hidden>
-      <img class="gift-photo" id="giftPhoto"
+      <img
+        class="gift-photo"
+        id="giftPhoto"
         src="images/gift-photo.jpg"
-        alt="A special photograph for you">
+        alt="A special photograph for you"
+      >
+
       <p class="small" id="photoHint">
         Tap the photograph to reveal your birthday letter ✨
       </p>
@@ -558,20 +855,30 @@ footer {
     <article class="letter" id="letter">
       <h2>To My Favorite Person ❤️</h2>
       <p id="letterContent"></p>
+
       <div class="actions">
-        <button id="finalButton" type="button">One Last Surprise ✨</button>
+        <button id="finalButton" type="button">
+          One Last Surprise ✨
+        </button>
       </div>
     </article>
   </section>
 
+  <!-- SCENE 6: FINAL SURPRISE -->
   <section class="scene" id="s6">
     <h2 id="finalHeading">For You, My Love</h2>
+
     <div class="final-heart">💖</div>
+
     <p id="finalMessage"></p>
+
     <div class="actions">
-      <button id="magicButton" type="button">A Little More Magic 💖</button>
+      <button id="magicButton" type="button">
+        A Little More Magic 💖
+      </button>
     </div>
   </section>
+
 </main>
 
 <audio id="music" loop preload="auto">
@@ -582,10 +889,15 @@ footer {
   Romantic music is loading…
 </div>
 
-<footer>Made with love, just for you. ❤️</footer><script>
+<footer>
+  Made with love, just for you. ❤️
+</footer><script>
 "use strict";
 
-/* PERSONALIZATION */
+/* =========================================
+   PERSONALIZATION
+   Change these values to customize the site.
+   ========================================= */
 
 const RECIPIENT_NAME = "Dharshini";
 const ROMANTIC_NICKNAME = "Uyire";
@@ -640,6 +952,10 @@ const MEMORY_CAPTIONS = [
   "Our story is my favorite adventure. 💞"
 ];
 
+/* =========================================
+   ELEMENT REFERENCES
+   ========================================= */
+
 const $ = id => document.getElementById(id);
 
 const music = $("music");
@@ -653,18 +969,21 @@ let proposalAnswered = false;
 let musicAttemptInProgress = false;
 let experienceMode = "romantic";
 
-/* PASSWORDS:
+/* =========================================
+   PASSWORD GATE
    7397 = opens after countdown
    vishan = opens immediately
-   1235 = birthday friendship mode, hides personal photo
-   1234 = friendship proposal mode, shows personal photo
-*/
+   1235 = birthday friendship mode
+   1234 = friendship proposal and letter
+   ========================================= */
 
 (() => {
   const correctAnswer = "7397";
   const instantAnswer = "vishan";
   const friendBirthdayAnswer = "1235";
   const friendForeverAnswer = "1234";
+
+  // 23 October 2026, 12:00 AM, Indian Standard Time.
   const unlockAt = new Date("2026-10-23T00:00:00+05:30");
 
   const countdownTimer = $("countdownTimer");
@@ -678,7 +997,8 @@ let experienceMode = "romantic";
     const remaining = unlockAt.getTime() - Date.now();
 
     if (remaining <= 0) {
-      countdownTimer.textContent = "It's time! Your surprise is ready 💗";
+      countdownTimer.textContent =
+        "It's time! Your surprise is ready 💗";
       return;
     }
 
@@ -688,7 +1008,8 @@ let experienceMode = "romantic";
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    countdownTimer.textContent = (days ? days + "d " : "") +
+    countdownTimer.textContent =
+      (days ? days + "d " : "") +
       String(hours).padStart(2, "0") + ":" +
       String(minutes).padStart(2, "0") + ":" +
       String(seconds).padStart(2, "0");
@@ -698,6 +1019,7 @@ let experienceMode = "romantic";
 
   const countdownInterval = setInterval(() => {
     updateCountdown();
+
     if (Date.now() >= unlockAt.getTime()) {
       clearInterval(countdownInterval);
     }
@@ -708,64 +1030,110 @@ let experienceMode = "romantic";
 
     if (mode === "friendBirthday") {
       document.title = "Happy Birthday, Friend! 🎂";
-      $("pageTitle").textContent = "Happy Birthday, Dear Friend! 🎂";
+
+      $("pageTitle").textContent =
+        "Happy Birthday, Dear Friend! 🎂";
 
       document.querySelector("header .small").textContent =
         "A little birthday surprise just for you ✨";
+
       document.querySelector("header p").textContent =
         "Wishing you a day full of smiles and happy memories.";
 
-      $("s1").querySelector("h2").textContent = "A Birthday Wish for You 🎉";
-      $("s1").querySelector("p").textContent = FRIEND_BIRTHDAY_MESSAGE;
+      $("s1").querySelector("h2").textContent =
+        "A Birthday Wish for You 🎉";
 
+      $("s1").querySelector("p").textContent =
+        FRIEND_BIRTHDAY_MESSAGE;
+
+      // Hide video areas in birthday friendship mode.
       document.querySelectorAll(".video-stage").forEach(stage => {
         stage.hidden = true;
       });
 
-      $("beginButton").textContent = "Open Birthday Wishes 🎂";
-      $("s2").querySelector("h2").textContent = "Happy Little Memories 🎈";
+      $("beginButton").textContent =
+        "Open Birthday Wishes 🎂";
+
+      $("s2").querySelector("h2").textContent =
+        "Happy Little Memories 🎈";
+
       $("s2").querySelector("p").textContent =
         "Tap the hearts to open some birthday wishes.";
-      $("toProposalButton").textContent = "Continue to Birthday Wishes 🎉";
+
+      $("toProposalButton").textContent =
+        "Continue to Birthday Wishes 🎉";
 
       $("proposalText").textContent =
         "Wishing you friendship, laughter, and good memories!";
+
       $("yesButton").textContent = "Thank You! 🎉";
       $("noButton").textContent = "Back to Wishes";
 
-      // Password 1235 intentionally hides the personal surprise photo.
+      // Never display the personal surprise photo in this mode.
       $("giftPhoto").hidden = true;
+
       $("photoHint").textContent =
         "Your personal surprise photo is not part of this birthday mode. 💛";
 
       $("letter").querySelector("h2").textContent =
         "A Birthday Note for a Friend 💛";
-      $("letterContent").textContent = FRIEND_BIRTHDAY_MESSAGE;
 
-      $("finalHeading").textContent = "Happy Birthday, Friend! 🎂";
-      $("finalMessage").textContent = FRIEND_BIRTHDAY_MESSAGE;
-      $("openGiftButton").textContent = "Open Birthday Wishes 🎁";
-      $("toGiftButton").textContent = "More Birthday Wishes 🎁";
+      $("letterContent").textContent =
+        FRIEND_BIRTHDAY_MESSAGE;
 
-    } else if (mode === "friendForever") {
+      $("finalHeading").textContent =
+        "Happy Birthday, Friend! 🎂";
+
+      $("finalMessage").textContent =
+        FRIEND_BIRTHDAY_MESSAGE;
+
+      $("openGiftButton").textContent =
+        "Open Birthday Wishes 🎁";
+
+      $("toGiftButton").textContent =
+        "More Birthday Wishes 🎁";
+    }
+
+    else if (mode === "friendForever") {
       document.title = "Friends Forever 🤝";
-      $("pageTitle").textContent = "A Special Birthday Story 💛";
 
-      $("proposalText").textContent = "Will you be friends forever? 🤝💛";
-      $("yesButton").textContent = "Yes, Friends Forever! 🤝";
-      $("noButton").textContent = "Let's Stay Kind 💛";
+      $("pageTitle").textContent =
+        "A Special Birthday Story 💛";
 
-      $("finalHeading").textContent = "Friends Forever 🤝";
-      $("finalMessage").textContent = FRIEND_FOREVER_MESSAGE;
+      // Password 1234 must not show the personal surprise photo.
+      $("giftPhoto").hidden = true;
+      $("photoHint").hidden = true;
+      $("giftReveal").hidden = true;
 
-      $("letter").querySelector("h2").textContent = "A Note for My Friend 💛";
-      $("letterContent").textContent = FRIEND_FOREVER_MESSAGE;
+      $("s5").querySelector("h2").textContent =
+        "A Letter for My Friend 💛";
 
-      // FIX: password 1234 must show the special birthday gift photo.
-      $("giftPhoto").hidden = false;
-      $("photoHint").textContent =
-        "Tap the photograph to reveal your birthday letter ✨";
-      $("openGiftButton").textContent = "Open Your Gift 🎁";
+      $("s5").querySelector("p").textContent =
+        "A small note, written with care.";
+
+      $("openGiftButton").textContent =
+        "Reveal Your Friend Letter 💌";
+
+      $("proposalText").textContent =
+        "Will you be friends forever? 🤝💛";
+
+      $("yesButton").textContent =
+        "Yes, Friends Forever! 🤝";
+
+      $("noButton").textContent =
+        "Let's Stay Kind 💛";
+
+      $("finalHeading").textContent =
+        "Friends Forever 🤝";
+
+      $("finalMessage").textContent =
+        FRIEND_FOREVER_MESSAGE;
+
+      $("letter").querySelector("h2").textContent =
+        "A Note for My Friend 💛";
+
+      $("letterContent").textContent =
+        FRIEND_FOREVER_MESSAGE;
     }
   }
 
@@ -776,24 +1144,31 @@ let experienceMode = "romantic";
 
     if (answer === instantAnswer) {
       applyExperienceMode("romantic");
+    }
 
-    } else if (answer === friendBirthdayAnswer) {
+    else if (answer === friendBirthdayAnswer) {
       applyExperienceMode("friendBirthday");
+    }
 
-    } else if (answer === friendForeverAnswer) {
+    else if (answer === friendForeverAnswer) {
       applyExperienceMode("friendForever");
+    }
 
-    } else if (
+    else if (
       answer === correctAnswer &&
       Date.now() < unlockAt.getTime()
     ) {
       message.textContent =
         "Your surprise opens on 23 October 2026 at 12:00 AM. 💗";
+
       answerInput.setAttribute("aria-invalid", "false");
       return;
+    }
 
-    } else if (answer !== correctAnswer) {
-      message.textContent = "That answer isn't correct. Please try again. 💗";
+    else if (answer !== correctAnswer) {
+      message.textContent =
+        "That answer isn't correct. Please try again. 💗";
+
       answerInput.value = "";
       answerInput.setAttribute("aria-invalid", "true");
       answerInput.focus();
@@ -802,74 +1177,122 @@ let experienceMode = "romantic";
 
     message.textContent = "Welcome! ❤️";
     answerInput.setAttribute("aria-invalid", "false");
+
     unlockButton.disabled = true;
     unlockButton.textContent = "Opening... ✨";
 
     await new Promise(resolve => setTimeout(resolve, 350));
 
     gate.classList.add("unlocked");
-    gate.addEventListener("animationend", () => gate.remove(), {
-      once: true
-    });
+
+    gate.addEventListener(
+      "animationend",
+      () => gate.remove(),
+      { once: true }
+    );
 
     attemptMusic();
     playVideo(roseVideo, { loop: true });
   });
 })();
 
-/* PERSONALIZED TEXT */
+/* =========================================
+   PERSONALIZED TEXT
+   ========================================= */
 
-$("pageTitle").textContent = "For " + RECIPIENT_NAME + " ❤️";
+$("pageTitle").textContent =
+  "For " + RECIPIENT_NAME + " ❤️";
 
 $("proposalText").textContent =
-  RECIPIENT_NAME + ", will you accept my little proposal? 💖";
+  RECIPIENT_NAME +
+  ", will you accept my little proposal? 💖";
 
-$("letterContent").textContent = BIRTHDAY_LETTER.replace(
-  "My favorite person,",
-  "My favorite person, " + RECIPIENT_NAME + ","
-);
+$("letterContent").textContent =
+  BIRTHDAY_LETTER.replace(
+    "My favorite person,",
+    "My favorite person, " + RECIPIENT_NAME + ","
+  );
 
-$("finalHeading").textContent = "For You, " + ROMANTIC_NICKNAME;
-$("finalMessage").textContent = FINAL_SURPRISE_MESSAGE;
+$("finalHeading").textContent =
+  "For You, " + ROMANTIC_NICKNAME;
 
-/* STARS AND PARTICLES */
+$("finalMessage").textContent =
+  FINAL_SURPRISE_MESSAGE;
+
+/* =========================================
+   STARS AND PARTICLES
+   ========================================= */
 
 for (let i = 0; i < 38; i++) {
   const star = document.createElement("span");
+
   star.className = "star";
   star.textContent = Math.random() > .5 ? "✦" : "·";
+
   star.style.left = Math.random() * 100 + "%";
   star.style.top = Math.random() * 100 + "%";
-  star.style.fontSize = (8 + Math.random() * 12) + "px";
-  star.style.animationDelay = Math.random() * 3 + "s";
+
+  star.style.fontSize =
+    (8 + Math.random() * 12) + "px";
+
+  star.style.animationDelay =
+    Math.random() * 3 + "s";
+
   $("stars").appendChild(star);
 }
 
-function burstParticles(symbols = ["💖", "✨", "💕", "🌸"]) {
+function burstParticles(
+  symbols = ["💖", "✨", "💕", "🌸"]
+) {
   const container = $("particles");
 
   for (let i = 0; i < 24; i++) {
     const particle = document.createElement("span");
+
     particle.className = "particle";
+
     particle.textContent =
       symbols[Math.floor(Math.random() * symbols.length)];
 
-    particle.style.left = (20 + Math.random() * 60) + "%";
-    particle.style.top = (25 + Math.random() * 45) + "%";
-    particle.style.setProperty("--x", (Math.random() * 400 - 200) + "px");
-    particle.style.setProperty("--y", (Math.random() * 450 - 225) + "px");
+    particle.style.left =
+      (20 + Math.random() * 60) + "%";
+
+    particle.style.top =
+      (25 + Math.random() * 45) + "%";
+
+    particle.style.setProperty(
+      "--x",
+      (Math.random() * 400 - 200) + "px"
+    );
+
+    particle.style.setProperty(
+      "--y",
+      (Math.random() * 450 - 225) + "px"
+    );
 
     container.appendChild(particle);
-    particle.addEventListener("animationend", () => particle.remove());
+
+    particle.addEventListener(
+      "animationend",
+      () => particle.remove()
+    );
   }
-}/* NAVIGATION */
+}
+
+/* =========================================
+   SCENE NAVIGATION
+   ========================================= */
 
 function showScene(id) {
   const target = $(id);
+
   if (!target) return;
 
   document.querySelectorAll(".scene").forEach(scene => {
-    scene.classList.toggle("active", scene.id === id);
+    scene.classList.toggle(
+      "active",
+      scene.id === id
+    );
   });
 
   [roseVideo, proposeVideo, acceptVideo].forEach(video => {
@@ -878,11 +1301,17 @@ function showScene(id) {
     }
   });
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
   const activeVideo = getSceneVideo(id);
+
   if (activeVideo) {
-    playVideo(activeVideo, { loop: id === "s1" });
+    playVideo(activeVideo, {
+      loop: id === "s1"
+    });
   }
 
   attemptMusic();
@@ -891,11 +1320,17 @@ function showScene(id) {
 function getSceneVideo(id) {
   if (id === "s1") return roseVideo;
   if (id === "s3") return proposeVideo;
-  if (id === "s4" && !$("acceptStage").hidden) return acceptVideo;
+
+  if (id === "s4" && !$("acceptStage").hidden) {
+    return acceptVideo;
+  }
+
   return null;
 }
 
-/* MUSIC */
+/* =========================================
+   BACKGROUND MUSIC
+   ========================================= */
 
 music.loop = true;
 music.volume = 0.45;
@@ -905,31 +1340,42 @@ function setMusicStatus(text) {
 }
 
 async function attemptMusic() {
-  if (musicAttemptInProgress || !music.paused) return;
+  if (musicAttemptInProgress || !music.paused) {
+    return;
+  }
 
   musicAttemptInProgress = true;
 
   try {
     await music.play();
+
     setMusicStatus("♪ Romantic music is playing");
-  } catch (error) {
+  }
+
+  catch (error) {
     setMusicStatus(
       "Tap to start music. Check audio/romantic.mp3 if silent."
     );
-  } finally {
+  }
+
+  finally {
     musicAttemptInProgress = false;
   }
 }
 
-music.addEventListener("playing", () =>
-  setMusicStatus("♪ Romantic music is playing")
-);
+music.addEventListener("playing", () => {
+  setMusicStatus("♪ Romantic music is playing");
+});
 
-music.addEventListener("error", () =>
-  setMusicStatus("Music could not load. Check audio/romantic.mp3.")
-);
+music.addEventListener("error", () => {
+  setMusicStatus(
+    "Music could not load. Check audio/romantic.mp3."
+  );
+});
 
-/* VIDEO PLAYBACK */
+/* =========================================
+   VIDEO PLAYBACK
+   ========================================= */
 
 function prepareVideo(video, loop = false) {
   if (!video) return;
@@ -952,7 +1398,9 @@ function stopVideo(video) {
 
   try {
     video.currentTime = 0;
-  } catch (error) {
+  }
+
+  catch (error) {
     // Video metadata may not have loaded yet.
   }
 }
@@ -965,8 +1413,14 @@ async function playVideo(video, options = {}) {
   try {
     await video.play();
     return true;
-  } catch (error) {
-    console.warn("Video playback was blocked or failed:", error);
+  }
+
+  catch (error) {
+    console.warn(
+      "Video playback was blocked or failed:",
+      error
+    );
+
     return false;
   }
 }
@@ -977,47 +1431,66 @@ async function playVideo(video, options = {}) {
   prepareVideo(video);
 
   video.addEventListener("error", () => {
-    console.warn("Check video path and encoding:", video.currentSrc);
+    console.warn(
+      "Check video path and encoding:",
+      video.currentSrc
+    );
   });
-});
-
-/* SCENE 1 -> SCENE 2 */
+});/* =========================================
+   SCENE 1 -> SCENE 2
+   ========================================= */
 
 $("beginButton").addEventListener("click", () => {
   showScene("s2");
   burstParticles();
 });
 
-/* BUILD FIVE MEMORY HEARTS */
+/* =========================================
+   BUILD FIVE MEMORY HEARTS
+   ========================================= */
 
 function buildMemories() {
   const grid = $("heartGrid");
+
   grid.replaceChildren();
 
   MEMORY_PHOTOS.forEach((photo, index) => {
     const button = document.createElement("button");
+
     button.type = "button";
     button.className = "memory-heart";
-    button.innerHTML = "💗<span>Memory " + (index + 1) + "</span>";
-    button.setAttribute("aria-label", "Open memory " + (index + 1));
+
+    button.innerHTML =
+      "💗<span>Memory " + (index + 1) + "</span>";
+
+    button.setAttribute(
+      "aria-label",
+      "Open memory " + (index + 1)
+    );
 
     button.addEventListener("click", () => {
       if (openedMemories.has(index)) return;
 
       openedMemories.add(index);
+
       button.classList.add("done");
-      button.innerHTML = "💖<span>Discovered!</span>";
+
+      button.innerHTML =
+        "💖<span>Discovered!</span>";
 
       const reveal = $("photoReveal");
+
       const frame = document.createElement("div");
       frame.className = "photo-frame";
 
       const img = document.createElement("img");
+
       img.src = photo;
       img.alt = "Memory " + (index + 1);
       img.loading = "lazy";
 
       const caption = document.createElement("p");
+
       caption.className = "photo-caption";
       caption.textContent = MEMORY_CAPTIONS[index];
 
@@ -1025,7 +1498,9 @@ function buildMemories() {
       reveal.prepend(frame);
 
       $("memoryCount").textContent =
-        "Memories discovered: " + openedMemories.size + " / 5";
+        "Memories discovered: " +
+        openedMemories.size +
+        " / 5";
 
       if (openedMemories.size === MEMORY_PHOTOS.length) {
         $("toProposalButton").disabled = false;
@@ -1040,45 +1515,73 @@ function buildMemories() {
 
 buildMemories();
 
+/* =========================================
+   MEMORY -> NEXT SCENE
+   ========================================= */
+
 $("toProposalButton").addEventListener("click", () => {
   if (experienceMode === "friendBirthday") {
-    $("resultHeading").textContent = "Happy Birthday, Friend! 🎂";
-    $("resultMessage").textContent = FRIEND_BIRTHDAY_MESSAGE;
+    $("resultHeading").textContent =
+      "Happy Birthday, Friend! 🎂";
+
+    $("resultMessage").textContent =
+      FRIEND_BIRTHDAY_MESSAGE;
+
     $("acceptStage").hidden = true;
     $("toGiftButton").hidden = true;
     $("finishButton").hidden = false;
+
     showScene("s4");
-  } else {
+  }
+
+  else {
     showScene("s3");
   }
 });
 
-/* PROPOSAL */
+/* =========================================
+   PROPOSAL: YES BUTTON
+   ========================================= */
 
 $("yesButton").addEventListener("click", () => {
   if (proposalAnswered) return;
-  proposalAnswered = true;
 
+  proposalAnswered = true;
   $("proposalActions").hidden = true;
 
   if (experienceMode === "friendBirthday") {
     $("proposalFeedback").textContent =
       "Thank you for being such a wonderful friend! 🎉";
-    $("resultHeading").textContent = "Happy Birthday, Friend! 🎂";
-    $("resultMessage").textContent = FRIEND_BIRTHDAY_MESSAGE;
 
-  } else if (experienceMode === "friendForever") {
-    $("proposalFeedback").textContent = "Friends forever! 🤝💛";
-    $("resultHeading").textContent = "Best Friends Forever 🤝";
-    $("resultMessage").textContent = FRIEND_FOREVER_MESSAGE;
+    $("resultHeading").textContent =
+      "Happy Birthday, Friend! 🎂";
 
-  } else {
+    $("resultMessage").textContent =
+      FRIEND_BIRTHDAY_MESSAGE;
+  }
+
+  else if (experienceMode === "friendForever") {
+    $("proposalFeedback").textContent =
+      "Friends forever! 🤝💛";
+
+    $("resultHeading").textContent =
+      "Best Friends Forever 🤝";
+
+    $("resultMessage").textContent =
+      FRIEND_FOREVER_MESSAGE;
+  }
+
+  else {
     $("proposalFeedback").textContent =
       "You just made my heart the happiest! ❤️";
-    $("resultHeading").textContent = "You made my world brighter! 💖";
+
+    $("resultHeading").textContent =
+      "You made my world brighter! 💖";
+
     $("resultMessage").textContent =
       "Every beautiful story is better with you in it, " +
-      RECIPIENT_NAME + ". Happy Birthday, my love!";
+      RECIPIENT_NAME +
+      ". Happy Birthday, my love!";
   }
 
   $("acceptStage").hidden = false;
@@ -1089,23 +1592,38 @@ $("yesButton").addEventListener("click", () => {
   burstParticles();
 });
 
+/* =========================================
+   PROPOSAL: NO BUTTON
+   ========================================= */
+
 $("noButton").addEventListener("click", () => {
   if (proposalAnswered) return;
-  proposalAnswered = true;
 
+  proposalAnswered = true;
   $("proposalActions").hidden = true;
 
   if (experienceMode === "friendForever") {
-    $("resultHeading").textContent = "Let's Keep Our Friendship 💛";
-    $("resultMessage").textContent = FRIEND_FOREVER_MESSAGE;
+    $("resultHeading").textContent =
+      "Let's Keep Our Friendship 💛";
 
-  } else if (experienceMode === "friendBirthday") {
-    $("resultHeading").textContent = "Birthday Wishes for You 🎂";
-    $("resultMessage").textContent = FRIEND_BIRTHDAY_MESSAGE;
+    $("resultMessage").textContent =
+      FRIEND_FOREVER_MESSAGE;
+  }
 
-  } else {
-    $("resultHeading").textContent = "A little birthday wish ❤️";
-    $("resultMessage").textContent = REJECTION_MESSAGE;
+  else if (experienceMode === "friendBirthday") {
+    $("resultHeading").textContent =
+      "Birthday Wishes for You 🎂";
+
+    $("resultMessage").textContent =
+      FRIEND_BIRTHDAY_MESSAGE;
+  }
+
+  else {
+    $("resultHeading").textContent =
+      "A little birthday wish ❤️";
+
+    $("resultMessage").textContent =
+      REJECTION_MESSAGE;
   }
 
   $("acceptStage").hidden = true;
@@ -1115,6 +1633,10 @@ $("noButton").addEventListener("click", () => {
   showScene("s4");
 });
 
+/* =========================================
+   RESULT SCENE BUTTONS
+   ========================================= */
+
 $("toGiftButton").addEventListener("click", () => {
   showScene("s5");
 });
@@ -1122,73 +1644,156 @@ $("toGiftButton").addEventListener("click", () => {
 $("finishButton").addEventListener("click", () => {
   $("resultMessage").textContent =
     "Thank you for being part of this little story. ❤️";
+
   burstParticles();
 });
 
-/* GIFT OPENING — FIXED FOR PASSWORD 1234 */
+/* =========================================
+   GIFT OPENING
+   ========================================= */
 
 $("openGiftButton").addEventListener("click", () => {
   if (giftOpened) return;
 
   giftOpened = true;
-  $("gift").classList.add("open");
-  $("openGiftButton").disabled = true;
-  $("openGiftButton").textContent = "Your surprise is here! 💖";
 
-  burstParticles(["💝", "✨", "💗", "🎉"]);
+  burstParticles(["💌", "✨", "💛", "🤝"]);
+
+  /*
+    FRIENDSHIP MODE — PASSWORD 1234
+
+    The gift box and photo are not shown after
+    the friendship letter is revealed.
+
+    Only the friendship letter is displayed.
+  */
+
+  if (experienceMode === "friendForever") {
+    $("s5").classList.add("friend-letter-only");
+
+    $("giftPhoto").hidden = true;
+    $("giftReveal").hidden = true;
+    $("photoHint").hidden = true;
+
+    $("letter").classList.add("show");
+
+    $("letter").scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    return;
+  }
+
+  /*
+    OTHER MODES
+
+    Open the animated gift and reveal the
+    appropriate content.
+  */
+
+  $("gift").classList.add("open");
+
+  $("openGiftButton").disabled = true;
+
+  $("openGiftButton").textContent =
+    "Your surprise is here! 💖";
 
   setTimeout(() => {
     $("giftReveal").hidden = false;
 
     if (experienceMode === "friendBirthday") {
-      // Password 1235: hide the personal surprise image.
       $("giftPhoto").hidden = true;
+
       $("photoHint").textContent =
         "Sending you birthday wishes instead of the personal surprise photo. 💛";
-    } else {
-      // Password 1234 and romantic modes: show the special image.
+    }
+
+    else {
       $("giftPhoto").hidden = false;
+      $("photoHint").hidden = false;
+
       $("photoHint").textContent =
         "Tap the photograph to reveal your birthday letter ✨";
     }
   }, 800);
 });
 
-/* PHOTO -> BIRTHDAY LETTER */
+/* =========================================
+   PERSONAL PHOTO -> LETTER
+   ========================================= */
 
 $("giftPhoto").addEventListener("click", () => {
+  if (experienceMode === "friendForever") {
+    return;
+  }
+
   $("letter").classList.add("show");
-  $("photoHint").textContent = "A letter written just for you. ❤️";
+
+  $("photoHint").textContent =
+    "A letter written just for you. ❤️";
+
   $("letter").scrollIntoView({
     behavior: "smooth",
     block: "center"
   });
+
   burstParticles(["💌", "💕", "🖤"]);
 });
 
-/* FINAL SURPRISE */
+/* =========================================
+   LETTER -> FINAL SURPRISE
+   ========================================= */
 
 $("finalButton").addEventListener("click", () => {
   showScene("s6");
-  burstParticles(["💖", "💝", "✨", "🖤"]);
+
+  burstParticles([
+    "💖",
+    "💝",
+    "✨",
+    "🖤"
+  ]);
 });
+
+/* =========================================
+   FINAL MAGIC BUTTON
+   ========================================= */
 
 $("magicButton").addEventListener("click", () => {
-  burstParticles(["💖", "🌹", "✨", "🖤", "💝"]);
+  burstParticles([
+    "💖",
+    "🌹",
+    "✨",
+    "🖤",
+    "💝"
+  ]);
 });
 
-/* FIRST LOAD */
+/* =========================================
+   FIRST LOAD
+   ========================================= */
 
 window.addEventListener("load", () => {
-  // The password screen stays visible until a valid password is entered.
-  // Audio and video start after the user's unlock interaction.
+  /*
+    Keep the password screen visible until
+    the visitor enters a recognized password.
+
+    Audio and the first video start after
+    the unlock interaction.
+  */
 });
+
+/* =========================================
+   VISIBILITY AND MUSIC STATUS
+   ========================================= */
 
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden && !music.paused) {
     setMusicStatus("♪ Romantic music is playing");
   }
 });
+
 </script>
 
 </body>
